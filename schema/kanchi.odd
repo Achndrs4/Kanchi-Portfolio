@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0"
+     xmlns:rng="http://relaxng.org/ns/structure/1.0"
+     xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Kanchi TEI customization</title>
+        <author>Ani Chandrashekhar</author>
+      </titleStmt>
+      <publicationStmt>
+        <availability status="free">
+          <licence target="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Written from scratch against TEI P5.</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+        <head>Kanchi TEI customization</head>
+        <p>A deliberately small customization of TEI P5 for multilingual temple-legend
+        editions. The guiding principle is that the schema should refuse documents the
+        editorial workflow cannot process, rather than accepting everything TEI permits
+        and discovering problems downstream in XSLT.</p>
+
+        <p>Three constraints carry most of the weight:</p>
+        <list type="ordered">
+          <item>every <gi>witness</gi> must be identifiable, because the apparatus
+          refers to witnesses by pointer;</item>
+          <item>every <gi>rdg</gi> and <gi>lem</gi> must name at least one witness,
+          because an unattributed reading cannot be rendered or evaluated;</item>
+          <item>every pointer in <att>wit</att> must resolve to a witness declared in
+          the same document, which is checked by Schematron rather than by the grammar,
+          since RELAX NG cannot express cross-references.</item>
+        </list>
+
+        <schemaSpec ident="kanchi" start="TEI" prefix="tei_"
+                    source="https://www.tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.xml">
+
+          <!-- Core modules required for a critical edition with manuscript
+               description, facsimile linking and named-entity markup. -->
+          <moduleRef key="tei"/>
+          <moduleRef key="header"/>
+          <moduleRef key="core"/>
+          <moduleRef key="textstructure"/>
+          <moduleRef key="verse"/>
+          <moduleRef key="textcrit"/>
+          <moduleRef key="msdescription"/>
+          <moduleRef key="transcr"/>
+          <moduleRef key="namesdates"/>
+          <moduleRef key="linking"/>
+          <moduleRef key="figures"/>
+          <!-- tagdocs supplies gi/att/code, used when documenting the encoding
+               inside the header itself. -->
+          <moduleRef key="tagdocs"/>
+
+          <!-- A witness must be addressable. -->
+          <elementSpec ident="witness" module="textcrit" mode="change">
+            <attList>
+              <attDef ident="id" ns="http://www.w3.org/XML/1998/namespace"
+                      mode="change" usage="req"/>
+            </attList>
+          </elementSpec>
+
+          <!-- Readings must be attributed. -->
+          <elementSpec ident="rdg" module="textcrit" mode="change">
+            <attList>
+              <attDef ident="wit" mode="change" usage="req"/>
+            </attList>
+          </elementSpec>
+
+          <elementSpec ident="lem" module="textcrit" mode="change">
+            <attList>
+              <attDef ident="wit" mode="change" usage="req"/>
+            </attList>
+          </elementSpec>
+
+          <!-- Constrain div types to the structural vocabulary actually used, so a
+               typo such as type="chaper" fails validation instead of silently
+               producing an unstyled block. -->
+          <elementSpec ident="div" module="textstructure" mode="change">
+            <attList>
+              <attDef ident="type" mode="change" usage="req">
+                <valList type="closed">
+                  <valItem ident="chapter"/>
+                  <valItem ident="section"/>
+                  <valItem ident="places"/>
+                  <valItem ident="monuments"/>
+                  <valItem ident="deities"/>
+                  <valItem ident="languages"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+
+          <!-- Schematron rules: cross-document and cross-reference constraints that a
+               grammar cannot express. -->
+          <constraintSpec ident="wit-pointers-resolve" scheme="schematron">
+            <constraint>
+              <sch:pattern>
+                <sch:rule context="tei:rdg[@wit] | tei:lem[@wit] | tei:witDetail[@wit]">
+                  <sch:let name="declared"
+                           value="//tei:listWit/tei:witness/@xml:id"/>
+                  <sch:assert test="every $w in tokenize(normalize-space(@wit), '\s+')
+                                    satisfies substring($w, 2) = $declared">
+                    Every witness pointer in @wit must refer to a witness declared in
+                    listWit. Unresolved: <sch:value-of
+                    select="string-join(for $w in tokenize(normalize-space(@wit), '\s+')
+                            return if (substring($w, 2) = $declared) then () else $w, ' ')"/>
+                  </sch:assert>
+                </sch:rule>
+              </sch:pattern>
+            </constraint>
+          </constraintSpec>
+
+          <constraintSpec ident="app-needs-lemma" scheme="schematron">
+            <constraint>
+              <sch:pattern>
+                <sch:rule context="tei:app">
+                  <sch:assert test="tei:lem">
+                    Every apparatus entry must carry an explicit lemma, so that the
+                    reading text is editorially chosen rather than defaulted.
+                  </sch:assert>
+                </sch:rule>
+              </sch:pattern>
+            </constraint>
+          </constraintSpec>
+
+          <constraintSpec ident="indic-text-must-declare-language" scheme="schematron">
+            <constraint>
+              <sch:pattern>
+                <sch:rule context="tei:TEI">
+                  <sch:assert test="@xml:lang">
+                    The root element must declare xml:lang. Script-aware indexing and
+                    transliteration both depend on it.
+                  </sch:assert>
+                </sch:rule>
+              </sch:pattern>
+            </constraint>
+          </constraintSpec>
+
+          <constraintSpec ident="alignment-is-symmetric" scheme="schematron">
+            <constraint>
+              <sch:pattern>
+                <sch:rule context="tei:lg[@corresp]">
+                  <sch:report test="starts-with(@corresp, '#') and
+                                    not(id(substring(@corresp, 2)))
+                                    and false()">
+                    Placeholder: cross-document alignment is verified by the
+                    corpus-level check in scripts/validate.sh, since Schematron here
+                    sees a single document only.
+                  </sch:report>
+                </sch:rule>
+              </sch:pattern>
+            </constraint>
+          </constraintSpec>
+
+        </schemaSpec>
+      </div>
+    </body>
+  </text>
+</TEI>

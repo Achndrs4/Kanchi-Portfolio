@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+  <description>A demonstration digital edition of Kanchipuram temple legends,
+  showing TEI modelling, RESTXQ, XSLT and Linked Open Data in eXist-db.</description>
+  <author>Ani Chandrashekhar</author>
+  <website>https://example.org/kanchi</website>
+  <status>alpha</status>
+  <license>CC BY 4.0 / MIT for code</license>
+  <copyright>false</copyright>
+  <type>application</type>
+  <target>kanchi</target>
+  <prepare>pre-install.xq</prepare>
+  <permissions user="admin" password="" group="dba" mode="rw-r--r--"/>
+</meta>

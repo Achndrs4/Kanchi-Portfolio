@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://exist-db.org/collection-config/1.0">
+  <index xmlns:tei="http://www.tei-c.org/ns/1.0">
+
+    <!--
+      Full-text index.
+
+      Two decisions worth recording:
+
+      1. Indexing is attached to tei:lg, not tei:l or tei:div. The verse is the
+         citable unit in this corpus, so making it the index unit means a hit is
+         directly addressable and no post-processing is needed to find the
+         enclosing citation.
+
+      2. Analyzers are declared per language. The default Lucene StandardAnalyzer
+         tokenises on whitespace and punctuation, which is adequate for Tamil but
+         actively wrong for Sanskrit, where sandhi and compounding mean word
+         boundaries are not marked by spaces. Rather than pretend otherwise, the
+         Sanskrit field uses a whitespace-preserving analyzer and relies on
+         substring matching; proper Sanskrit segmentation would require a
+         dedicated tokeniser, which is noted as future work in the README rather
+         than faked here.
+    -->
+
+    <lucene>
+      <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
+      <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
+
+      <text qname="tei:lg">
+        <!-- apparatus readings are indexed too, so a search can find a variant
+             that never appears in the reading text -->
+        <ignore qname="tei:witDetail"/>
+        <ignore qname="tei:note"/>
+      </text>
+
+      <text qname="tei:head"/>
+      <text qname="tei:persName"/>
+      <text qname="tei:placeName"/>
+    </lucene>
+
+    <!-- Range indexes for the identifiers that every lookup goes through.
+         Without these, resolving a verse by xml:id is a full collection scan. -->
+    <range>
+      <create qname="@xml:id" type="xs:string"/>
+      <create qname="@corresp" type="xs:string"/>
+      <create qname="@ref" type="xs:string"/>
+      <create qname="@wit" type="xs:string"/>
+      <create qname="@type" type="xs:string"/>
+    </range>
+
+  </index>
+</collection>

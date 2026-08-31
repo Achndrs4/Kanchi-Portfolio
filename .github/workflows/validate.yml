@@ -1,0 +1,152 @@
+name: validate
+
+# Validation runs on every push and pull request. The corpus is the deliverable,
+# so an encoding error reaching the main branch is a data-integrity incident, not
+# a style issue. Everything here is also runnable locally via scripts/validate.sh,
+# because CI that cannot be reproduced on a laptop just relocates the debugging.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  corpus:
+    name: TEI corpus validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Install XML tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libxml2-utils unzip
+          mkdir -p .lib
+          curl -sL -o .lib/saxon.jar \
+            https://repo1.maven.org/maven2/net/sf/saxon/Saxon-HE/12.5/Saxon-HE-12.5.jar
+          curl -sL -o .lib/xmlresolver.jar \
+            https://repo1.maven.org/maven2/org/xmlresolver/xmlresolver/5.2.2/xmlresolver-5.2.2.jar
+          curl -sL -o .lib/xmlresolver-data.jar \
+            https://repo1.maven.org/maven2/org/xmlresolver/xmlresolver/5.2.2/xmlresolver-5.2.2-data.jar
+          curl -sL -o /tmp/jing.zip \
+            https://github.com/relaxng/jing-trang/releases/download/V20241231/jing-20241231.zip
+          unzip -q /tmp/jing.zip -d /tmp/jing
+          cp /tmp/jing/jing-20241231/bin/jing.jar .lib/
+          curl -sL -o /tmp/tei-xsl.zip \
+            https://github.com/TEIC/Stylesheets/releases/download/v7.61.0/tei-xsl-7.61.0.zip
+          unzip -q /tmp/tei-xsl.zip -d .lib/teixsl
+
+      - name: Regenerate schema from ODD
+        run: bash scripts/build-schema.sh
+
+      - name: Fail if the committed schema is stale
+        # The generated schema is committed for contributors without Saxon. If
+        # regenerating it produces a diff, the ODD and the schema disagree and
+        # the committed artefact is misleading.
+        run: |
+          if ! git diff --quiet -- schema/kanchi.rng schema/kanchi.sch; then
+            echo "::error::schema/ is out of date; run scripts/build-schema.sh and commit"
+            git --no-pager diff --stat -- schema/
+            exit 1
+          fi
+
+      - name: Compile Schematron
+        run: |
+          curl -sL -o /tmp/iso_svrl.xsl \
+            https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_svrl_for_xslt2.xsl
+          curl -sL -o /tmp/iso_skeleton.xsl \
+            https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_schematron_skeleton_for_saxon.xsl
+          curl -sL -o /tmp/iso_dsdl.xsl \
+            https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_dsdl_include.xsl
+          curl -sL -o /tmp/iso_abstract.xsl \
+            https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_abstract_expand.xsl
+          cp /tmp/iso_*.xsl .lib/
+          java -cp ".lib/saxon.jar:.lib/xmlresolver.jar:.lib/xmlresolver-data.jar" \
+            net.sf.saxon.Transform -s:schema/kanchi.sch \
+            -xsl:.lib/iso_svrl_for_xslt2.xsl -o:.lib/kanchi-sch.xsl
+
+      - name: Validate corpus
+        run: bash scripts/validate.sh
+
+      - name: Negative tests
+        # A validator that never rejects anything is indistinguishable from one
+        # that does nothing. These fixtures must fail.
+        run: |
+          for fixture in test/invalid-*.xml; do
+            cp "$fixture" data/texts/_ci-negative.xml
+            if bash scripts/validate.sh > /dev/null 2>&1; then
+              echo "::error::$fixture was accepted but should have been rejected"
+              rm -f data/texts/_ci-negative.xml
+              exit 1
+            fi
+            rm -f data/texts/_ci-negative.xml
+            echo "correctly rejected: $fixture"
+          done
+
+  transforms:
+    name: XSLT and RDF
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install tooling
+        run: |
+          mkdir -p .lib
+          curl -sL -o .lib/saxon.jar \
+            https://repo1.maven.org/maven2/net/sf/saxon/Saxon-HE/12.5/Saxon-HE-12.5.jar
+          curl -sL -o .lib/xmlresolver.jar \
+            https://repo1.maven.org/maven2/org/xmlresolver/xmlresolver/5.2.2/xmlresolver-5.2.2.jar
+          curl -sL -o .lib/xmlresolver-data.jar \
+            https://repo1.maven.org/maven2/org/xmlresolver/xmlresolver/5.2.2/xmlresolver-5.2.2-data.jar
+          pip install --quiet rdflib
+
+      - name: TEI to HTML
+        run: |
+          CP=".lib/saxon.jar:.lib/xmlresolver.jar:.lib/xmlresolver-data.jar"
+          for f in data/texts/*.xml; do
+            java -cp "$CP" net.sf.saxon.Transform -s:"$f" \
+              -xsl:xslt/tei-to-html.xsl -o:"/tmp/$(basename "$f" .xml).html"
+          done
+          ls -la /tmp/*.html
+
+      - name: TEI to RDF, then parse it
+        # Generating Turtle that does not parse is a silent failure, so the
+        # output is fed straight back into a parser.
+        run: |
+          CP=".lib/saxon.jar:.lib/xmlresolver.jar:.lib/xmlresolver-data.jar"
+          java -cp "$CP" net.sf.saxon.Transform -s:data/texts/km-saiva.xml \
+            -xsl:xslt/tei-to-rdf.xsl -o:/tmp/kanchi.ttl \
+            authority-doc="$PWD/data/authority/authority.xml"
+          python -c "
+          from rdflib import Graph
+          g = Graph(); g.parse('/tmp/kanchi.ttl', format='turtle')
+          assert len(g) > 0, 'empty graph'
+          print(f'{len(g)} triples parsed')
+          "
+
+  service:
+    name: Flask service
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install and test
+        run: |
+          pip install --quiet -r services/flask/requirements.txt pytest
+          python -m pytest test/test_translit.py -q

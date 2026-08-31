@@ -1,0 +1,50 @@
+/*
+  Oxygen Author-mode stylesheet.
+
+  Design intent: an editor should see something that resembles a critical
+  edition, not a tree of elements. Variants are shown inline in a smaller,
+  distinct style so that a missing witness siglum is visible at a glance rather
+  than discovered at validation time.
+*/
+
+@namespace tei "http://www.tei-c.org/ns/1.0";
+
+tei|TEI      { display: block; font-family: "Gentium Plus", "Noto Serif", serif; }
+tei|teiHeader{ display: block; background: #f5f3ef; padding: 0.6em; font-size: 0.85em;
+               border-bottom: 2px solid #8a7f6d; }
+
+tei|body     { display: block; padding: 1em 2em; }
+
+tei|div[type="chapter"] { display: block; margin-bottom: 1.5em; }
+tei|head     { display: block; font-size: 1.3em; font-weight: bold; margin: 0.6em 0; }
+
+/* Verse: numbered in the margin, like a printed edition. */
+tei|lg       { display: block; margin: 0.9em 0; padding-left: 3em; position: relative; }
+tei|lg:before{ content: attr(n); position: absolute; left: 0; color: #8a7f6d;
+               font-size: 0.85em; }
+tei|l        { display: block; line-height: 1.9; }
+
+/* Apparatus: lemma inline, variants visibly secondary. */
+tei|app      { display: inline; }
+tei|lem      { display: inline; }
+tei|rdg      { display: inline; font-size: 0.8em; color: #7a5c3e; }
+tei|rdg:before { content: " ⟨"; color: #b09a7a; }
+tei|rdg:after  { content: " " attr(wit) "⟩"; color: #b09a7a; font-style: italic; }
+
+/* A reading with no witness is an encoding error; make it impossible to miss. */
+tei|rdg:not([wit]) { background: #ffd9d9; outline: 1px solid #c0392b; }
+tei|lem:not([wit]) { background: #ffd9d9; outline: 1px solid #c0392b; }
+
+/* Named entities carry a subtle underline plus their authority target. */
+tei|persName, tei|placeName { border-bottom: 1px dotted #4a7a8c; }
+tei|persName:not([ref]), tei|placeName:not([ref]) {
+    border-bottom: 2px solid #e67e22;   /* unaligned entity: needs an authority record */
+}
+
+tei|witDetail { display: block; font-size: 0.8em; font-style: italic; color: #666;
+                margin-left: 3em; }
+
+tei|note[type="provenance-warning"] {
+    display: block; background: #fff4d6; border-left: 4px solid #d4a017;
+    padding: 0.5em; margin: 0.5em 0; font-size: 0.85em;
+}

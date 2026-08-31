@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Oxygen XML Editor framework for the Kanchi corpus.
+
+  The point of a framework here is not cosmetic. Editors working on these texts
+  are Sanskritists and Tamilists, not XML programmers: if they have to read raw
+  angle brackets to enter a variant reading, the apparatus will be encoded
+  inconsistently. Author mode plus a constrained schema means the encoding
+  guidelines are enforced by the tool rather than by a PDF nobody reads.
+-->
+<serialized xml:space="preserve">
+  <serializableOrderedMap>
+    <entry>
+      <String>framework.name</String>
+      <String>Kanchi TEI</String>
+    </entry>
+    <entry>
+      <String>framework.description</String>
+      <String>TEI P5 customization for South Indian temple legends: critical
+      apparatus, multi-script text, witness sigla.</String>
+    </entry>
+    <entry>
+      <String>schema.url</String>
+      <String>${framework}/../../schema/kanchi.rng</String>
+    </entry>
+    <entry>
+      <String>schema.type</String>
+      <String>relaxng</String>
+    </entry>
+    <entry>
+      <String>schematron.url</String>
+      <String>${framework}/../../schema/kanchi.sch</String>
+    </entry>
+    <entry>
+      <String>css.author</String>
+      <String>${framework}/css/kanchi-author.css</String>
+    </entry>
+    <entry>
+      <String>association.rule</String>
+      <String>rootLocalName:TEI namespace:http://www.tei-c.org/ns/1.0</String>
+    </entry>
+  </serializableOrderedMap>
+</serialized>

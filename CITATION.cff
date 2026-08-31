@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "Kanchi TEI: a demonstration edition pipeline for South Indian temple legends"
+message: >-
+  If you refer to this software, please cite it using the metadata below.
+  Note that the sample text carried by this repository is synthetic and must
+  not be cited as an edition of any historical work.
+type: software
+authors:
+  - given-names: Ani
+    family-names: Chandrashekhar
+repository-code: "https://github.com/USERNAME/kanchi-tei"
+abstract: >-
+  A working demonstration of a digital scholarly edition pipeline: TEI P5
+  sources with a parallel-segmentation critical apparatus, a schema generated
+  from a TEI ODD, an eXist-db application publishing the corpus over RESTXQ,
+  XSLT transformations to HTML and CIDOC-CRM RDF, and a Python service for
+  Devanagari and Tamil script conversion.
+keywords:
+  - digital humanities
+  - TEI
+  - XML
+  - eXist-db
+  - XQuery
+  - XSLT
+  - Linked Open Data
+  - CIDOC-CRM
+  - Sanskrit
+  - Tamil
+  - critical edition
+license: MIT
+version: 0.1.0
+date-released: "2026-08-31"

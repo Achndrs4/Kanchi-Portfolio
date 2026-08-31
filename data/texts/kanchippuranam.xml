@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schema/kanchi.rng" type="application/xml"
+            schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../schema/kanchi.sch" type="application/xml"
+            schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="KP" xml:lang="tam">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main" xml:lang="tam">காஞ்சிப்புராணம்</title>
+        <title type="main" xml:lang="tam-Latn">Kāñcippurāṇam</title>
+        <title type="sub" xml:lang="eng">A structural demonstration edition</title>
+        <editor role="encoder">
+          <persName>
+            <forename>Ani</forename>
+            <surname>Chandrashekhar</surname>
+          </persName>
+        </editor>
+      </titleStmt>
+      <editionStmt>
+        <edition n="0.1">Demonstration edition, structure only.</edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>Unpublished demonstration repository</publisher>
+        <availability status="free">
+          <licence target="https://creativecommons.org/licenses/by/4.0/">
+            <p>Encoding and schema released under CC BY 4.0.</p>
+          </licence>
+        </availability>
+        <date when="2026-08-31"/>
+      </publicationStmt>
+      <notesStmt>
+        <note type="provenance-warning" xml:lang="eng">
+          <p>IMPORTANT. The verse text carried by this file is <emph>synthetic sample
+          material</emph>. It is <emph>not</emph> a transcription of the Kāñcippurāṇam
+          and must not be cited as one. See the Sanskrit companion file and the
+          encoding guidelines for the rationale and for substitution instructions.</p>
+        </note>
+      </notesStmt>
+      <sourceDesc>
+        <listWit>
+          <witness xml:id="T1">
+            <abbr>T1</abbr>
+            <desc xml:lang="eng">Tamil printed edition, placeholder.</desc>
+          </witness>
+          <witness xml:id="T2">
+            <abbr>T2</abbr>
+            <desc xml:lang="eng">Tamil manuscript witness, placeholder.</desc>
+          </witness>
+        </listWit>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <listPrefixDef>
+        <prefixDef ident="authority"
+                   matchPattern="([a-z0-9\-]+)"
+                   replacementPattern="../authority/authority.xml#$1">
+          <p>References of the form <mentioned>authority:place-kanchipuram</mentioned> resolve
+          to entries in the shared authority file.</p>
+        </prefixDef>
+      </listPrefixDef>
+      <editorialDecl>
+        <normalization>
+          <p>Tamil text is stored in Unicode NFC. Note that Tamil orthography requires
+          NFC normalisation to keep vowel signs and consonant clusters comparable for
+          indexing and search.</p>
+        </normalization>
+      </editorialDecl>
+      <variantEncoding method="parallel-segmentation" location="internal"/>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="tam-Taml">Tamil</language>
+        <language ident="tam-Latn">Tamil in ISO 15919 transliteration</language>
+      </langUsage>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-08-31" who="#AC">Initial structural encoding.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="chapter" n="1" xml:id="KP-ch1" corresp="#KM-S-ch1">
+        <head xml:lang="tam">காஞ்சி மான்மியம்</head>
+        <lg type="verse" n="1" xml:id="KP-1" corresp="#KM-S-1">
+          <l n="1a">
+            <placeName ref="authority:place-kanchipuram">காஞ்சி</placeName>
+            நகரில்
+            <app>
+              <lem wit="#T1">சிவன்</lem>
+              <rdg wit="#T2">சிவனார்</rdg>
+            </app>
+          </l>
+          <l n="1b">என்றும் உறைகின்றார்</l>
+        </lg>
+        <lg type="verse" n="2" xml:id="KP-2" corresp="#KM-S-2">
+          <l n="2a">
+            <persName ref="authority:deity-kamakshi" type="deity">காமாட்சி</persName>
+            அம்மை
+          </l>
+          <l n="2b">
+            <app>
+              <lem wit="#T1 #T2">தவத்தால்</lem>
+              <rdg wit="#T2" cause="variant-spelling">தவத்தினால்</rdg>
+            </app>
+            சித்தி பெறுவார்
+          </l>
+        </lg>
+      </div>
+    </body>
+  </text>
+</TEI>

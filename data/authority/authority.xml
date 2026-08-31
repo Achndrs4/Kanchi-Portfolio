@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="authority" xml:lang="eng">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Kanchi authority file: places, deities and monuments</title>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Unpublished demonstration repository</publisher>
+        <availability status="free">
+          <licence target="https://creativecommons.org/licenses/by/4.0/">
+            <p>CC BY 4.0.</p>
+          </licence>
+        </availability>
+        <date when="2026-08-31"/>
+      </publicationStmt>
+      <sourceDesc>
+        <p>External identifiers were resolved against Wikidata and verified on
+        2026-08-31. Coordinates are taken from Wikidata P625.</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <editorialDecl>
+        <p>Every entity carries a project-local URI. External alignment is recorded in
+        <gi>idno</gi> elements typed by authority. Where no external record exists the
+        entity is still given a project URI and the gap is stated explicitly rather
+        than silently omitted, so that alignment coverage can be measured.</p>
+      </editorialDecl>
+    </encodingDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="places">
+        <listPlace>
+          <place xml:id="place-kanchipuram" type="settlement">
+            <placeName xml:lang="eng">Kanchipuram</placeName>
+            <placeName xml:lang="tam">காஞ்சிபுரம்</placeName>
+            <placeName xml:lang="san-Latn">Kāñcī</placeName>
+            <location>
+              <geo decls="#WGS84">12.830833 79.707778</geo>
+            </location>
+            <idno type="wikidata">http://www.wikidata.org/entity/Q212332</idno>
+            <idno type="gnd">https://d-nb.info/gnd/4259107-7</idno>
+            <idno type="geonames">https://sws.geonames.org/1268159/</idno>
+            <note xml:lang="eng">The temple city whose legends this corpus
+            transmits.</note>
+          </place>
+        </listPlace>
+      </div>
+      <div type="monuments">
+        <listPlace>
+          <place xml:id="monument-kamakshi-temple" type="temple">
+            <placeName xml:lang="eng">Kamakshi Amman Temple</placeName>
+            <placeName xml:lang="tam">காமாட்சி அம்மன் கோயில்</placeName>
+            <idno type="wikidata">http://www.wikidata.org/entity/Q2738610</idno>
+          </place>
+        </listPlace>
+      </div>
+      <div type="deities">
+        <listPerson>
+          <person xml:id="deity-shiva" role="deity">
+            <persName xml:lang="eng">Shiva</persName>
+            <persName xml:lang="san">शिव</persName>
+            <persName xml:lang="tam">சிவன்</persName>
+            <idno type="wikidata">http://www.wikidata.org/entity/Q11378</idno>
+            <idno type="gnd">https://d-nb.info/gnd/118755218</idno>
+          </person>
+          <person xml:id="deity-kamakshi" role="deity">
+            <persName xml:lang="eng">Kamakshi</persName>
+            <persName xml:lang="san">कामाक्षी</persName>
+            <persName xml:lang="tam">காமாட்சி</persName>
+            <note type="alignment-gap" xml:lang="eng">No authority record for the
+            goddess as such was found in Wikidata or the GND on 2026-08-31; the
+            available Wikidata item Q2738610 denotes the temple, not the deity. The
+            project-local URI is therefore authoritative here, and the temple is
+            recorded as a related, not an equivalent, resource. This distinction
+            matters: asserting <att>owl:sameAs</att> between a deity and a building
+            would corrupt downstream inference.</note>
+          </person>
+        </listPerson>
+      </div>
+      <div type="languages">
+        <list>
+          <item xml:id="lang-san">Sanskrit
+            <idno type="wikidata">http://www.wikidata.org/entity/Q11059</idno>
+          </item>
+          <item xml:id="lang-tam">Tamil
+            <idno type="wikidata">http://www.wikidata.org/entity/Q5885</idno>
+          </item>
+        </list>
+      </div>
+      <div type="section">
+        <listRelation type="cultic">
+          <relation name="located-in" active="#monument-kamakshi-temple"
+                    passive="#place-kanchipuram"/>
+          <!-- Deliberately "worshipped-at" rather than owl:sameAs: the goddess and
+               the building are distinct resources. See docs/adr/0005. -->
+          <relation name="worshipped-at" active="#deity-kamakshi"
+                    passive="#monument-kamakshi-temple"/>
+          <relation name="worshipped-at" active="#deity-shiva"
+                    passive="#place-kanchipuram"/>
+        </listRelation>
+      </div>
+    </body>
+  </text>
+</TEI>

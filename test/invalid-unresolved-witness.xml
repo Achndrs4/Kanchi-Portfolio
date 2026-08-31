@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schema/kanchi.rng" type="application/xml"
+            schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../schema/kanchi.sch" type="application/xml"
+            schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="KM-S" xml:lang="san">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main" xml:lang="san-Latn">Śaiva Kāñcīmāhātmya</title>
+        <title type="sub" xml:lang="eng">A structural demonstration edition</title>
+        <editor role="encoder">
+          <persName>
+            <forename>Ani</forename>
+            <surname>Chandrashekhar</surname>
+          </persName>
+        </editor>
+        <respStmt>
+          <resp>TEI encoding, schema design and pipeline</resp>
+          <name>Ani Chandrashekhar</name>
+        </respStmt>
+      </titleStmt>
+      <editionStmt>
+        <edition n="0.1">Demonstration edition, structure only.</edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>Unpublished demonstration repository</publisher>
+        <availability status="free">
+          <licence target="https://creativecommons.org/licenses/by/4.0/">
+            <p>Encoding and schema released under CC BY 4.0.</p>
+          </licence>
+        </availability>
+        <date when="2026-08-31"/>
+      </publicationStmt>
+      <notesStmt>
+        <note type="provenance-warning" xml:lang="eng">
+          <p>IMPORTANT. The verse text carried by this file is <emph>synthetic sample
+          material</emph>, written solely to exercise the encoding model. It is
+          <emph>not</emph> a transcription of the Śaiva Kāñcīmāhātmya and must not be
+          cited as one. Structural features (apparatus, witness sigla, alignment,
+          entity references) are modelled exactly as they would be in a production
+          edition, so that authentic transcriptions can be substituted without any
+          change to the schema, queries or transformations. See
+          <ref target="../../docs/encoding-guidelines.md">encoding guidelines</ref>,
+          section "Replacing the sample corpus".</p>
+        </note>
+      </notesStmt>
+      <sourceDesc>
+        <listWit>
+          <witness xml:id="E1">
+            <abbr>E1</abbr>
+            <desc xml:lang="eng">Printed edition, placeholder for the 1889 Śaiva
+            Kāñcīmāhātmya print digitised from a South Indian library collection.</desc>
+          </witness>
+          <witness xml:id="M1">
+            <abbr>M1</abbr>
+            <msDesc>
+              <msIdentifier>
+                <settlement>Pondicherry</settlement>
+                <institution>Placeholder repository</institution>
+                <idno>MS-PLACEHOLDER-001</idno>
+              </msIdentifier>
+              <physDesc>
+                <objectDesc form="palm-leaf">
+                  <supportDesc material="palm-leaf">
+                    <support><p>Palm-leaf bundle, placeholder description.</p></support>
+                    <extent><measure unit="leaf" quantity="42">42 leaves</measure></extent>
+                  </supportDesc>
+                </objectDesc>
+                <scriptDesc>
+                  <scriptNote scope="major">Grantha script, used for Sanskrit in the
+                  Tamil country.</scriptNote>
+                </scriptDesc>
+              </physDesc>
+            </msDesc>
+          </witness>
+          <witness xml:id="M2">
+            <abbr>M2</abbr>
+            <desc xml:lang="eng">Second manuscript witness, placeholder.</desc>
+          </witness>
+        </listWit>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Demonstration of a TEI-based editorial pipeline for South Indian temple
+        legends, built to illustrate eXist-db, RESTXQ, XSLT and Linked Open Data
+        integration.</p>
+      </projectDesc>
+      <listPrefixDef>
+        <prefixDef ident="authority"
+                   matchPattern="([a-z0-9\-]+)"
+                   replacementPattern="../authority/authority.xml#$1">
+          <p>References of the form <mentioned>authority:place-kanchipuram</mentioned> resolve
+          to entries in the shared authority file.</p>
+        </prefixDef>
+      </listPrefixDef>
+      <editorialDecl>
+        <normalization>
+          <p>All Indic text is stored in Unicode NFC. Devanāgarī is the storage script
+          for Sanskrit; IAST transliteration is generated, not hand-keyed.</p>
+        </normalization>
+      </editorialDecl>
+      <variantEncoding method="parallel-segmentation" location="internal"/>
+      <classDecl>
+        <taxonomy xml:id="kanchi-motifs">
+          <category xml:id="motif.origin">
+            <catDesc xml:lang="eng">Origin of the shrine</catDesc>
+          </category>
+          <category xml:id="motif.vow">
+            <catDesc xml:lang="eng">Vow or penance</catDesc>
+          </category>
+        </taxonomy>
+      </classDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="san-Deva">Sanskrit in Devanāgarī</language>
+        <language ident="san-Latn">Sanskrit in IAST transliteration</language>
+      </langUsage>
+      <textClass>
+        <catRef scheme="#kanchi-motifs" target="#motif.origin"/>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-08-31" who="#AC">Initial structural encoding.</change>
+    </revisionDesc>
+  </teiHeader>
+  <facsimile xml:id="facs-KM-S">
+    <surface xml:id="KM-S-p1" ulx="0" uly="0" lrx="2000" lry="3000">
+      <graphic url="https://iiif.example.org/kanchi/km-saiva-p1/full/max/0/default.jpg"
+               width="2000px" height="3000px"/>
+      <zone xml:id="KM-S-p1-z1" ulx="180" uly="420" lrx="1820" lry="760"
+            rendition="#verse-block"/>
+    </surface>
+  </facsimile>
+  <text>
+    <body>
+      <div type="chapter" n="1" xml:id="KM-S-ch1" corresp="#KP-ch1">
+        <head xml:lang="san">काञ्चीमाहात्म्यम्</head>
+        <lg type="verse" n="1" xml:id="KM-S-1" corresp="#KP-1" facs="#KM-S-p1-z1">
+          <l n="1a">
+            <app>
+              <lem wit="#E1 #M1">काञ्च्यां</lem>
+              <rdg wit="#M99">काञ्चीषु</rdg>
+            </app>
+            <placeName ref="authority:place-kanchipuram">काञ्ची</placeName>
+            नगरे शुभे
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-shiva" type="deity">शिवः</persName>
+            <app>
+              <lem wit="#E1">तिष्ठति</lem>
+              <rdg wit="#M1 #M2" type="orthographic">तिष्ठते</rdg>
+            </app>
+            सर्वदा
+          </l>
+        </lg>
+        <lg type="verse" n="2" xml:id="KM-S-2" corresp="#KP-2">
+          <l n="2a">
+            <persName ref="authority:deity-kamakshi" type="deity">कामाक्षी</persName>
+            देवी विख्याता
+          </l>
+          <l n="2b">
+            <app>
+              <lem wit="#E1 #M2">तपसा</lem>
+              <rdg wit="#M1">तपसि</rdg>
+              <witDetail wit="#M1" type="damage">Reading uncertain; leaf damaged at
+              this point.</witDetail>
+            </app>
+            सिद्धिम् आप्नुयात्
+          </l>
+        </lg>
+      </div>
+    </body>
+  </text>
+</TEI>

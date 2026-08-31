@@ -1,0 +1,49 @@
+/* Reading view for the Kanchi edition.
+   Indic scripts need generous line-height: Devanagari and Tamil both have
+   vowel signs above and below the baseline, and default leading clips them. */
+:root {
+  --ink: #1a1a1a; --muted: #6b6b6b; --rule: #d8d2c6;
+  --accent: #7a5c3e; --warn-bg: #fff4d6; --warn-border: #d4a017;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Gentium Plus","Noto Serif",Georgia,serif;
+       color: var(--ink); background: #fdfcfa; line-height: 1.75; }
+.edition { max-width: 46rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+.edition-header h1 { font-size: 1.7rem; margin: 0 0 .2rem; font-weight: 600; }
+.subtitle { color: var(--muted); margin: 0 0 1rem; font-style: italic; }
+.warning { background: var(--warn-bg); border-left: 4px solid var(--warn-border);
+           padding: .75rem 1rem; font-size: .9rem; margin: 1rem 0 2rem; }
+.chapter-head { font-size: 1.25rem; border-bottom: 1px solid var(--rule);
+                padding-bottom: .3rem; margin-top: 2rem; }
+.verse { display: grid; grid-template-columns: 2.5rem 1fr; gap: .5rem;
+         margin: 1.5rem 0; }
+.verse-number { color: var(--muted); font-size: .85rem; text-align: right;
+                padding-top: .35rem; }
+.verse-text { line-height: 2.1; font-size: 1.15rem; }
+.line { margin-bottom: .15rem; }
+.lemma { position: relative; }
+.lemma[data-variants]:hover { background: #f2ece1; cursor: help; }
+.app-marker { font-size: .65em; vertical-align: super; }
+.app-marker a { color: var(--accent); text-decoration: none; }
+.apparatus { grid-column: 2; border-top: 1px solid var(--rule);
+             margin-top: .5rem; padding-top: .4rem; font-size: .82rem;
+             color: #4a4a4a; line-height: 1.6; }
+.app-entries { list-style: decimal; margin: 0; padding-left: 1.2rem; }
+.app-entry { margin-bottom: .15rem; }
+.app-lemma { font-weight: 600; }
+.app-wit { font-style: italic; color: var(--accent); margin: 0 .25rem; }
+.app-sep { margin: 0 .2rem; }
+.app-type { color: var(--muted); font-size: .9em; }
+.app-note { display: block; color: var(--muted); font-style: italic; }
+.alignment { grid-column: 2; font-size: .8rem; margin-top: .3rem; }
+.alignment .label { color: var(--muted); margin-right: .4rem; }
+.align-link { color: var(--accent); }
+.entity { border-bottom: 1px dotted #4a7a8c; }
+.witnesses { margin-top: 3rem; border-top: 2px solid var(--rule); padding-top: 1rem; }
+.witnesses dt { font-weight: 600; font-style: italic; margin-top: .5rem; }
+.witnesses dd { margin: 0 0 .3rem 1.5rem; font-size: .9rem; color: #444; }
+.script-note { display: block; color: var(--muted); font-size: .85em; }
+@media (max-width: 34rem) {
+  .verse { grid-template-columns: 1.6rem 1fr; }
+  .verse-text { font-size: 1.05rem; }
+}

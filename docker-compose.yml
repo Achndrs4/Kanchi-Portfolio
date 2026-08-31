@@ -1,0 +1,29 @@
+services:
+  # Tooling image for scripts/*.sh and pytest. No ports, no long-running
+  # process — invoked with `docker compose run` by the Makefile targets.
+  build:
+    build:
+      context: .
+      dockerfile: docker/build.Dockerfile
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+
+  # eXist-db 6.4.1. build/*.xar is bind-mounted onto the autodeploy directory
+  # that eXist-db scans on startup, so `make xar` followed by starting (or
+  # restarting) this container installs the application without going
+  # through the Dashboard by hand.
+  exist:
+    image: existdb/existdb:6.4.1
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./build:/exist/autodeploy:ro
+
+  flask:
+    build:
+      context: services/flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./services/flask:/app

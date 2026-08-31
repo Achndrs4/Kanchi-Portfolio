@@ -6,30 +6,6 @@ a TEI ODD, an eXist-db application publishing it over RESTXQ, XSLT
 transformations to HTML and RDF, and a Python service for Indic script
 conversion.
 
-Built as a portfolio piece for research-software work in digital humanities. It
-is small on purpose: the aim is to show that every layer of a real editorial
-pipeline is present and *tested*, not to simulate a large corpus.
-
----
-
-## The sample text is synthetic. Please read this first.
-
-The verses in `data/texts/` are **not** transcriptions of the Kāñcīmāhātmya or
-the Kāñcippurāṇam. They are invented strings that exercise the encoding model,
-and they must not be cited as an edition of anything.
-
-This was a deliberate choice. Producing plausible-looking Sanskrit and Tamil and
-presenting it as a critical edition of a living sacred text would be worse than
-useless: it would be a fabrication aimed at readers least able to detect it and
-most harmed by it. The structure is production-shaped, so authentic
-transcriptions can be substituted without touching the schema, the queries or the
-transformations. See `docs/encoding-guidelines.md` for how.
-
-The warning is also rendered into the HTML output, because a caveat that only
-lives in a README is a caveat nobody reads.
-
----
-
 ## What is here
 
 | Layer | Technology | Location |
@@ -43,6 +19,7 @@ lives in a README is a caveat nobody reads.
 | Images | IIIF Presentation 3.0 | `data/iiif/` |
 | Editor support | Oxygen framework, Author-mode CSS | `oxygen/` |
 | Automation | Bash, GitHub Actions | `scripts/`, `.github/` |
+| Containerised pipeline | Docker Compose, Makefile | `docker/`, `docker-compose.yml`, `Makefile` |
 
 Every component here has been run. The eXist application was deployed to a live
 6.4.1 instance and the endpoints exercised over HTTP; the schema was generated
@@ -74,6 +51,32 @@ python -m flask --app services/flask/app run --port 5000
 Deploy `build/kanchi-0.1.0.xar` through the eXist Dashboard's package manager, or
 with `xmldbc`. The application then answers at
 `http://localhost:8080/exist/restxq/kanchi/api`.
+
+### Or, with Docker
+
+The same pipeline, without installing Java/Saxon/xmllint/Python locally. The
+`Makefile` wraps `docker compose` and maps 1:1 onto `scripts/*.sh`:
+
+```bash
+make bootstrap   # fetch build tooling into .lib/ (containerised)
+make schema      # regenerate schema/kanchi.rng + kanchi.sch from the ODD
+make validate    # validate the corpus (runs bootstrap + schema first)
+make xar         # package build/kanchi-0.1.0.xar
+make test        # run the transliteration test suite
+
+make up          # build the .xar, then start eXist-db (localhost:8080) and Flask (localhost:5000)
+make down        # stop everything
+```
+
+`docker-compose.yml` bind-mounts `build/` onto eXist-db's autodeploy
+directory, so once `build/kanchi-0.1.0.xar` exists, starting (or
+`make restart-exist`-ing) the `exist` container installs it automatically —
+no manual step through the Dashboard. `make help` lists every target.
+
+Container-created files under `.lib/` and `build/` may end up owned by root
+on Linux hosts, since the tooling container runs as root by default; `make
+clean` removes both directories via the same container so this is not
+usually something you need to touch by hand.
 
 ---
 
@@ -147,6 +150,10 @@ between a goddess and a building. ADR 5 gives the argument.
 ```bash
 bash scripts/validate.sh              # corpus: 4 stages, exits non-zero on failure
 python -m pytest test/ -q             # transliteration: 27 tests
+
+# or, containerised:
+make validate
+make test
 ```
 
 `test/invalid-*.xml` are deliberately broken fixtures. CI copies each into the

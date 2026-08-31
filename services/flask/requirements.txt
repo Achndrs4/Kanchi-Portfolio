@@ -1,0 +1,3 @@
+Flask>=3.0
+# Optional: far better script coverage than the built-in tables.
+# aksharamukha>=2.1

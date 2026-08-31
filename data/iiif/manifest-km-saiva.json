@@ -1,0 +1,70 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://kanchi.example.org/iiif/km-saiva/manifest",
+  "type": "Manifest",
+  "label": { "en": ["Saiva Kancimahatmya, demonstration manifest"],
+             "ta": ["காஞ்சி மான்மியம்"] },
+  "summary": { "en": ["IIIF Presentation 3.0 manifest linking the TEI facsimile zones to page images. Image URLs are placeholders."] },
+  "requiredStatement": {
+    "label": { "en": ["Attribution"] },
+    "value": { "en": ["Demonstration repository. Not a published edition."] }
+  },
+  "rights": "https://creativecommons.org/licenses/by/4.0/",
+  "items": [
+    {
+      "id": "https://kanchi.example.org/iiif/km-saiva/canvas/p1",
+      "type": "Canvas",
+      "label": { "none": ["p. 1"] },
+      "height": 3000,
+      "width": 2000,
+      "items": [
+        {
+          "id": "https://kanchi.example.org/iiif/km-saiva/page/p1/1",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://kanchi.example.org/iiif/km-saiva/annotation/p1-image",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://iiif.example.org/kanchi/km-saiva-p1/full/max/0/default.jpg",
+                "type": "Image",
+                "format": "image/jpeg",
+                "height": 3000,
+                "width": 2000,
+                "service": [
+                  {
+                    "id": "https://iiif.example.org/kanchi/km-saiva-p1",
+                    "type": "ImageService3",
+                    "profile": "level2"
+                  }
+                ]
+              },
+              "target": "https://kanchi.example.org/iiif/km-saiva/canvas/p1"
+            }
+          ]
+        }
+      ],
+      "annotations": [
+        {
+          "id": "https://kanchi.example.org/iiif/km-saiva/page/p1/text",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "https://kanchi.example.org/iiif/km-saiva/annotation/p1-z1",
+              "type": "Annotation",
+              "motivation": "supplementing",
+              "body": {
+                "type": "TextualBody",
+                "format": "text/html",
+                "language": "san",
+                "value": "Verse 1, transcribed in TEI as KM-S-1"
+              },
+              "target": "https://kanchi.example.org/iiif/km-saiva/canvas/p1#xywh=180,420,1640,340"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

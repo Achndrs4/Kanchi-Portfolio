@@ -9,43 +9,86 @@
       <titleStmt>
         <title type="main" xml:lang="tam">காஞ்சிப்புராணம்</title>
         <title type="main" xml:lang="tam-Latn">Kāñcippurāṇam</title>
-        <title type="sub" xml:lang="eng">A structural demonstration edition</title>
+        <title type="sub" xml:lang="eng">Verses 1&#8211;50 (பாயிரம், complete; திருநாட்டுப்படலம், opening excerpt)</title>
+        <author>
+          <persName xml:lang="tam-Latn">Civañāna Munivar</persName>
+          <persName xml:lang="tam">சிவஞான முனிவர் (சிவஞான சுவாமிகள்)</persName>
+        </author>
         <editor role="encoder">
           <persName>
             <forename>Ani</forename>
             <surname>Chandrashekhar</surname>
           </persName>
         </editor>
+        <respStmt>
+          <resp>TEI encoding of this excerpt, schema design and pipeline</resp>
+          <name>Ani Chandrashekhar</name>
+        </respStmt>
       </titleStmt>
       <editionStmt>
-        <edition n="0.1">Demonstration edition, structure only.</edition>
+        <edition n="0.2">Digital excerpt: verses 1&#8211;50 of a c. 6,000-verse
+        eighteenth-century work, transcribed from a public-domain etext (see
+        <ref target="#PM1">sourceDesc</ref>). Not a complete edition.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Unpublished demonstration repository</publisher>
         <availability status="free">
           <licence target="https://creativecommons.org/licenses/by/4.0/">
-            <p>Encoding and schema released under CC BY 4.0.</p>
+            <p>This file's encoding and schema are released under CC BY 4.0. The
+            underlying verse text is transcribed from a Project Madurai etext,
+            which is freely redistributable provided its header page is kept
+            intact (see <ref target="https://www.projectmadurai.org/">projectmadurai.org</ref>);
+            Project Madurai's own source is an out-of-copyright printed edition
+            of an eighteenth-century work.</p>
           </licence>
         </availability>
-        <date when="2026-08-31"/>
+        <date when="2026-09-20"/>
       </publicationStmt>
       <notesStmt>
-        <note type="provenance-warning" xml:lang="eng">
-          <p>IMPORTANT. The verse text carried by this file is <emph>synthetic sample
-          material</emph>. It is <emph>not</emph> a transcription of the Kāñcippurāṇam
-          and must not be cited as one. See the Sanskrit companion file and the
-          encoding guidelines for the rationale and for substitution instructions.</p>
+        <note type="scope" xml:lang="eng">
+          <p>This file carries only the first 50 verses of the Kāñcippurāṇam
+          (the complete பாயிரம், verses 1&#8211;27, plus an opening excerpt of
+          திருநாட்டுப்படலம், verses 28&#8211;50 of that chapter's 28&#8211;172).
+          It is a working excerpt for demonstrating the encoding pipeline at a
+          realistic scale, not a complete critical edition of the text. Verse
+          numbering and chapter (படலம்) divisions follow the source etext
+          exactly. Prosody/meter labels given in the source between verse
+          numbers (e.g. கலிநிலைத் துறை, வேறு) are encoded as
+          <mentioned>note[@type="meter"]</mentioned> rather than as verse
+          content. Only one witness is available for this excerpt, so no
+          apparatus variants (<mentioned>app</mentioned>/<mentioned>lem</mentioned>/<mentioned>rdg</mentioned>)
+          are encoded here; see
+          <ref target="../../docs/encoding-guidelines.md">encoding guidelines</ref>
+          for how to add a second witness later. Named-entity tagging
+          (<mentioned>placeName</mentioned>/<mentioned>persName</mentioned>) has
+          not been applied to this excerpt, which is normal and expected per the
+          guidelines. The <mentioned>@corresp</mentioned> alignment to the
+          Sanskrit companion file used by the earlier synthetic sample has been
+          removed: this real Tamil excerpt is not a verified translation or
+          parallel recension of that (still-synthetic) Sanskrit sample, and a
+          verse-level correspondence has not been established.</p>
         </note>
       </notesStmt>
       <sourceDesc>
+        <bibl xml:id="PM1" type="digital">
+          <title>காஞ்சிப் புராணம் (kanchip purANam of civanjAna munivar), part 1:
+          பாயிரம் &amp; படலம் 1&#8211;6, verses 1&#8211;444</title>
+          <author>சிவஞான சுவாமிகள் (Civañāna Munivar)</author>
+          <editor role="digitization">C.N. Muthukkumaraswamy (Coimbatore)</editor>
+          <editor role="html-pdf">K. Kalyanasundaram (Lausanne)</editor>
+          <publisher>Project Madurai</publisher>
+          <date>1998&#8211;2007</date>
+          <idno type="URL">https://www.projectmadurai.org/pm_etexts/utf8/pmuni0292.html</idno>
+          <note>Published under the auspices of திருவாவடுதுறை யாதீனம்
+          (Tiruvavaduthurai Adheenam). Project Madurai is a volunteer initiative
+          that digitises Tamil literary works and distributes them freely.</note>
+        </bibl>
         <listWit>
-          <witness xml:id="T1">
-            <abbr>T1</abbr>
-            <desc xml:lang="eng">Tamil printed edition, placeholder.</desc>
-          </witness>
-          <witness xml:id="T2">
-            <abbr>T2</abbr>
-            <desc xml:lang="eng">Tamil manuscript witness, placeholder.</desc>
+          <witness xml:id="PM">
+            <abbr>PM</abbr>
+            <desc xml:lang="eng">Reading text as transcribed in the Project Madurai
+            etext cited above (<ref target="#PM1">bibl</ref>), itself prepared
+            from a printed edition of Civañāna Munivar's Kāñcippurāṇam.</desc>
           </witness>
         </listWit>
       </sourceDesc>
@@ -75,36 +118,423 @@
       </langUsage>
     </profileDesc>
     <revisionDesc>
-      <change when="2026-08-31" who="#AC">Initial structural encoding.</change>
+      <change when="2026-08-31" who="#AC">Initial structural encoding (synthetic sample).</change>
+      <change when="2026-09-20" who="#AC">Replaced synthetic sample with a real 50-verse
+      excerpt transcribed from the Project Madurai etext of Civañāna Munivar's
+      Kāñcippurāṇam; rewrote sourceDesc/notesStmt accordingly and removed the
+      unverified @corresp alignment to km-saiva.xml.</change>
     </revisionDesc>
   </teiHeader>
   <text>
     <body>
-      <div type="chapter" n="1" xml:id="KP-ch1" corresp="#KM-S-ch1">
-        <head xml:lang="tam">காஞ்சி மான்மியம்</head>
-        <lg type="verse" n="1" xml:id="KP-1" corresp="#KM-S-1">
-          <l n="1a">
-            <placeName ref="authority:place-kanchipuram">காஞ்சி</placeName>
-            நகரில்
-            <app>
-              <lem wit="#T1">சிவன்</lem>
-              <rdg wit="#T2">சிவனார்</rdg>
-            </app>
-          </l>
-          <l n="1b">என்றும் உறைகின்றார்</l>
+      <div type="chapter" n="0" xml:id="KP-payiram">
+        <head xml:lang="tam">பாயிரம்</head>
+        <lg type="verse" n="1" xml:id="KP-1">
+          <note type="meter">கலிநிலைத் துறை</note>
+          <l n="1a">இருக வுள்துளை வாக்குகார்க் கடங்கள்இங் குலிகக்</l>
+          <l n="1b">குருநி றத்திழி தோற்றம்முன் குலாய்த்தவழ்ந் தேறிப்</l>
+          <l n="1c">பரிதி மார்பினில் சமனொடு காளிந்தி பயிலுந்</l>
+          <l n="1d">திருநி கர்த்தசீர் ஐங்கரக் களிற்றினைச் சேர்வாம்</l>
         </lg>
-        <lg type="verse" n="2" xml:id="KP-2" corresp="#KM-S-2">
-          <l n="2a">
-            <persName ref="authority:deity-kamakshi" type="deity">காமாட்சி</persName>
-            அம்மை
-          </l>
-          <l n="2b">
-            <app>
-              <lem wit="#T1 #T2">தவத்தால்</lem>
-              <rdg wit="#T2" cause="variant-spelling">தவத்தினால்</rdg>
-            </app>
-            சித்தி பெறுவார்
-          </l>
+        <lg type="verse" n="2" xml:id="KP-2">
+          <note type="meter">அறுசீரடி யாசிரிய விருத்தம்</note>
+          <l n="2a">தல விநாயகர்</l>
+          <l n="2b">விகட சக்கர வாரணந் தொடர்வரும் வித்தக முகில்வீற</l>
+          <l n="2c">விகட சக்கர விந்தமன் னவன்றனக் கருளுமெய்த் தலைவாகு</l>
+          <l n="2d">விகட சக்கர வாகமென் முலையுமை கான்முளை என்னாச்சே</l>
+          <l n="2e">விகட சக்கர ரெந்திர மெனச்சுழல் வெம்பவக் கடல்நெஞ்சே</l>
+        </lg>
+        <lg type="verse" n="3" xml:id="KP-3">
+          <note type="meter">வேறு</note>
+          <l n="3a">சங்கேந்து மலர்க்குடங்கைப் புத்தேளும்</l>
+          <l n="3b">மறைக்கோவும் தழல்கால் சூலம்</l>
+          <l n="3c">அங்கேந்தும் அம்மானும் தத்தமது</l>
+          <l n="3d">தொழில்தலைநின் றாற்றச் செய்தோர்</l>
+          <l n="3e">பங்கேந்தும் பெருமாட்டி விழிகளிப்ப</l>
+          <l n="3f">இருமுனிவர் பணிந்து போற்றக்</l>
+          <l n="3g">கொங்கேந்து மணிமன்றுள் குனித்தருளும்</l>
+          <l n="3h">பெருவாழ்வைக் குறித்து வாழ்வாம்.</l>
+        </lg>
+        <lg type="verse" n="4" xml:id="KP-4">
+          <l n="4a">திருவேகம்பநாதர் .</l>
+          <l n="4b">தணந்தபெருந் துயர்க்கடல்மீக் கூர்தலினான்</l>
+          <l n="4c">மலைபயந்த தரளமூரற்</l>
+          <l n="4d">கணங்குழையாள் புரிபூசை முடிவளவுந்</l>
+          <l n="4e">தரியாமல் இடையே கம்பை</l>
+          <l n="4f">அணங்கினைத்தூ தெனவிடுத்து வலிந்திறுகத்</l>
+          <l n="4g">தழீஇக்கொள்ள அமையாக் காதல்</l>
+          <l n="4h">மணந்தருளிக் குறிபூண்ட ஒருமாவிற்</l>
+          <l n="4i">பெருமானை வணக்கஞ் செய்வாம்.</l>
+        </lg>
+        <lg type="verse" n="5" xml:id="KP-5">
+          <l n="5a">காமாட்சியம்மையார் .</l>
+          <l n="5b">ஊன்பிலிற்று மழுவாளி கலவிதனில்</l>
+          <l n="5c">ஒண்ணாதென் றோர்ந்து நஞ்சந்</l>
+          <l n="5d">தான்பிலிற்றும் பாப்பணியை நீப்பவுங்கார்</l>
+          <l n="5e">வண்டினங்கள் ததைந்து மூசத்</l>
+          <l n="5f">தேன்பிலிற்று நறுங்கடுக்கைத் தெரியலைப்பாம்</l>
+          <l n="5g">பெனமருண்டத் தெரியல் நாறுங்</l>
+          <l n="5h">கான்பிலிற்றத் தெருண்டணையும் காமக்கோட்</l>
+          <l n="5i">டத்துமையைக் கருத்துள் வைப்பாம்</l>
+        </lg>
+        <lg type="verse" n="6" xml:id="KP-6">
+          <l n="6a">கருக்காமக் கோட்டிமிர வினையனைத்தும்</l>
+          <l n="6b">ஒருங்கெய்திக் கலகஞ் செய்யுந்</l>
+          <l n="6c">தருக்காமக் கோட்டியெலாம் அறஎறிந்தாம்</l>
+          <l n="6d">இனியென்றும் தகைசால் அன்பு</l>
+          <l n="6e">சுருக்காமக் கோட்டினைச்சே யரைகரங்</l>
+          <l n="6f">கொண்டார்க்கு முலைச்சுவடு நல்குந்</l>
+          <l n="6g">திருக்காமக் கோட்டியம்மை சேவடிப்போ</l>
+          <l n="6h">தெப்போதுஞ் சிந்திப் பாமால்.</l>
+        </lg>
+        <lg type="verse" n="7" xml:id="KP-7">
+          <l n="7a">விகடசக்கர விநாயகக் கடவுள்</l>
+          <l n="7b">விழிமலர்ப்பூ சனையுஞற்றித் திருநெடுமால்</l>
+          <l n="7c">பெறுமாழி மீள வாங்கி</l>
+          <l n="7d">வழியொழுகாச் சலந்தரன்மெய்க் குருதிபடி</l>
+          <l n="7e">முடைநாற்றம் மாறு மாற்றால்</l>
+          <l n="7f">பொழிமதநீர் விரையேற்றி விகடநடப்</l>
+          <l n="7g">பூசைகொண்டு புதிதா நல்கிப்</l>
+          <l n="7h">பழிதபுதன் தாதையினும் புகழ்படைத்த</l>
+          <l n="7i">மதமாவைப் பணிதல் செய்வாம்.</l>
+        </lg>
+        <lg type="verse" n="8" xml:id="KP-8">
+          <l n="8a">குமாரக் கடவுள்.</l>
+          <l n="8b">முருகோட்டந் தரப்பாயும் மும்மதமும்</l>
+          <l n="8c">ஊற்றெடுப்ப முரிவிற்கோட்டும்</l>
+          <l n="8d">ஒருகோட்டு மழகளிற்றை இருகோட்டு</l>
+          <l n="8e">முதுகளிறா உலவக் காட்டிப்</l>
+          <l n="8f">பருகோட்ட நறைவேட்டுப் பைங்கோட்டுத்</l>
+          <l n="8g">தினைப்புனத்துப் பரண்மேற்கொண்டு</l>
+          <l n="8h">குருகோட்டும் பெடைமனந்த குமரகோட்</l>
+          <l n="8i">டத்தடிகள் குலத்தாள் போற்றி.</l>
+        </lg>
+        <lg type="verse" n="9" xml:id="KP-9">
+          <note type="meter">வேறு</note>
+          <l n="9a">வயிரவக் கடவுள்</l>
+          <l n="9b">எளியவரை வலியர் வாட்டின்</l>
+          <l n="9c">வலியரை இருநீர் வைப்பின்</l>
+          <l n="9d">அளியறத் தெய்வம் வாட்டும்ஔ</l>
+          <l n="9e">எனுமுரைக் கமைய வன்றே</l>
+          <l n="9f">தெளியுமா வலியைச் செற்றோற்</l>
+          <l n="9g">செகுத்துரிக் கவயம் போர்த்த</l>
+          <l n="9h">வளியுளர் கச்சி காவல் வயிரவர்க்</l>
+          <l n="9i">கன்பு செய்வாம்</l>
+        </lg>
+        <lg type="verse" n="10" xml:id="KP-10">
+          <l n="10a">திருநந்திதேவர்</l>
+          <l n="10b">அங்கணன் கயிலை காக்கும் அகம்படித் தொழின்மை பூண்டு</l>
+          <l n="10c">நங்குரு மரபுக் கெல்லாம் முதற்குரு நாத னாகிப்</l>
+          <l n="10d">பங்கயந் துளவம் நாறும் வேத்திரப் படைபொ றுத்த</l>
+          <l n="10e">செங்கையெம் பெருமான் நந்தி சீரடிக் கமலம் போற்றி</l>
+        </lg>
+        <lg type="verse" n="11" xml:id="KP-11">
+          <l n="11a">அகத்திய முனிவர்</l>
+          <l n="11b">காசியி னின்றும் போந்து கம்பர்தாம் அருளப் பெற்று</l>
+          <l n="11c">மாசிலாக் கச்சி மூதூர் மன்னிவீற் றிருந்து பூமேல்</l>
+          <l n="11d">அசிலாத் தமிழ்ப ரப்பி அருந்தமிழ்க் குரவு பூண்ட</l>
+          <l n="11e">தேசினான் மலய வெற்பிற் குறுமுனி திருத்தாள் போற்றி</l>
+          <l n="11f">அகத்தியர் தென்னாடு போந்த வரலாறு , இப்புராணத்தில் தழுவக் குழைந்த படலத்தில் 185 முதல் 247 வரையிலுள்ள செய்யுட்களால் கூறப்படுகின்றது</l>
+        </lg>
+        <lg type="verse" n="12" xml:id="KP-12">
+          <note type="meter">வேறு</note>
+          <l n="12a">திருஞானசம்பந்த மூர்த்தி நாயனார்</l>
+          <l n="12b">பரசமய கோளரியைப் பாலறா</l>
+          <l n="12c">வாயனைப்பூம் பழனஞ் சூழ்ந்த</l>
+          <l n="12d">சிரபுரத்துத் திருஞான சம்பந்தப்</l>
+          <l n="12e">பெருமானைத் தேய மெல்லாம்</l>
+          <l n="12f">குரவையிடத் தமிழ்வேதம் விரித்தருளுங்</l>
+          <l n="12g">கவுணியர்தங் குலதீ பத்தை</l>
+          <l n="12h">இரவியெமை யாளுடைய வென்றிமழ</l>
+          <l n="12i">விளங்களிற்றை விரும்பி வாழ்வாம்.</l>
+        </lg>
+        <lg type="verse" n="13" xml:id="KP-13">
+          <l n="13a">திருநாவுக்கரசு நாயனார்</l>
+          <l n="13b">இடையறாப் பேரன்பும் மழைவாரும்</l>
+          <l n="13c">இணைவிழியும் உழவா ரத்திண்</l>
+          <l n="13d">படையறாத் திருக்கரமும் சிவ்பெருமான்</l>
+          <l n="13e">திருவடிக்கே பதித்த நெஞ்சும்</l>
+          <l n="13f">நடையறாப் பெருந்துறவும் வாகீசப்</l>
+          <l n="13g">பெருந்தகைதன் ஞானப் பாடல்</l>
+          <l n="13h">தொடையறாச் செவ்வாயும் சிவவேடப்</l>
+          <l n="13i">பொலிவழகும் துதித்து வாழ்வாம்</l>
+        </lg>
+        <lg type="verse" n="14" xml:id="KP-14">
+          <l n="14a">சுந்தரமூர்த்தி நாயனார்</l>
+          <l n="14b">ஒருமணத்தைச் சிதைவுச்செய்து</l>
+          <l n="14c">வல்வழக்கிட் டாட்கொண்ட உவனைக் கொண்டே</l>
+          <l n="14d">இருமணத்தைக் கொண்டருளிப்</l>
+          <l n="14e">பணிகொண்ட வல்லாளன் எல்லாம் உய்யப்</l>
+          <l n="14f">பெருமணச்சீர்த் திருத்தொண்டத்</l>
+          <l n="14g">தொகை விரித்த பேரருளின் பெருமாள் என்றுந்</l>
+          <l n="14h">திருமணக்கோ லப்பெருமாள் மறைப்பெருமாள்</l>
+          <l n="14i">எமதுகுல தெய்வமாமால்</l>
+        </lg>
+        <lg type="verse" n="15" xml:id="KP-15">
+          <l n="15a">மாணிக்கவாசக சுவாமிகள்</l>
+          <l n="15b">பெருந்துறையிற் சிவபெருமான் அருளுதலும்</l>
+          <l n="15c">பெருங்கருணைப் பெற்றி நோக்கிக்</l>
+          <l n="15d">கரைந்துகரைந் திருகண்ணீர் மழைவாரத்</l>
+          <l n="15e">ற்றியநிலை கடந்து போந்து</l>
+          <l n="15f">திருந்துபெருஞ் சிவபோகக் கொழுந்தேறல்</l>
+          <l n="15g">வாய்மடுத்துத் தேக்கிச் செம்மாந்</l>
+          <l n="15h">திருந்தருளும் பெருங்கீர்த்தி வாதவூர</l>
+          <l n="15i">டிகளடி யிணைகள் போற்றி</l>
+        </lg>
+        <lg type="verse" n="16" xml:id="KP-16">
+          <l n="16a">அறுபத்துமூவர்</l>
+          <l n="16b">கலி விருத்தம்</l>
+          <l n="16c">தத்து மூவெயில் மூன்றுந் தழலெழ</l>
+          <l n="16d">முத்து மூரல் முகிழ்த்த நிராமய</l>
+          <l n="16e">சித்து மூர்த்திதன் தாளிணை சேரறு</l>
+          <l n="16f">பத்து மூவர் பதமலர் போற்றுவாம்</l>
+        </lg>
+        <lg type="verse" n="17" xml:id="KP-17">
+          <l n="17a">சேக்கிழார் நாயனார்</l>
+          <l n="17b">தூக்கு சீர்த்திருத் தொண்டத் தொகைவிரி</l>
+          <l n="17c">வாக்கி னாற்சொல்ல வல்ல பிரான் எங்கள்</l>
+          <l n="17d">பாக்கி யப்பய னாப்பதி குன்றைவாழ்</l>
+          <l n="17e">சேக்கி ழானடி சென்னி யிருத்துவாம்</l>
+        </lg>
+        <lg type="verse" n="18" xml:id="KP-18">
+          <note type="meter">அறுசீரடி யாசிரிய விருத்தம்</note>
+          <l n="18a">திருக்கூட்டத்தார்</l>
+          <l n="18b">பேயன்ன புறச்சமயப் பிணக்குநூல்</l>
+          <l n="18c">வழியனைத்தும் பிழையே யன்றி</l>
+          <l n="18d">வாயன்மை தெளிந்துசைவ சித்தாந்த</l>
+          <l n="18e">வழிதேறி அதீத வாழ்வில்</l>
+          <l n="18f">போயண்மி அஞ்செழுத்தும் திருநீறும்</l>
+          <l n="18g">கண்டிகையும் பொருளாக் கொண்ட</l>
+          <l n="18h">நாயன்மார் திருக்கூட்டம் பணிந்திறைஞ்சும்</l>
+          <l n="18i">பெரும்பேறு நான்பெற் றேனால்</l>
+        </lg>
+        <lg type="verse" n="19" xml:id="KP-19">
+          <l n="19a">பஞ்சாக்கர தேசிகர்</l>
+          <l n="19b">கயிலாய பரம்பரையிற் சிவஞான</l>
+          <l n="19c">போதநெறி காட்டும் வெண்ணெய்</l>
+          <l n="19d">பயில்வாய்மை மெய்கண்டான்</l>
+          <l n="19e">சந்ததிக்கோர் மெய்ஞ்ஞான பானு வாகிக்</l>
+          <l n="19f">குயிலாரும் பொழில்திருவா வடுதுறைவாழ்</l>
+          <l n="19g">குருநமச்சி வாய தேவன்</l>
+          <l n="19h">சயிலாதி மரபுடையோன் திருமரபு</l>
+          <l n="19i">நீடூழி தழைக மாதோ</l>
+        </lg>
+        <lg type="verse" n="20" xml:id="KP-20">
+          <l n="20a">பின்வேலப்பதேசிகர்</l>
+          <l n="20b">எவ்வெவர்கோட் படுபொருளும் அன்செழுத்தின்</l>
+          <l n="20c">அடக்கியவற் றியல்பு காட்டி</l>
+          <l n="20d">மெய்வகையஞ் சவத்தையினும் நிற்குமுறை</l>
+          <l n="20e">ஓதுமுறை விளங்கத் தேற்றி</l>
+          <l n="20f">அவ்வெழுத்தின் உள்ளீடும் அறிவித்துச்சிவபோகத்</l>
+          <l n="20g">தழுத்தி நாயேன்</l>
+          <l n="20h">செய்வினையும் கைக்கொண்ட வேலப்ப</l>
+          <l n="20i">தெசிகந்தாள் சென்னி சேர்ப்பாம்</l>
+        </lg>
+        <lg type="verse" n="21" xml:id="KP-21">
+          <l n="21a">மற்றைய சிவநேசர்கள்</l>
+          <l n="21b">மறைநான்கும் பயின்றொழுகி இட்டிகளும்</l>
+          <l n="21c">பலவியற்றி மல்லல் ஞாலத்</l>
+          <l n="21d">திறவாத புகழ்படைத்தும் ஈசனிடத்</l>
+          <l n="21e">தன்பிலரை எண்ணாதுளம்</l>
+          <l n="21f">புறமோதிக் கொலைபயின்று மதுமாந்துங்</l>
+          <l n="21g">கொடும்பாவப் புலையரேனும்</l>
+          <l n="21h">அறவாணன் திருவடிக்கீழ் அன்பினரேல்</l>
+          <l n="21i">அவரெம்மை அடிமை கொள்வார்</l>
+        </lg>
+        <lg type="verse" n="22" xml:id="KP-22">
+          <note type="meter">கலிநிலைத்துறை</note>
+          <l n="22a">நூல் செய்தற்குக் காரணம்</l>
+          <l n="22b">பொருவில் கச்சியம் புரானம் வண் டமிழினிற் புகலென்</l>
+          <l n="22c">றிருநி லம்புகழ் மணிமதிற் கச்சியே கம்பர்</l>
+          <l n="22d">திருவ ருட்குரி யான்றவர் கூறிய சிறப்பால்</l>
+          <l n="22e">உரிமை மற்றெழு மாசையான் உரைத்திட லுற்றேன்</l>
+        </lg>
+        <lg type="verse" n="23" xml:id="KP-23">
+          <l n="23a">அவையடக்கம்</l>
+          <l n="23b">மாயை காரிய உருக்களும் எம்பிரான் வடிவ</l>
+          <l n="23c">மாய வேலவை அருள்மய மாகுமற் றதுபோல்</l>
+          <l n="23d">பேயனேன்பிதற் றுரையுமே கம்பர்தம் பெருமை</l>
+          <l n="23e">தூய காதையுள் ளுறுதலால் துகளறத் தோன்றும்</l>
+        </lg>
+        <lg type="verse" n="24" xml:id="KP-24">
+          <l n="24a">இழித்த சொற்புணர்த் தெளியனேன் இயம்பிய கவியுங்</l>
+          <l n="24b">கழித்த ஐவகை இலக்கண வழுவுக்குக் காட்டாப்</l>
+          <l n="24c">பழித்தி டாதெடுத்தாளுவர் பல்வகைச் சுவையுங்</l>
+          <l n="24d">கொழித்த நாவின ராகிய வழுத்தபு குணத்தோர்</l>
+        </lg>
+        <lg type="verse" n="25" xml:id="KP-25">
+          <l n="25a">எழுத்துப் போலியும் எழுத்தென வாளுவர் அதுபோல்</l>
+          <l n="25b">புழுத்த நாயினேன் பிதற்றிய செய்யுட்போ லியையும்</l>
+          <l n="25c">பழுத்த கேள்வியோர் கைக்கொள்வர் என்பது பற்றி</l>
+          <l n="25d">விழுத்த நாணினேன் சிவகதை விளம்புதற் கிசைந்தேன்</l>
+        </lg>
+        <lg type="verse" n="26" xml:id="KP-26">
+          <l n="26a">நெறிவ ழாஉமை பூசனை போல்நெறி பிறழ்ந்தோன்</l>
+          <l n="26b">எறித ருங்கலுங் கைக்கொளுங் கச்சியெம் பெருமாற்</l>
+          <l n="26c">கறிவின் மேலவர் காப்பியப் பனுவல்போல் அறிவின்</l>
+          <l n="26d">குறியி லேன்கவிப் புன்சொலுங் கொள்வது வழக்கால்.</l>
+        </lg>
+        <lg type="verse" n="27" xml:id="KP-27">
+          <l n="27a">சிறப்புப் பாயிரம்</l>
+          <l n="27b">எழுசீரடியாசிரியவிருத்தம்</l>
+          <l n="27c">அருட்பணிக் குரிய மகேச்சுரர் முதலா</l>
+          <l n="27d">நால்வருந் தருகவென் றறைய</l>
+          <l n="27e">மருட்பகை துமிக்குங் காஞ்சிமான் மியத்தை</l>
+          <l n="27f">வழங்குதென் மொழியினா லுரைத்தான்</l>
+          <l n="27g">கருப்பகை யிரிக்கும் ஞானமும் ஏனைக்</l>
+          <l n="27h">கலைகளும் கரிசறப் பெப்யின்ற</l>
+          <l n="27i">மருப்பொழி லுடுத்த வாவடு துறையில்</l>
+          <l n="27j">வாழ்சிவ ஞானமா தவனே</l>
+        </lg>
+      </div>
+      <div type="chapter" n="1" xml:id="KP-thirunaattu" subtype="excerpt">
+        <head xml:lang="tam">திருநாட்டுப்படலம் (எடுத்துக்காட்டு: வெண்பா 28&#8211;50 / 28&#8211;172)</head>
+        <lg type="verse" n="28" xml:id="KP-28">
+          <note type="meter">கலிநிலைத்துறை</note>
+          <l n="28a">பணங்கொள் பாம்பணி கம்பனார் பனிவரை பயந்த</l>
+          <l n="28b">அணங்கி னோடென்றும் அமர்ந்தினி தரசுவீற் றிருக்கும்</l>
+          <l n="28c">உணங்க ரும்புகழ்க் காஞ்சியை அகந்தழீஇ உம்பர்</l>
+          <l n="28d">வணங்க மேவரும் பாலிநாட் டணிநலம் வகுப்பாம்</l>
+        </lg>
+        <lg type="verse" n="29" xml:id="KP-29">
+          <l n="29a">மழைச்சிறப்பு</l>
+          <l n="29b">கடல்க டைந்திடச் செல்லுறூஉம்</l>
+          <l n="29c">வெள்ளைமால் கடுப்பப்</l>
+          <l n="29d">படலை வெண்முகில் பரவைநீ</l>
+          <l n="29e">ருழக்கிவாய் மடுத்து</l>
+          <l n="29f">விடமெ ழுந்தென மீண்டவம்</l>
+          <l n="29g">மாயனை விழைய</l>
+          <l n="29h">உடல்க றுத்துவிண் நெறிப்படர்ந்</l>
+          <l n="29i">தொய்யென மீண்டு</l>
+        </lg>
+        <lg type="verse" n="30" xml:id="KP-30">
+          <l n="30a">அற்றை ஞான்றுமால் கயிலையைச் சரணடைந் தாங்குப்</l>
+          <l n="30b">பொற்ற நந்தியஞ் சாரல்சூழ் பொருப்பினைக் குறுகிக்</l>
+          <l n="30c">கற்றை வார்சடைச் சுந்தரன் கடவவான் மதுரை</l>
+          <l n="30d">முற்று நான்முகி லெனவரை முழுவதும் பொதிந்து</l>
+        </lg>
+        <lg type="verse" n="31" xml:id="KP-31">
+          <l n="31a">முரிந்த வெண்டிரைக் கருங்கடல் முகட்டினைக் குழித்து</l>
+          <l n="31b">விரிந்த வெள்ளநீர் மடுப்புழிக் கரந்துடன் மேவிக்</l>
+          <l n="31c">கரிந்தி டத்தனைச் செய்ததீ வடவையின் களவைத்</l>
+          <l n="31d">தெரிந்து வில்லுமிழ் தடித்தெனத் திசைதொறும் சிதறி</l>
+        </lg>
+        <lg type="verse" n="32" xml:id="KP-32">
+          <l n="32a">கான்ற அக்கனல் மீட்டடை யாவகை கருதி</l>
+          <l n="32b">வான்ற னிற்குனி சிலையெனத் தடையினை வயக்கி</l>
+          <l n="32c">ஏன்ற நீயினி எதிர்த்தனை யாயிடின் இன்னே</l>
+          <l n="32d">ஊன்ற னோடுயிர் குடிப்பலென் றுருமொலி எழுப்பி</l>
+        </lg>
+        <lg type="verse" n="33" xml:id="KP-33">
+          <l n="33a">அடுத்த டுத்தலை மோதுதெண் டிரைப்புனல் அளக்கர்</l>
+          <l n="33b">உடுத்த பாரிலுன் கிளையெலாம் முதலற ஒருங்கே</l>
+          <l n="33c">படுத்து நின்வலி பாற்றுவன் யானெனப் பகைமை</l>
+          <l n="33d">தொடுத்த வன்சினங் கொண்டழல் மேலமர் தொடங்கி.</l>
+        </lg>
+        <lg type="verse" n="34" xml:id="KP-34">
+          <l n="34a">விச்சை மந்திர வலியினால் வீங்குநீர் மழையை</l>
+          <l n="34b">வச்சி ரக்கணை யாக்கிமெய் வளமெனக் கருளும்</l>
+          <l n="34c">பொச்ச மில்மறை வேள்வியும் புனிதனேந் தழலும்</l>
+          <l n="34d">எச்ச மாகமற் றெவையுமீண் டிறுகென இயம்பி</l>
+        </lg>
+        <lg type="verse" n="35" xml:id="KP-35">
+          <l n="35a">காட்ட கங்களுங் கழைநரல் கதிர்மணிச் சிமயக்</l>
+          <l n="35b">கோட்ட கங்களுங் குளிர்புனற் கழனிசூழ் குலவு</l>
+          <l n="35c">நாட்ட கங்களும் பரல்முரம் படுத்தெரி நடஞ்செய்</l>
+          <l n="35d">மோட்ட கங்களும் முழுவதுங் குளிர்கொளச் சொரிந்து</l>
+        </lg>
+        <lg type="verse" n="36" xml:id="KP-36">
+          <l n="36a">இற்றொ ழிந்தன ஒழியமற் றெஞ்சிய எரிபோய்க்</l>
+          <l n="36b">கற்ற வேதியர் வேள்வியஞ் சாலையுட் கரப்ப</l>
+          <l n="36c">உற்ற வாகண்டு தன்சினக் கனலையும் ஒருவி</l>
+          <l n="36d">வெற்றி மாமுர செனமறைப் பேரொலி விளக்கி</l>
+        </lg>
+        <lg type="verse" n="37" xml:id="KP-37">
+          <l n="37a">தனது கீர்த்தியுந் திறற்பிர தாபமுந் தரைமேல்</l>
+          <l n="37b">அனல்செய் கோபமும் முல்லையு மெனஎங்கும் அமைத்துப்</l>
+          <l n="37c">புனித மாம்அவை தன்னையும் பொதிந்துகொண் டென்னப்</l>
+          <l n="37d">பனிவி சும்பினிற் சிவந்துவெண் ணிறம்படைத் தன்றே</l>
+        </lg>
+        <lg type="verse" n="38" xml:id="KP-38">
+          <note type="meter">அறுசீரடியாசிரிய விருத்தம்</note>
+          <l n="38a">உடுவணி குடுமிக் கோடு பிளவுபட் டுடையப் பெய்யும்</l>
+          <l n="38b">கொடுமழைக் காற்றா தங்கட் குளிர்பெயல் மாற எண்ணி</l>
+          <l n="38c">நெடுமலை எடுத்துக் காட்டு நெட்டிதழ்க் காந்தட் கொள்ளி</l>
+          <l n="38d">விடுசுடர்க் கனலி அந்தப் புனலொடும் வீந்த தன்றே.</l>
+        </lg>
+        <lg type="verse" n="39" xml:id="KP-39">
+          <l n="39a">போதம்மே லாகப் பண்டே புல்லிய மலநோய் தீர்ந்தும்</l>
+          <l n="39b">வாதனை தாக்கு மாபோல் மழைப்பெயல் மாறித் தீர்ந்துங்</l>
+          <l n="39c">காதல்செய் துறையும் புள்ளும் மாக்களுங் கவன்று நெஞ்சம்</l>
+          <l n="39d">நோதக மரங்க ளெல்லாம் நுண்துளி துவற்றும் மாதோ.</l>
+        </lg>
+        <lg type="verse" n="40" xml:id="KP-40">
+          <l n="40a">கனைபெயல் எழிலிக் கூட்டங் கலிவிசும் பகடு போழ்ந்த</l>
+          <l n="40b">நனைமுடி நந்திக் குன்றம் நளிபடப் பொழியுந் தெண்ணீர்</l>
+          <l n="40c">புனைமறை வசிட்ட மேலோன் செருத்தலான் பொழிந்த தீம்பால்</l>
+          <l n="40d">வனைபுகழ் வெள்ள மென்னத் திசைதொறும் வழிந்த தன்றே.</l>
+        </lg>
+        <lg type="verse" n="41" xml:id="KP-41">
+          <l n="41a">பாலியாற்று வளம்</l>
+          <l n="41b">கண்ணகன் குடுமிக் குன்றிற் கல்லெனக் கறங்கி ஆர்த்து</l>
+          <l n="41c">விண்ணிவர் ஏணி யென்ன வியன்முடி தொடுத்து வீழுந்</l>
+          <l n="41d">தண்ணறா அருவி யெல்லாந் தலைத்தலை விரிந்து சென்று</l>
+          <l n="41e">புண்ணியப் பாலி யாற்றிற் சேர்ந்துடன் போய மாதோ.</l>
+        </lg>
+        <lg type="verse" n="42" xml:id="KP-42">
+          <l n="42a">பாரிடங் குழித்து வீழும் பல்வயின் அருவி யெல்லாம்</l>
+          <l n="42b">ஓரிரும் பாலி யாற்றின் ஒருங்குசென் றணையுந் தோற்றம்</l>
+          <l n="42c">சீரிய புவனந் தோறுஞ் சிதறிய வினைக ளெல்லாம்</l>
+          <l n="42d">ஓரிடத் தொருவன் றன்பால் உடங்குசென் றுறுதல் போலும்.</l>
+        </lg>
+        <lg type="verse" n="43" xml:id="KP-43">
+          <l n="43a">விலகிவீழ் அருவித் தாரை வேறுவே றாகஓடிக்</l>
+          <l n="43b">குலநதிப் பாலி வைப்பின் ஏகமாய்க் கூடுந் தோற்றம்</l>
+          <l n="43c">அலகில்பல் வழியும் மூதூர் அணிமையின் ஒன்றா மாறும்</l>
+          <l n="43d">பலபல மதமும் ஈற்றின் ஒருவழிப் படலும் போலும்</l>
+        </lg>
+        <lg type="verse" n="44" xml:id="KP-44">
+          <l n="44a">மலைநகைத் தனைய காட்சி வயின்வயின் அருவித் தாரை</l>
+          <l n="44b">சிலையினின் றிழிந்து மண்மேல் திரண்டுசென் றணையுந் தோற்றம்</l>
+          <l n="44c">உலவையோ டிகலிச் சேடன் உயர்வரைக் குடுமி யெல்லாம்</l>
+          <l n="44d">பலதலை விரித்துப் பொத்திக் கிடந்தவப் பான்மை போலும்.</l>
+        </lg>
+        <lg type="verse" n="45" xml:id="KP-45">
+          <l n="45a">குரைபுனல் தொண்டை நாட்டைக் குறும்பெறிந் தடிப் படுத்துப்</l>
+          <l n="45b">புரைதப நடாத்து கென்னாப் புதுமுகி லரசன் நந்தி</l>
+          <l n="45c">வரைமிசை யிருந்து வேந்தா மணிமுடி சூட்டி உய்ப்பத்</l>
+          <l n="45d">திரைபடு பாலி வல்லே சிலையினின் றிழிந்து போந்து</l>
+        </lg>
+        <lg type="verse" n="46" xml:id="KP-46">
+          <l n="46a">அரசுகள் சூழ்ந்து செல்ல அருங்கணி மலர்வாய் விள்ளச்</l>
+          <l n="46b">சரிகுழற் குறமின் னார்கள் பற்பல தானை வெள்ளம்</l>
+          <l n="46c">விரவிடப் பரிய காலாண் மேதகு மாக்கள் அத்தி</l>
+          <l n="46d">இருபுடை தழுவிப் போத இகல்கொடு வையம் ஊர்ந்து</l>
+        </lg>
+        <lg type="verse" n="47" xml:id="KP-47">
+          <l n="47a">அணிவகுத் தெழுந்து குன்றர் அரும்பெறற் குறிச்சி புக்கு</l>
+          <l n="47b">மணிவகை ஆரம் பூண்டு மதுக்குட விருந்து மாந்தித்</l>
+          <l n="47c">தணிவற வெளிக்கொனண் டேகித் தலைதலை வேட்டம் போகித்</l>
+          <l n="47d">துணிபட மாக்க ளெல்லாந் தொலைதுடன் ஈர்த்துச் சென்று</l>
+        </lg>
+        <lg type="verse" n="48" xml:id="KP-48">
+          <note type="meter">கலிவிருத்தம்</note>
+          <l n="48a">மண்டமர் மேல்கொடு வந்தனம் இன்னே</l>
+          <l n="48b">தண்டக நாட்டுறை தாபதர் நோயோர்</l>
+          <l n="48c">பெண்டிரும் நும்மரண் ஏகுதிர் பெட்டென்</l>
+          <l n="48d">றெண்டிசை யார்ப்ப இசைப்பறை சாற்றி</l>
+        </lg>
+        <lg type="verse" n="49" xml:id="KP-49">
+          <l n="49a">இறாற்றிகி ரிப்படை தாங்கி இபக்கோ</l>
+          <l n="49b">டறாத்திறல் வெஞ்சிலை காந்தள் அரும்பு</l>
+          <l n="49c">நறாப்பயில் கோலென ஏந்திநல் வீர</l>
+          <l n="49d">மறாப்பகை மாய்த்துறை வெட்சி மலைந்து</l>
+        </lg>
+        <lg type="verse" n="50" xml:id="KP-50">
+          <l n="50a">முல்லையின் வேந்து முடித்த கரந்தை</l>
+          <l n="50b">ஒல்லை அலைதுயர் ஆநிரை பற்றி</l>
+          <l n="50c">மெல்லிதழ் தின்று சிவந்தெழு வேய்த்தோள்</l>
+          <l n="50d">நல்லவர் கற்பை யழித்து நடந்து</l>
         </lg>
       </div>
     </body>

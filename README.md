@@ -101,17 +101,30 @@ sends `Accept: text/html`) renders `xslt/tei-to-html.xsl` server-side, so the
 reading view — including the apparatus criticus — displays inline instead of
 downloading raw XML.
 
-Sample output from the alignment endpoint, showing the Sanskrit verse beside its
-Tamil counterpart:
+Sample output from the search endpoint, over the real 50-verse Kāñcippurāṇam
+excerpt now in `data/texts/kanchippuranam.xml` (source and rights: see that
+file's `sourceDesc`):
 
 ```json
 {
-  "source":  { "id": "KM-S-1", "language": "san",
-               "reading-text": "काञ्च्यां काञ्ची नगरे शुभे शिवः तिष्ठति सर्वदा" },
-  "aligned": [ { "id": "KP-1", "language": "tam",
-                 "reading-text": "காஞ்சி நகரில் சிவன் என்றும் உறைகின்றார்" } ]
+  "query": "காஞ்சி", "language-filter": "all", "count": 1,
+  "results": [ { "verse-id": "KP-28", "text-id": "KP", "language": "tam",
+                 "reading-text": "பணங்கொள் பாம்பணி கம்பனார் பனிவரை பயந்த ..." } ]
 }
 ```
+
+`data/texts/km-saiva.xml` now carries one real verse (`KM-S-1`, added
+2026-09-20): the opening invocation to Gaṇeśa, transcribed by a non-expert
+encoder from an 1889 printed edition of the Śaiva Kāñcīmāhātmya digitised by
+Heidelberg University Library (DOI `10.11588/diglit.72555`; see that file's
+`sourceDesc` and `notesStmt` for the citation, rights note, and specific
+transcription caveats). The rest of the file's apparatus machinery is still
+demonstration scaffolding. The two files are still not cross-linked via
+`@corresp` — `KM-S-1` is a maṅgala invocation, not sthalapuranam narrative, so
+no verse-level correspondence to `kanchippuranam.xml` is asserted yet; the
+alignment endpoint (`/kanchi/api/verses/{id}/aligned`) still works, it just
+returns an empty `aligned` array until narrative chapters are transcribed and
+a real correspondence is verified.
 
 ---
 

@@ -34,49 +34,77 @@
       </publicationStmt>
       <notesStmt>
         <note type="provenance-warning" xml:lang="eng">
-          <p>IMPORTANT. The verse text carried by this file is <emph>synthetic sample
-          material</emph>, written solely to exercise the encoding model. It is
-          <emph>not</emph> a transcription of the Śaiva Kāñcīmāhātmya and must not be
-          cited as one. Structural features (apparatus, witness sigla, alignment,
-          entity references) are modelled exactly as they would be in a production
-          edition, so that authentic transcriptions can be substituted without any
-          change to the schema, queries or transformations. See
-          <ref target="../../docs/encoding-guidelines.md">encoding guidelines</ref>,
-          section "Replacing the sample corpus".</p>
+          <p>Verse <mentioned>KM-S-1</mentioned> below is a good-faith transcription of the
+          opening invocatory verse (folio 1, addressed to Vikaṭacakravināyaka) of the real 1889
+          printed Śaiva Kāñcīmāhātmya described in <ptr target="#KM1889-bibl"/>, read directly
+          from the digitised page image by the encoder, who is <emph>not</emph> a trained
+          Sanskritist. Word-division, several akṣaras — notably
+          <mentioned xml:lang="san-Latn">mekarasālino</mentioned> in line 1b, whose intended sense
+          is unclear to the encoder — and the exact anusvāra/visarga marks of the printed Telugu
+          script should be treated as provisional pending review by a qualified reader;
+          corrections are welcome. The Devanāgarī given is a script-normalised rendering of a
+          Telugu-script original (see <ptr target="#KM1889-bibl"/>), not a diplomatic
+          transliteration of individual glyphs. A second invocatory verse is visible on the same
+          folio but was not legible enough to the encoder to transcribe responsibly, and has been
+          left out rather than guessed at. Beyond this one verse, the file's remaining apparatus
+          machinery (parallel-segmentation <mentioned>app</mentioned>/<mentioned>lem</mentioned>/<mentioned>rdg</mentioned>,
+          further chapters) is demonstration scaffolding illustrating the encoding model, not a
+          transcription of further text; see
+          <ref target="../../docs/encoding-guidelines.md">encoding guidelines</ref>, section
+          "Replacing the sample corpus".</p>
+        </note>
+        <note type="alignment" xml:lang="eng">
+          <p>The <mentioned>@corresp</mentioned> links that formerly pointed from
+          this file's synthetic verses to <mentioned>KP-ch1</mentioned>/<mentioned>KP-1</mentioned>/<mentioned>KM-S-2</mentioned>
+          have been removed (2026-09-20). <ref target="../texts/kanchippuranam.xml">kanchippuranam.xml</ref>
+          carries a real 50-verse excerpt of Civañāna Munivar's Kāñcippurāṇam (a genuine
+          sthalapuranam about Kanchipuram); this file's one real verse (<mentioned>KM-S-1</mentioned>,
+          added 2026-09-20) is an opening maṅgala invocation to Gaṇeśa, not sthalapuranam content
+          about Kanchipuram itself, so no verse-level correspondence to the Tamil text is asserted
+          yet. Once more of the Śaiva Kāñcīmāhātmya's narrative chapters (adhyāyas 2 onward, per
+          <ptr target="#KM1889-bibl"/>) are transcribed, a genuine <mentioned>@corresp</mentioned>
+          alignment to <mentioned>kanchippuranam.xml</mentioned> can be re-added where an actual
+          correspondence is verified.</p>
         </note>
       </notesStmt>
       <sourceDesc>
+        <bibl xml:id="KM1889-bibl" type="digital-facsimile">
+          <title xml:lang="san-Latn">Śrīkāñcīmāhātmyagranthaḥ: śrīskāndapurāṇāntargataḥ
+          śrīrudrakoṭimahimādarśaḥ</title>
+          <note xml:lang="eng">Title page subtitle: <mentioned xml:lang="san-Latn"
+          >nānādeśasamānītagrandhacatuṣṭayāvalokanapūrvakam</mentioned> ("prepared after comparing
+          four texts collected from various regions") — the print is itself a collation of
+          earlier exemplars, not a copy of a single manuscript.</note>
+          <pubPlace>Śrīkārveṭinagara (Kārvetinagar, Andhra Pradesh)</pubPlace>
+          <publisher>Śrī Bhāratīlīlāsadana Mudrākṣaraśālā</publisher>
+          <date when="1889">1889</date>
+          <extent>50 adhyāyas; pp. 1–492 (errata pp. 487–492)</extent>
+          <note xml:lang="eng">Printed in Telugu script. Digitised by Heidelberg University
+          Library for the Heidelberg Academy of Sciences and Humanities project "Hindu Temple
+          Legends in South India" (Pondicherry unit), from a copy held at the Institut français
+          de Pondichéry (IFP); no shelfmark is given by the digitiser.</note>
+          <idno type="DOI">10.11588/diglit.72555</idno>
+          <ref target="https://digi.hadw-bw.de/view/srikancimahatmyagranthah1889">Digital
+          facsimile (Heidelberg University Library)</ref>
+          <availability status="restricted">
+            <p>The digital reproduction is rights-flagged <ref
+            target="http://rightsstatements.org/vocab/InC/1.0/">"In Copyright"</ref> by
+            Heidelberg University Library, reflecting the library's standard reproduction policy
+            for its scanned holdings, not a claim that the underlying 1889 publication remains
+            under copyright. No claim of rights is made here over the 1889 text; only the
+            single-page facsimile image linked in the file's <mentioned>facsimile</mentioned>
+            element is referenced, at the resolution the image server itself serves.</p>
+          </availability>
+        </bibl>
         <listWit>
-          <witness xml:id="E1">
-            <abbr>E1</abbr>
-            <desc xml:lang="eng">Printed edition, placeholder for the 1889 Śaiva
-            Kāñcīmāhātmya print digitised from a South Indian library collection.</desc>
-          </witness>
-          <witness xml:id="M1">
-            <abbr>M1</abbr>
-            <msDesc>
-              <msIdentifier>
-                <settlement>Pondicherry</settlement>
-                <institution>Placeholder repository</institution>
-                <idno>MS-PLACEHOLDER-001</idno>
-              </msIdentifier>
-              <physDesc>
-                <objectDesc form="palm-leaf">
-                  <supportDesc material="palm-leaf">
-                    <support><p>Palm-leaf bundle, placeholder description.</p></support>
-                    <extent><measure unit="leaf" quantity="42">42 leaves</measure></extent>
-                  </supportDesc>
-                </objectDesc>
-                <scriptDesc>
-                  <scriptNote scope="major">Grantha script, used for Sanskrit in the
-                  Tamil country.</scriptNote>
-                </scriptDesc>
-              </physDesc>
-            </msDesc>
-          </witness>
-          <witness xml:id="M2">
-            <abbr>M2</abbr>
-            <desc xml:lang="eng">Second manuscript witness, placeholder.</desc>
+          <witness xml:id="E1889">
+            <abbr>E1889</abbr>
+            <desc xml:lang="eng">The 1889 printed edition described above; the only witness
+            actually consulted for this file. Its own title page states it was compiled from
+            four exemplars gathered from various regions, but those underlying exemplars are not
+            independently accessible to the encoder, so no apparatus of variant readings is given
+            here — this is a diplomatic reading of the collated print, not a critical
+            apparatus.</desc>
           </witness>
         </listWit>
       </sourceDesc>
@@ -124,52 +152,44 @@
     </profileDesc>
     <revisionDesc>
       <change when="2026-08-31" who="#AC">Initial structural encoding.</change>
+      <change when="2026-09-20" who="#AC">Removed @corresp links to kanchippuranam.xml,
+      which now carries real (not synthetic) verse text unrelated to this file's
+      placeholder content; see the added alignment note.</change>
+      <change when="2026-09-20" who="#AC">Located a real, publicly accessible digitised source
+      for the Śaiva Kāñcīmāhātmya (1889 print, Heidelberg/IFP, DOI 10.11588/diglit.72555) and
+      replaced the placeholder sourceDesc/listWit/facsimile with its real bibliographic details
+      and page image. Transcribed its opening invocatory verse (folio 1, to
+      Vikaṭacakravināyaka) as KM-S-1, a good-faith non-expert reading with caveats recorded in
+      the provenance-warning note; dropped the second placeholder verse (KM-S-2) and the
+      fabricated multi-witness apparatus, since only one real witness has actually been
+      consulted.</change>
     </revisionDesc>
   </teiHeader>
   <facsimile xml:id="facs-KM-S">
-    <surface xml:id="KM-S-p1" ulx="0" uly="0" lrx="2000" lry="3000">
-      <graphic url="https://iiif.example.org/kanchi/km-saiva-p1/full/max/0/default.jpg"
-               width="2000px" height="3000px"/>
-      <zone xml:id="KM-S-p1-z1" ulx="180" uly="420" lrx="1820" lry="760"
-            rendition="#verse-block"/>
+    <surface xml:id="KM-S-p1" ulx="0" uly="0" lrx="1473" lry="2245">
+      <graphic url="https://digi.ub.uni-heidelberg.de/diglitData/image/srikancimahatmyagranthah1889/3/001.jpg"
+               width="1473px" height="2245px"/>
+      <zone xml:id="KM-S-p1-z1" ulx="177" uly="539" lrx="1355" lry="741"
+            rendition="#verse-block">
+        <note xml:lang="eng">Approximate region of verse <ref target="#KM-S-1">KM-S-1</ref>
+        (the two lines beginning <mentioned xml:lang="san-Latn">svakaṭajāta-</mentioned>),
+        estimated from IIIF crops; not pixel-exact.</note>
+      </zone>
     </surface>
   </facsimile>
   <text>
     <body>
-      <div type="chapter" n="1" xml:id="KM-S-ch1" corresp="#KP-ch1">
-        <head xml:lang="san">काञ्चीमाहात्म्यम्</head>
-        <lg type="verse" n="1" xml:id="KM-S-1" corresp="#KP-1" facs="#KM-S-p1-z1">
-          <l n="1a">
-            <app>
-              <lem wit="#E1 #M1">काञ्च्यां</lem>
-              <rdg wit="#M2">काञ्चीषु</rdg>
-            </app>
-            <placeName ref="authority:place-kanchipuram">काञ्ची</placeName>
-            नगरे शुभे
-          </l>
-          <l n="1b">
-            <persName ref="authority:deity-shiva" type="deity">शिवः</persName>
-            <app>
-              <lem wit="#E1">तिष्ठति</lem>
-              <rdg wit="#M1 #M2" type="orthographic">तिष्ठते</rdg>
-            </app>
-            सर्वदा
-          </l>
-        </lg>
-        <lg type="verse" n="2" xml:id="KM-S-2" corresp="#KP-2">
-          <l n="2a">
-            <persName ref="authority:deity-kamakshi" type="deity">कामाक्षी</persName>
-            देवी विख्याता
-          </l>
-          <l n="2b">
-            <app>
-              <lem wit="#E1 #M2">तपसा</lem>
-              <rdg wit="#M1">तपसि</rdg>
-              <witDetail wit="#M1" type="damage">Reading uncertain; leaf damaged at
-              this point.</witDetail>
-            </app>
-            सिद्धिम् आप्नुयात्
-          </l>
+      <div type="chapter" n="1" xml:id="KM-S-ch1">
+        <head xml:lang="san">श्रीस्कान्दपुराणान्तर्गतकाञ्चीमाहात्म्यप्रारम्भः</head>
+        <note type="transcription-source" xml:lang="eng">Rubric and verse below transcribed
+        from folio 1 of witness <ref target="#E1889">E1889</ref> (see
+        <ptr target="#KM1889-bibl"/>); see the file's provenance-warning note for caveats. No
+        entities from this corpus's authority file (Kanchipuram, Śiva, Kāmākṣī) appear in this
+        opening Gaṇeśa invocation, so no <mentioned>persName</mentioned>/<mentioned>placeName</mentioned>
+        links are attached here.</note>
+        <lg type="verse" n="1" xml:id="KM-S-1" facs="#KM-S-p1-z1">
+          <l n="1a">स्वकटजातमदाश्रितबम्भरप्रकटकूजितनादितदिक्कटं</l>
+          <l n="1b">निकटवासिन मेकरसालिनो विकटचक्रविनायकमाश्रये</l>
         </lg>
       </div>
     </body>

@@ -57,6 +57,18 @@ declare %private function api:xml($data as item()*) as item()+ {
     )
 };
 
+declare %private function api:html($data as node()) as item()+ {
+    (
+        <rest:response>
+            <http:response status="200">
+                <http:header name="Content-Type" value="text/html; charset=utf-8"/>
+                <http:header name="Access-Control-Allow-Origin" value="*"/>
+            </http:response>
+        </rest:response>,
+        $data
+    )
+};
+
 declare %private function api:not-found($what as xs:string) as item()+ {
     (
         <rest:response>
@@ -86,7 +98,8 @@ function api:service-description() as item()+ {
             map { "path": "/kanchi/api/texts", "method": "GET",
                   "description": "List all texts in the corpus" },
             map { "path": "/kanchi/api/texts/{id}", "method": "GET",
-                  "description": "One TEI document; Accept: application/json for metadata" },
+                  "description": "One TEI document; Accept: application/json for metadata, "
+                      || "Accept: text/html for the rendered reading view" },
             map { "path": "/kanchi/api/texts/{id}/apparatus", "method": "GET",
                   "description": "Apparatus criticus of a text" },
             map { "path": "/kanchi/api/verses/{id}", "method": "GET",
@@ -162,6 +175,35 @@ function api:text-json($id as xs:string) as item()+ {
                 }
             }
         })
+};
+
+(:~
+ : The reading view: the same document run through xslt/tei-to-html.xsl, with
+ : the apparatus criticus laid out beneath each verse. Chosen by content
+ : negotiation, so a browser (which sends "Accept: text/html, ...") lands here
+ : instead of downloading the raw TEI that api:text-xml serves to curl and API
+ : clients.
+ :
+ : css-href/js-href are overridden to "../resources/..." rather than left at
+ : the stylesheet's own defaults, because those defaults are relative to a
+ : document at this exact path; the browser would otherwise resolve them
+ : against ".../kanchi/api/texts/" instead of ".../kanchi/api/".
+ :)
+declare
+    %rest:GET
+    %rest:path("/kanchi/api/texts/{$id}")
+    %rest:produces("text/html")
+function api:text-html($id as xs:string) as item()+ {
+    let $doc := tei-q:text($id)
+    return
+        if (empty($doc))
+        then api:not-found("text/" || $id)
+        else api:html(transform:transform($doc,
+            doc($config:app-root || "/xslt/tei-to-html.xsl"),
+            <parameters>
+                <param name="css-href" value="../resources/css/kanchi.css"/>
+                <param name="js-href" value="../resources/js/apparatus.js"/>
+            </parameters>))
 };
 
 declare
@@ -286,4 +328,42 @@ function api:entities() as item()+ {
     api:json(map {
         "entities": array { tei-q:entity-references() }
     })
+};
+
+(: ------------------------------------------------------------------ :)
+(: Static assets for the reading view                                 :)
+(: ------------------------------------------------------------------ :)
+
+(:~
+ : CSS and JS for api:text-html, served from the app's own resources
+ : collection rather than relying on server-specific static-file wiring, so
+ : this works the same whether eXist sits behind a reverse proxy or not.
+ :)
+declare %private function api:resource($doc-uri as xs:string, $media-type as xs:string) as item()+ {
+    if (not(util:binary-doc-available($doc-uri)))
+    then api:not-found($doc-uri)
+    else (
+        <rest:response>
+            <http:response status="200">
+                <http:header name="Content-Type" value="{$media-type}"/>
+            </http:response>
+        </rest:response>,
+        util:binary-doc($doc-uri)
+    )
+};
+
+declare
+    %rest:GET
+    %rest:path("/kanchi/api/resources/css/kanchi.css")
+    %output:method("binary")
+function api:resource-css() as item()+ {
+    api:resource($config:app-root || "/resources/css/kanchi.css", "text/css; charset=utf-8")
+};
+
+declare
+    %rest:GET
+    %rest:path("/kanchi/api/resources/js/apparatus.js")
+    %output:method("binary")
+function api:resource-js() as item()+ {
+    api:resource($config:app-root || "/resources/js/apparatus.js", "application/javascript; charset=utf-8")
 };

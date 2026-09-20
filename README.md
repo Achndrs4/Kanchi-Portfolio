@@ -87,6 +87,7 @@ GET /kanchi/api                          service description
 GET /kanchi/api/texts                    all texts, with witness and verse counts
 GET /kanchi/api/texts/{id}               TEI source (Accept: application/tei+xml)
 GET /kanchi/api/texts/{id}               metadata    (Accept: application/json)
+GET /kanchi/api/texts/{id}               reading view, XSLT-rendered HTML (Accept: text/html)
 GET /kanchi/api/texts/{id}/apparatus     apparatus criticus
 GET /kanchi/api/verses/{id}              one verse: reading text + apparatus
 GET /kanchi/api/verses/{id}/aligned      the same verse in the other language
@@ -94,8 +95,11 @@ GET /kanchi/api/search?q=…&lang=…        full-text search
 GET /kanchi/api/entities                 named entities with authority alignment
 ```
 
-The same resource is served as TEI or JSON by content negotiation; the TEI
-representation is the citable one.
+The same resource is served as TEI, JSON, or HTML by content negotiation; the
+TEI representation is the citable one. Opening a text URL in a browser (which
+sends `Accept: text/html`) renders `xslt/tei-to-html.xsl` server-side, so the
+reading view — including the apparatus criticus — displays inline instead of
+downloading raw XML.
 
 Sample output from the alignment endpoint, showing the Sanskrit verse beside its
 Tamil counterpart:

@@ -26,6 +26,7 @@
 
   <xsl:param name="show-apparatus" as="xs:boolean" select="true()"/>
   <xsl:param name="css-href" as="xs:string" select="'resources/css/kanchi.css'"/>
+  <xsl:param name="js-href" as="xs:string" select="'resources/js/apparatus.js'"/>
 
   <!-- ============================================================ -->
   <!-- Root                                                          -->
@@ -47,7 +48,7 @@
           <xsl:apply-templates select="tei:text/tei:body"/>
           <xsl:call-template name="witness-list"/>
         </main>
-        <script src="resources/js/apparatus.js"/>
+        <script src="{$js-href}"/>
       </body>
     </html>
   </xsl:template>

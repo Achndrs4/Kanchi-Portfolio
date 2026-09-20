@@ -14,5 +14,7 @@ mkdir -p "${STAGE}/data"
 cp -r "${ROOT}/data/." "${STAGE}/data/"
 mkdir -p "${STAGE}/xslt"
 cp "${ROOT}"/xslt/*.xsl "${STAGE}/xslt/"
+mkdir -p "${STAGE}/docs"
+cp -r "${ROOT}/docs/." "${STAGE}/docs/"
 ( cd "${STAGE}" && zip -qr "${BUILD}/kanchi-${VERSION}.xar" . )
 echo "built ${BUILD}/kanchi-${VERSION}.xar"

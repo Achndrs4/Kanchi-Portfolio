@@ -41,14 +41,14 @@ bash scripts/build-schema.sh
 bash scripts/validate.sh
 
 # 4. Package the eXist application
-bash scripts/build-xar.sh        # -> build/kanchi-0.1.0.xar
+bash scripts/build-xar.sh        # -> build/kanchi-0.1.6.xar
 
 # 5. Run the auxiliary service
 pip install -r services/flask/requirements.txt
 python -m flask --app services/flask/app run --port 5000
 ```
 
-Deploy `build/kanchi-0.1.0.xar` through the eXist Dashboard's package manager, or
+Deploy `build/kanchi-0.1.6.xar` through the eXist Dashboard's package manager, or
 with `xmldbc`. The application then answers at
 `http://localhost:8080/exist/restxq/kanchi/api`.
 
@@ -61,7 +61,7 @@ The same pipeline, without installing Java/Saxon/xmllint/Python locally. The
 make bootstrap   # fetch build tooling into .lib/ (containerised)
 make schema      # regenerate schema/kanchi.rng + kanchi.sch from the ODD
 make validate    # validate the corpus (runs bootstrap + schema first)
-make xar         # package build/kanchi-0.1.0.xar
+make xar         # package build/kanchi-0.1.6.xar
 make test        # run the transliteration test suite
 
 make up          # build the .xar, then start eXist-db (localhost:8080) and Flask (localhost:5000)
@@ -69,7 +69,7 @@ make down        # stop everything
 ```
 
 `docker-compose.yml` bind-mounts `build/` onto eXist-db's autodeploy
-directory, so once `build/kanchi-0.1.0.xar` exists, starting (or
+directory, so once `build/kanchi-0.1.6.xar` exists, starting (or
 `make restart-exist`-ing) the `exist` container installs it automatically —
 no manual step through the Dashboard. `make help` lists every target.
 

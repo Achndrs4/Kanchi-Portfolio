@@ -59,13 +59,17 @@ jobs:
 
       - name: Compile Schematron
         run: |
-          curl -sL -o /tmp/iso_svrl.xsl \
+          # Downloaded under their real basenames, not shortened, because the
+          # ISO skeleton files xsl:include each other by those exact names --
+          # renaming them here breaks the includes even though each file is
+          # individually fetched fine.
+          curl -sL -o /tmp/iso_svrl_for_xslt2.xsl \
             https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_svrl_for_xslt2.xsl
-          curl -sL -o /tmp/iso_skeleton.xsl \
+          curl -sL -o /tmp/iso_schematron_skeleton_for_saxon.xsl \
             https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_schematron_skeleton_for_saxon.xsl
-          curl -sL -o /tmp/iso_dsdl.xsl \
+          curl -sL -o /tmp/iso_dsdl_include.xsl \
             https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_dsdl_include.xsl
-          curl -sL -o /tmp/iso_abstract.xsl \
+          curl -sL -o /tmp/iso_abstract_expand.xsl \
             https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_abstract_expand.xsl
           cp /tmp/iso_*.xsl .lib/
           java -cp ".lib/saxon.jar:.lib/xmlresolver.jar:.lib/xmlresolver-data.jar" \
@@ -150,3 +154,94 @@ jobs:
         run: |
           pip install --quiet -r services/flask/requirements.txt pytest
           python -m pytest test/test_translit.py -q
+
+  integration:
+    name: eXist integration
+    # The README claims the application "was deployed to a live 6.4.1
+    # instance and the endpoints exercised over HTTP." This job is what
+    # makes that a checked claim instead of a historical one: it builds the
+    # real .xar, autodeploys it into a real eXist-db, and hits real RESTXQ
+    # endpoints over HTTP, including the negative case for the docs
+    # endpoint's path-traversal guard.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install packaging tooling
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq zip
+
+      - name: Build the .xar
+        run: bash scripts/build-xar.sh
+
+      - name: Start eXist-db (autodeploys build/*.xar)
+        run: docker compose up -d exist
+
+      - name: Wait for the application to come up
+        run: |
+          for i in $(seq 1 40); do
+            if curl -sf -o /dev/null "http://localhost:8080/exist/restxq/kanchi/api"; then
+              echo "up after $((i * 5))s"
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::error::eXist never answered /exist/restxq/kanchi/api within 200s"
+          # Distinguish a slow/failed container start from a container that
+          # started fine but where the kanchi package never autodeployed.
+          if curl -sf -o /dev/null "http://localhost:8080/exist/"; then
+            echo "::error::eXist itself is up, so the kanchi package failed to autodeploy or its RESTXQ module failed to register"
+          else
+            echo "::error::eXist's own REST endpoint never came up either -- this is a container start problem, not an autodeploy problem"
+          fi
+          docker compose logs exist
+          exit 1
+
+      - name: Exercise the documented endpoints
+        run: |
+          base="http://localhost:8080/exist/restxq/kanchi/api"
+
+          check() {
+            local desc="$1" expected="$2"; shift 2
+            local code
+            code="$(curl -s -o /tmp/resp -w '%{http_code}' "$@")"
+            if [ "$code" != "$expected" ]; then
+              echo "::error::$desc: expected HTTP $expected, got $code"
+              cat /tmp/resp
+              exit 1
+            fi
+            echo "ok: $desc ($code)"
+          }
+
+          check "service description" 200 "$base"
+          check "text list" 200 "$base/texts"
+          check "one text as TEI" 200 "$base/texts/KP" -H "Accept: application/tei+xml"
+          check "one text as JSON" 200 "$base/texts/KP" -H "Accept: application/json"
+          check "reading view as HTML" 200 "$base/texts/KP" -H "Accept: text/html"
+          check "apparatus criticus" 200 "$base/texts/KP/apparatus"
+          check "one verse" 200 "$base/verses/KP-28"
+          check "verse alignment" 200 "$base/verses/KP-28/aligned"
+          check "entities" 200 "$base/entities"
+          check "full-text search" 200 -G "$base/search" --data-urlencode "q=காஞ்சி" --data-urlencode "lang=tam"
+
+          # Project docs served through the app, so <ref> links in sourceDesc
+          # resolve to something live.
+          check "docs: top-level file" 200 "$base/docs/architecture.md"
+          check "docs: ADR subdirectory" 200 "$base/docs/adr/0005-lod-alignment.md"
+
+          # Negative cases for the path-traversal guard added in api.xqm:
+          # a real ".." segment (curl normally collapses "..", so
+          # --path-as-is is required to actually send one) and a path that
+          # doesn't end in .md must both be rejected, never served.
+          check "docs: rejects .. traversal" 404 --path-as-is "$base/docs/../../../../etc/passwd"
+          check "docs: rejects non-.md path" 404 "$base/docs/architecture"
+
+          curl -s -G "$base/search" --data-urlencode "q=காஞ்சி" --data-urlencode "lang=tam" | grep -q "KP-28" \
+            || { echo "::error::search for காஞ்சி did not return KP-28"; exit 1; }
+
+      - name: Logs (always, for debugging)
+        if: always()
+        run: docker compose logs exist
+
+      - name: Tear down
+        if: always()
+        run: docker compose down -v

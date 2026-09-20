@@ -109,7 +109,10 @@ function api:service-description() as item()+ {
             map { "path": "/kanchi/api/search?q={term}&amp;lang={code}", "method": "GET",
                   "description": "Full-text search over the corpus" },
             map { "path": "/kanchi/api/entities", "method": "GET",
-                  "description": "Named entities with authority alignment" }
+                  "description": "Named entities with authority alignment" },
+            map { "path": "/kanchi/api/docs/{path}", "method": "GET",
+                  "description": "Project documentation (docs/*.md, docs/adr/*.md), served as "
+                      || "text/plain" }
         }
     })
 };
@@ -366,4 +369,24 @@ declare
     %output:method("binary")
 function api:resource-js() as item()+ {
     api:resource($config:app-root || "/resources/js/apparatus.js", "application/javascript; charset=utf-8")
+};
+
+(:~
+ : The project's own Markdown documentation (encoding-guidelines.md,
+ : architecture.md, docs/adr/*.md), packaged into the .xar so that the
+ : <ref target="../../docs/..."> links inside the TEI sourceDesc/notesStmt
+ : resolve to something live instead of only a repo-relative path.
+ :
+ : $path is deliberately restricted to a single path.md or subdir/path.md
+ : shape, rejecting ".." outright, since it is otherwise an attacker-controlled
+ : arbitrary-file-read primitive into the app's own collection.
+ :)
+declare
+    %rest:GET
+    %rest:path("/kanchi/api/docs/{$path=.+}")
+    %output:method("binary")
+function api:docs($path as xs:string) as item()+ {
+    if (contains($path, "..") or not(matches($path, "^[A-Za-z0-9_\-]+(/[A-Za-z0-9_\-]+)*\.md$")))
+    then api:not-found("docs/" || $path)
+    else api:resource($config:app-root || "/docs/" || $path, "text/plain; charset=utf-8")
 };

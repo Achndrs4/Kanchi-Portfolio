@@ -2,13 +2,15 @@ cff-version: 1.2.0
 title: "Kanchi TEI: a demonstration edition pipeline for South Indian temple legends"
 message: >-
   If you refer to this software, please cite it using the metadata below.
-  Note that the sample text carried by this repository is synthetic and must
-  not be cited as an edition of any historical work.
+  Most of the apparatus machinery in this repository is still demonstration
+  scaffolding rather than a peer-reviewed critical edition; see each text's
+  own sourceDesc and notesStmt for what is and is not a verified
+  transcription before citing any specific reading.
 type: software
 authors:
   - given-names: Ani
     family-names: Chandrashekhar
-repository-code: "https://github.com/USERNAME/kanchi-tei"
+repository-code: "https://github.com/Achndrs4/Kanchi-Portfolio"
 abstract: >-
   A working demonstration of a digital scholarly edition pipeline: TEI P5
   sources with a parallel-segmentation critical apparatus, a schema generated
@@ -28,5 +30,5 @@ keywords:
   - Tamil
   - critical edition
 license: MIT
-version: 0.1.0
-date-released: "2026-08-31"
+version: 0.1.6
+date-released: "2026-09-20"

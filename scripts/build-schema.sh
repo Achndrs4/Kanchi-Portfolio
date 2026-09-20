@@ -14,4 +14,12 @@ java -cp "${CP}" net.sf.saxon.Transform -s:"${TMP}/compiled.odd" \
 java -cp "${CP}" net.sf.saxon.Transform -s:"${TMP}/compiled.odd" \
      -xsl:"${ST}/odds/extract-isosch.xsl" -o:"${ROOT}/schema/kanchi.sch" lang=en
 rm -rf "${TMP}"
+
+# odd2relax.xsl/extract-isosch.xsl each stamp a current-dateTime() comment into
+# their output, so two runs against an unchanged ODD are otherwise never
+# byte-identical. Normalise it to a fixed placeholder so that regeneration is
+# idempotent and CI's "is the committed schema stale" diff check means something.
+sed -i -E 's/[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z/[build-timestamp-elided]/' \
+    "${ROOT}/schema/kanchi.rng" "${ROOT}/schema/kanchi.sch"
+
 echo "regenerated schema/kanchi.rng and schema/kanchi.sch from schema/kanchi.odd"

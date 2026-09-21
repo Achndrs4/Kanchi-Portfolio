@@ -9,7 +9,6 @@
   <copyright>false</copyright>
   <type>application</type>
   <target>madurai-tei</target>
-  <prepare>pre-install.xq</prepare>
   <finish>post-install.xq</finish>
   <permissions user="admin" password="" group="dba" mode="rw-r--r--"/>
 </meta>

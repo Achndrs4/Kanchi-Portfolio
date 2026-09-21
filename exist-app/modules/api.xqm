@@ -81,6 +81,29 @@ declare %private function api:not-found($what as xs:string) as item()+ {
     )
 };
 
+(:~
+ : Same 404 body as api:not-found, but as a binary item rather than a
+ : string. RESTXQ's binary serializer rejects a plain xs:string with
+ : "Expected binary value, but found: STRING", and %output:method("binary")
+ : applies to every response an endpoint returns, not just the successful
+ : one -- so any endpoint declared binary (resource-css, resource-js, the
+ : docs endpoints) must route its not-found case through this instead of
+ : the plain api:not-found used by non-binary endpoints.
+ :)
+declare %private function api:not-found-binary($what as xs:string) as item()+ {
+    (
+        <rest:response>
+            <http:response status="404">
+                <http:header name="Content-Type" value="application/json; charset=utf-8"/>
+            </http:response>
+        </rest:response>,
+        util:string-to-binary(
+            serialize(map { "error": "not found", "resource": $what },
+                      map { "method": "json" }),
+            "UTF-8")
+    )
+};
+
 (: ------------------------------------------------------------------ :)
 (: Service description                                                :)
 (: ------------------------------------------------------------------ :)
@@ -344,7 +367,7 @@ function api:entities() as item()+ {
  :)
 declare %private function api:resource($doc-uri as xs:string, $media-type as xs:string) as item()+ {
     if (not(util:binary-doc-available($doc-uri)))
-    then api:not-found($doc-uri)
+    then api:not-found-binary($doc-uri)
     else (
         <rest:response>
             <http:response status="200">
@@ -389,7 +412,7 @@ function api:resource-js() as item()+ {
  : or one subdirectory) are declared as two plain templates instead. :)
 declare function api:serve-doc($path as xs:string) as item()+ {
     if (contains($path, "..") or not(matches($path, "^[A-Za-z0-9_\-]+(/[A-Za-z0-9_\-]+)*\.md$")))
-    then api:not-found("docs/" || $path)
+    then api:not-found-binary("docs/" || $path)
     else api:resource($config:app-root || "/docs/" || $path, "text/plain; charset=utf-8")
 };
 

@@ -60,6 +60,14 @@
           <ref target="../../docs/encoding-guidelines.md">encoding guidelines</ref>,
           section "Replacing the sample corpus".</p>
         </note>
+        <note type="provenance-summary" xml:lang="eng">
+          <p>Adhyaya numbers and Sanskrit chapter titles are real, drawn from a
+          published edition (see above). The verse text shown here is placeholder
+          and is not a transcription or translation of this adhyaya — for a real
+          narrative summary of what happens in it, see the aligned padalam in
+          <ref target="tiruvilaiyadal-puranam.xml">the Tamil Tiruvilaiyadal
+          Puranam</ref>.</p>
+        </note>
         <note type="alignment" xml:lang="eng">
           <p>Adhyayas 1-4 (invocation/kshetra-glorification frame material) and the
           अनुबन्धः appendix after adhyaya 71 (unrelated hymns) are deliberately excluded

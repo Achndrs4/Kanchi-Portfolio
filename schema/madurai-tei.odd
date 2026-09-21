@@ -79,6 +79,19 @@
             </attList>
           </elementSpec>
 
+          <!-- Stock TEI does not give <p> a @type (it isn't att.typed), but
+               synopsis paragraphs need to be distinguishable from ordinary
+               prose so the reading-view XSLT can style them separately. -->
+          <elementSpec ident="p" module="core" mode="change">
+            <attList>
+              <attDef ident="type" mode="add" usage="opt">
+                <valList type="closed">
+                  <valItem ident="synopsis"/>
+                </valList>
+              </attDef>
+            </attList>
+          </elementSpec>
+
           <!-- Constrain div types to the structural vocabulary actually used, so a
                typo such as type="chaper" fails validation instead of silently
                producing an unstyled block. -->

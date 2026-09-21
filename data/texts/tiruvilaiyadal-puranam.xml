@@ -98,6 +98,21 @@
           this file should be spot-checked against shaivam.org's own pages directly
           before being treated as verified.</note>
         </bibl>
+        <bibl xml:id="TVP-karkanirka-bibl" type="web">
+          <title xml:lang="eng">Thiruvilayadal &#8211; 64 Sacred sports of Shiva (Parts 1
+          and 2)</title>
+          <publisher>karkanirka.org</publisher>
+          <note xml:lang="eng">A two-part blog synopsis of all 64 padalams, itself
+          presented as a summary of Dr. Kamil Zvelebil's entry in <title
+          xml:lang="eng" level="m">Lexicon of Tamil Literature</title>. Used as the
+          source for the <mentioned>type="synopsis"</mentioned> paragraphs added to
+          padalams from roughly the mid-point of the text onward, where the
+          Wikipedia article (<ref target="#TVP-wiki-bibl">above</ref>) does not
+          narrate individual episodes. The blog's own episode numbering does not
+          always match this file's padalam numbers one-for-one; synopsis paragraphs
+          were matched to padalams by comparing episode content against each
+          padalam's existing English gist-title, not by number alone.</note>
+        </bibl>
         <listWit>
           <witness xml:id="TW1"><abbr>TW1</abbr>
             <desc xml:lang="eng">Placeholder witness 1 (demonstration apparatus only).</desc>
@@ -174,6 +189,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Indra kills a Brahmin-descended demon and is burdened with the sin of slaying a Brahmin; after long wandering in penance, the sin lifts from him at a liṅgam beneath a kadamba tree in a forest, the site that becomes Madurai.</p>
       </div>
       <div type="chapter" n="2" xml:id="TVP-ch2">
         <head xml:lang="eng">Removal of the white elephant's curse</head>
@@ -187,6 +203,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Indra's elephant, cursed by the sage Durvasa for mishandling a garland, wanders as an ordinary forest elephant for a hundred years until it worships the same kadamba-forest liṅgam and is restored to its true form.</p>
       </div>
       <div type="chapter" n="3" xml:id="TVP-ch3">
         <head xml:lang="eng">Founding of Madurai</head>
@@ -200,6 +217,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">A merchant witnesses Shiva's nightly worship in the forest and reports it to the Pandya king, who builds his capital on the spot at Shiva's instruction; the river Ganga is invoked to purify the newly founded city of Madurai.</p>
       </div>
       <div type="chapter" n="4" xml:id="TVP-ch4">
         <head xml:lang="eng">Birth/incarnation of Meenakshi</head>
@@ -213,6 +231,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">King Malayadhvaja Pandya performs a sacrifice seeking an heir, and a three-breasted girl, Meenakshi, rises from the fire; a divine voice foretells that her extra breast will vanish when she meets the man she is destined to marry.</p>
       </div>
       <div type="chapter" n="5" xml:id="TVP-ch5">
         <head xml:lang="eng">Marriage of Meenakshi and Sundareshvara</head>
@@ -226,6 +245,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Meenakshi grows into a conquering warrior-queen; on campaign she reaches Kailasa, and the moment she looks upon Shiva her third breast disappears, fulfilling the earlier prophecy and leading to their marriage at Madurai, where Shiva takes the name Sundareshvara.</p>
       </div>
       <div type="chapter" n="6" xml:id="TVP-ch6">
         <head xml:lang="eng">Shiva's dance in the Silver Hall</head>
@@ -239,6 +259,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">At the request of the assembled wedding guests, Shiva performs his cosmic dance in Madurai's Silver Hall (Velli Ampalam), a dance said to represent the movement of the worlds.</p>
       </div>
       <div type="chapter" n="7" xml:id="TVP-ch7">
         <head xml:lang="eng">Kundotharan; bringing of the Vaigai river</head>
@@ -253,6 +274,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">A dwarf temple servant named Kundodara, infused with an unquenchable fire, devours vast quantities of food without ever being satisfied; to relieve him, Shiva has the goddess Ganga release her waters, and the resulting river becomes the Vaigai.</p>
       </div>
       <div type="chapter" n="9" xml:id="TVP-ch9">
         <head xml:lang="eng">The seven seas gathered in one place</head>
@@ -266,6 +288,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">At his wife's request, Shiva gathers water from all seven mythical seas into a single tank at Madurai so that her foster-mother can bathe there.</p>
       </div>
       <div type="chapter" n="10" xml:id="TVP-ch10">
         <head xml:lang="eng">Resurrecting king Malayadhvaja</head>
@@ -279,6 +302,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">To let Meenakshi's foster-mother complete her bathing rite, Shiva restores her already-deceased foster-father, Malayadhvaja, to life, and both are afterward carried up to Shiva's heaven.</p>
       </div>
       <div type="chapter" n="11" xml:id="TVP-ch11">
         <head xml:lang="eng">Incarnation of Ukrama-Pandyan (Skanda)</head>
@@ -292,6 +316,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Shiva wills a son into being to continue the Pandya royal line; the child, understood as an incarnation of Skanda, is raised and later installed as the Pandya king Ukrama-Pandyan.</p>
       </div>
       <div type="chapter" n="12" xml:id="TVP-ch12">
         <head xml:lang="eng">Weapons given to the prince</head>
@@ -305,6 +330,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Shiva arranges the marriage of his incarnate son, Ukrama-Pandyan, and gives him a spear, a discus and a ball as weapons with which he will go on to subdue the sea, Mount Meru, and Indra in turn.</p>
       </div>
       <div type="chapter" n="13" xml:id="TVP-ch13">
         <head xml:lang="eng">Varuna repelled with the spear</head>
@@ -318,6 +344,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Jealous of the Pandyan's rising power, Indra incites the sea-god Varuna to flood Madurai; Ukrama-Pandyan repels the assault using the divine spear Shiva had given him.</p>
       </div>
       <div type="chapter" n="14" xml:id="TVP-ch14">
         <head xml:lang="eng">Striking Indra's crown</head>
@@ -331,6 +358,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">During a drought, Ukrama-Pandyan travels to Indra's heaven and, after being rebuffed, wages war on Indra and strikes the crown from his head, eventually securing rain for his kingdom.</p>
       </div>
       <div type="chapter" n="15" xml:id="TVP-ch15">
         <head xml:lang="eng">Striking Meru, obtaining wealth</head>
@@ -344,6 +372,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Guided by Shiva, Ukrama-Pandyan travels to Mount Meru and strikes it with his spear, releasing treasure that relieves a famine in his kingdom.</p>
       </div>
       <div type="chapter" n="16" xml:id="TVP-ch16">
         <head xml:lang="eng">Explaining the inner meaning of the Vedas</head>
@@ -357,6 +386,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">When a group of rishis grow confused over the meaning of the Vedas, Shiva tells them that true wisdom lies simply in worshipping the liṅgam, not in unravelling scripture by disputation.</p>
       </div>
       <div type="chapter" n="18" xml:id="TVP-ch18">
         <head xml:lang="eng">Clouds absorb the sea (Varuna)</head>
@@ -371,6 +401,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Still doubting the liṅgam's power, Varuna first sends the sea itself against Madurai, which Shiva absorbs by conjuring clouds, then sends storm-clouds to drown the city, which Shiva again repels — an episode that spans two padalams and earns Madurai a protective epithet.</p>
       </div>
       <div type="chapter" n="21" xml:id="TVP-ch21">
         <head xml:lang="eng">Sugarcane given to the stone elephant</head>
@@ -384,6 +415,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Disguised as a wandering ascetic, Shiva is challenged to prove his power and brings a temple's stone elephant to life so that it can eat the sugarcane offered to it.</p>
       </div>
       <div type="chapter" n="22" xml:id="TVP-ch22">
         <head xml:lang="eng">Killing the Jain-made elephant</head>
@@ -397,6 +429,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">Rival Jain ascetics conjure a monstrous elephant through sacrifice to destroy Madurai; Shiva, appearing as a hunter, kills it with a magical arrow.</p>
       </div>
       <div type="chapter" n="24" xml:id="TVP-ch24">
         <head xml:lang="eng">Nataraja alters his stance in the Silver Hall</head>
@@ -410,6 +443,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">At the desperate plea of a king threatening to take his own life, Shiva shifts the standing leg of his Nataraja image in the Silver Hall, the altered pose said to be the one now shown to the public.</p>
       </div>
       <div type="chapter" n="30" xml:id="TVP-ch30">
         <head xml:lang="eng">Shiva arrives with an army</head>
@@ -423,6 +457,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-wiki-bibl">A general spends his war funds on Shiva's worship instead of raising troops for an approaching enemy; Shiva miraculously supplies a phantom army in his place, which is dismissed once the threat has passed.</p>
       </div>
       <div type="chapter" n="33" xml:id="TVP-ch33">
         <head xml:lang="eng">Teaching the eight great siddhis to the yakshinis</head>
@@ -436,6 +471,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Taking the guise of a teacher, Shiva instructs a group of yakshinis in the eight great siddhis (aṣṭamahāsiddhi) traditionally associated with tantric and yogic practice.</p>
       </div>
       <div type="chapter" n="35" xml:id="TVP-ch35">
         <head xml:lang="eng">Water-booth set up for the Pandyan army</head>
@@ -449,6 +485,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">During a war with the Cholas, Shiva takes the form of a water-carrier and sustains the thirsty Pandya troops by supplying them with water in the field.</p>
       </div>
       <div type="chapter" n="36" xml:id="TVP-ch36">
         <head xml:lang="eng">Performing alchemy (rasavada)</head>
@@ -462,6 +499,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Disguised as an ascetic skilled in alchemy, Shiva turns base metal to gold so that a devoted temple attendant can have an image of him cast and consecrated.</p>
       </div>
       <div type="chapter" n="40" xml:id="TVP-ch40">
         <head xml:lang="eng">Appearing as the merchant's maternal uncle</head>
@@ -475,6 +513,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Appearing as a merchant's maternal uncle, Shiva steps in to settle an inheritance dispute within the family.</p>
       </div>
       <div type="chapter" n="41" xml:id="TVP-ch41">
         <head xml:lang="eng">Curing Varaguna Pandyan of brahmahatya</head>
@@ -488,6 +527,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">After the Pandya king Varaguna accidentally kills a Brahmin and incurs the sin of brahmahatyā, Shiva counsels him to pursue an invading Chola army, and the resulting act of penance-through-battle relieves him of the sin.</p>
       </div>
       <div type="chapter" n="42" xml:id="TVP-ch42">
         <head xml:lang="eng">Selling firewood, winning the song contest</head>
@@ -501,6 +541,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Disguised as a woodcutter selling firewood, Shiva sings a song that defeats a rival bard who had challenged the court poet Paṇapattiran to a musical contest.</p>
       </div>
       <div type="chapter" n="43" xml:id="TVP-ch43">
         <head xml:lang="eng">Letter to the Chera king (Pattiren)</head>
@@ -514,6 +555,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Shiva sends the poet Pattiraṇ to the Chera king's court bearing a letter, setting up the poet's trial there as a singer.</p>
       </div>
       <div type="chapter" n="44" xml:id="TVP-ch44">
         <head xml:lang="eng">Golden board given to Pattiren</head>
@@ -527,6 +569,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">To let Pattiraṇ perform his praises of Shiva properly at the Chera court, Shiva provides him with a platform — remembered in this chapter's title as a golden board — to stand and sing from.</p>
       </div>
       <div type="chapter" n="45" xml:id="TVP-ch45">
         <head xml:lang="eng">Singing contest between two women</head>
@@ -540,6 +583,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">When the king's court musician tries to humiliate Pattiraṇ by pitting his wife against her in a singing contest, Shiva ensures Pattiraṇ's wife wins.</p>
       </div>
       <div type="chapter" n="46" xml:id="TVP-ch46">
         <head xml:lang="eng">Nourishing the motherless piglets</head>
@@ -553,6 +597,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Twelve sons of a devout Vellala couple are cursed to be born instead as piglets to a wild boar and sow, and are raised in that form on a hillside.</p>
       </div>
       <div type="chapter" n="47" xml:id="TVP-ch47">
         <head xml:lang="eng">The piglets made ministers</head>
@@ -566,6 +611,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">The piglets of the previous chapter are restored to human form by Shiva's grace and, raised on what becomes known as Boar Hill, are elevated to serve as royal ministers.</p>
       </div>
       <div type="chapter" n="48" xml:id="TVP-ch48">
         <head xml:lang="eng">Instructing the little black bird</head>
@@ -579,6 +625,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Shiva teaches a blackbird the mrtyuṃjaya mantra, the verse said to overcome death, as an act of grace toward the bird.</p>
       </div>
       <div type="chapter" n="50" xml:id="TVP-ch50">
         <head xml:lang="eng">Showing the town boundaries after the flood</head>
@@ -592,6 +639,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">After a cosmic age ends and a new king rebuilds the city, Shiva marks out its boundary with a coiled serpent, and the settlement is named Alavay.</p>
       </div>
       <div type="chapter" n="51" xml:id="TVP-ch51">
         <head xml:lang="eng">Defeating the Chola king's army</head>
@@ -605,6 +653,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Shiva appears as an archer to repel an attack on Madurai by the Chola king Vikrama and his northern allies.</p>
       </div>
       <div type="chapter" n="52" xml:id="TVP-ch52">
         <head xml:lang="eng">The Sangam plank/bench dispute</head>
@@ -618,6 +667,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">A curse from Sarasvati produces forty-eight scholar-poets who form the Tamil Sangam academy; Sundareshvara arranges their seating on the academy's bench and, after judging between similar poems, becomes its president.</p>
       </div>
       <div type="chapter" n="53" xml:id="TVP-ch53">
         <head xml:lang="eng">Dharmi's gold purse (Nakkeerar episode)</head>
@@ -631,6 +681,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">A king offers gold to whoever can explain a fragrance detected in the queen's hair; Shiva secretly composes a winning verse for a poor Brahmin, Dharmi, which the scholar Nakkeerar disputes as inaccurate, provoking a dramatic confrontation between the poet and the god.</p>
       </div>
       <div type="chapter" n="55" xml:id="TVP-ch55">
         <head xml:lang="eng">The grammar dispute (Agastya, Nakkeerar, the dumb child)</head>
@@ -645,6 +696,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Following the dispute over Dharmi's verse, Sundareshvara sends Nakkeerar to the sage Agastya to refine his mastery of Tamil grammar; in the episode this chapter is grouped with, a mute merchant's child is divinely empowered to judge a further dispute among the Sangam poets.</p>
       </div>
       <div type="chapter" n="58" xml:id="TVP-ch58">
         <head xml:lang="eng">The fisherman and the curse on Parvati</head>
@@ -658,6 +710,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Meenakshi's inattention while Shiva expounds the Vedas draws a curse that leads, among other consequences, to her being reborn as a fisherman's daughter, whom Shiva later takes as his bride in that form as well.</p>
       </div>
       <div type="chapter" n="59" xml:id="TVP-ch59">
         <head xml:lang="eng">Instructing the man of Vathavur (Manikkavasagar)</head>
@@ -671,6 +724,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">A Brahmin youth from Tiruvathavur rises to become a Pandya king's minister before renouncing the post out of devotion to Shiva, becoming known as Manikkavasagar.</p>
       </div>
       <div type="chapter" n="60" xml:id="TVP-ch60">
         <head xml:lang="eng">Jackals turned into horses</head>
@@ -684,6 +738,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Manikkavasagar spends royal funds, entrusted to him for buying horses, on Shiva's worship instead; imprisoned for it, he is saved when Shiva transforms a pack of jackals into horses to present to the king.</p>
       </div>
       <div type="chapter" n="61" xml:id="TVP-ch61">
         <head xml:lang="eng">Horses revert to jackals; the Vaigai floods</head>
@@ -697,6 +752,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">The transformed horses revert to jackals once the king's favour is restored, renewing Manikkavasagar's persecution, until Shiva causes the Vaigai river to flood in a way that vindicates him.</p>
       </div>
       <div type="chapter" n="62" xml:id="TVP-ch62">
         <head xml:lang="eng">Carrying mud as a laborer, struck with a cane (Man Sumantha Padalam)</head>
@@ -710,6 +766,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">During the building of a flood-control dam on the Vaigai, Shiva secretly joins the labourers carrying earth, the toil behind this chapter's traditional name, Man Sumantha Padalam ("the chapter of carrying earth").</p>
       </div>
       <div type="chapter" n="63" xml:id="TVP-ch63">
         <head xml:lang="eng">Sambandar cures the hunchback Pandyan king</head>
@@ -723,6 +780,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">The Shaiva saint Sambandar performs a series of miracles at Madurai, among them curing the reigning Pandya king of a hunchback and turning him away from Jainism.</p>
       </div>
       <div type="chapter" n="64" xml:id="TVP-ch64">
         <head xml:lang="eng">Impaling of the Jains</head>
@@ -736,6 +794,7 @@
             அம்மை அருள்புரிவாள் என்றும்
           </l>
         </lg>
+        <p type="synopsis" xml:lang="eng" source="#TVP-karkanirka-bibl">Following their defeat in religious debate with Sambandar, the Jain monks who had held the Pandya court's favour are put to death by impalement, the episode that closes the cycle of sports narrated here.</p>
       </div>
     </body>
   </text>

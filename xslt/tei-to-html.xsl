@@ -64,9 +64,12 @@
         </p>
       </xsl:if>
       <!-- The provenance warning is surfaced in the rendered output, not buried
-           in the header. A caveat nobody reads is not a caveat. -->
-      <xsl:for-each select="//tei:notesStmt/tei:note[@type='provenance-warning']">
-        <div class="warning" role="note">
+           in the header. A caveat nobody reads is not a caveat. A file may offer
+           a shorter provenance-summary note instead (currently only HM does);
+           when present it is preferred and rendered compactly. -->
+      <xsl:for-each select="(//tei:notesStmt/tei:note[@type='provenance-summary'],
+                              //tei:notesStmt/tei:note[@type='provenance-warning'])[1]">
+        <div class="warning{if (@type = 'provenance-summary') then ' warning-compact' else ''}" role="note">
           <xsl:apply-templates select="tei:p"/>
         </div>
       </xsl:for-each>
@@ -242,6 +245,20 @@
 
   <xsl:template match="tei:p">
     <p><xsl:apply-templates/></p>
+  </xsl:template>
+
+  <xsl:template match="tei:p[@type='synopsis']">
+    <p class="synopsis">
+      <xsl:apply-templates/>
+      <xsl:if test="@source">
+        <sup class="synopsis-source">
+          <xsl:for-each select="tokenize(normalize-space(@source), '\s+')">
+            <a href="{.}"><xsl:value-of select="substring(., 2)"/></a>
+            <xsl:if test="position() != last()"><xsl:text> </xsl:text></xsl:if>
+          </xsl:for-each>
+        </sup>
+      </xsl:if>
+    </p>
   </xsl:template>
 
   <xsl:template match="tei:emph">

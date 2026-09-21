@@ -1,4 +1,4 @@
-/* Reading view for the Kanchi edition.
+/* Reading view for the Madurai TEI edition.
    Indic scripts need generous line-height: Devanagari and Tamil both have
    vowel signs above and below the baseline, and default leading clips them. */
 :root {

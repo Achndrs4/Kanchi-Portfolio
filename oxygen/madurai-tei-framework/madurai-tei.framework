@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Oxygen XML Editor framework for the Kanchi corpus.
+  Oxygen XML Editor framework for the Madurai TEI corpus.
 
   The point of a framework here is not cosmetic. Editors working on these texts
   are Sanskritists and Tamilists, not XML programmers: if they have to read raw
@@ -12,7 +12,7 @@
   <serializableOrderedMap>
     <entry>
       <String>framework.name</String>
-      <String>Kanchi TEI</String>
+      <String>Madurai TEI</String>
     </entry>
     <entry>
       <String>framework.description</String>
@@ -21,7 +21,7 @@
     </entry>
     <entry>
       <String>schema.url</String>
-      <String>${framework}/../../schema/kanchi.rng</String>
+      <String>${framework}/../../schema/madurai-tei.rng</String>
     </entry>
     <entry>
       <String>schema.type</String>
@@ -29,11 +29,11 @@
     </entry>
     <entry>
       <String>schematron.url</String>
-      <String>${framework}/../../schema/kanchi.sch</String>
+      <String>${framework}/../../schema/madurai-tei.sch</String>
     </entry>
     <entry>
       <String>css.author</String>
-      <String>${framework}/css/kanchi-author.css</String>
+      <String>${framework}/css/madurai-tei-author.css</String>
     </entry>
     <entry>
       <String>association.rule</String>

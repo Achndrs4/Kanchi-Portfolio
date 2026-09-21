@@ -25,7 +25,7 @@
               omit-xml-declaration="yes"/>
 
   <xsl:param name="show-apparatus" as="xs:boolean" select="true()"/>
-  <xsl:param name="css-href" as="xs:string" select="'resources/css/kanchi.css'"/>
+  <xsl:param name="css-href" as="xs:string" select="'resources/css/madurai-tei.css'"/>
   <xsl:param name="js-href" as="xs:string" select="'resources/js/apparatus.js'"/>
 
   <!-- ============================================================ -->

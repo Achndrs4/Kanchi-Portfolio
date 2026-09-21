@@ -12,8 +12,8 @@ which break downstream processing.
 
 ## Decision
 
-Write `schema/kanchi.odd` as the single source of truth and generate
-`kanchi.rng` and `kanchi.sch` from it with the TEI Stylesheets.
+Write `schema/madurai-tei.odd` as the single source of truth and generate
+`madurai-tei.rng` and `madurai-tei.sch` from it with the TEI Stylesheets.
 
 ## Consequences
 

@@ -10,9 +10,9 @@ xquery version "3.1";
  :
  : @author Ani Chandrashekhar
  :)
-module namespace tei-q = "http://kanchi.example.org/ns/tei";
+module namespace tei-q = "http://madurai-tei.example.org/ns/tei";
 
-import module namespace config = "http://kanchi.example.org/ns/config"
+import module namespace config = "http://madurai-tei.example.org/ns/config"
     at "config.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";

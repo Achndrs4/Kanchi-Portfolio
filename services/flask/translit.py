@@ -1,5 +1,5 @@
 """
-Indic script transliteration for the Kanchi corpus.
+Indic script transliteration for the Madurai TEI corpus.
 
 Why this lives in Python rather than XQuery
 -------------------------------------------

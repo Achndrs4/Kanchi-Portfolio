@@ -5,7 +5,7 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>Kanchi TEI customization</title>
+        <title>Madurai TEI customization</title>
         <author>Ani Chandrashekhar</author>
       </titleStmt>
       <publicationStmt>
@@ -21,7 +21,7 @@
   <text>
     <body>
       <div>
-        <head>Kanchi TEI customization</head>
+        <head>Madurai TEI customization</head>
         <p>A deliberately small customization of TEI P5 for multilingual temple-legend
         editions. The guiding principle is that the schema should refuse documents the
         editorial workflow cannot process, rather than accepting everything TEI permits
@@ -38,7 +38,7 @@
           since RELAX NG cannot express cross-references.</item>
         </list>
 
-        <schemaSpec ident="kanchi" start="TEI" prefix="tei_"
+        <schemaSpec ident="madurai-tei" start="TEI" prefix="tei_"
                     source="https://www.tei-c.org/Vault/P5/current/xml/tei/odd/p5subset.xml">
 
           <!-- Core modules required for a critical edition with manuscript

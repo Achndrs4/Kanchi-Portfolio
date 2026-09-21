@@ -36,7 +36,7 @@ done
 
 # Compile the project Schematron into an XSLT once, so validate.sh is fast.
 java -cp "${LIB}/saxon.jar:${LIB}/xmlresolver.jar:${LIB}/xmlresolver-data.jar" \
-  net.sf.saxon.Transform -s:"${ROOT}/schema/kanchi.sch" \
-  -xsl:"${LIB}/iso_svrl_for_xslt2.xsl" -o:"${LIB}/kanchi-sch.xsl"
+  net.sf.saxon.Transform -s:"${ROOT}/schema/madurai-tei.sch" \
+  -xsl:"${LIB}/iso_svrl_for_xslt2.xsl" -o:"${LIB}/madurai-tei-sch.xsl"
 
 echo "done. tooling pinned: Saxon ${SAXON_VERSION}, Jing ${JING_VERSION}, TEI Stylesheets ${TEI_XSL_VERSION}"

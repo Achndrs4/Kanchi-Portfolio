@@ -1,4 +1,4 @@
-# Kanchi TEI
+# Madurai TEI
 
 A working demonstration of a digital scholarly edition pipeline for South Indian
 temple legends: TEI-XML source with a critical apparatus, a schema generated from
@@ -41,16 +41,16 @@ bash scripts/build-schema.sh
 bash scripts/validate.sh
 
 # 4. Package the eXist application
-bash scripts/build-xar.sh        # -> build/kanchi-0.1.6.xar
+bash scripts/build-xar.sh        # -> build/madurai-tei-0.1.6.xar
 
 # 5. Run the auxiliary service
 pip install -r services/flask/requirements.txt
 python -m flask --app services/flask/app run --port 5000
 ```
 
-Deploy `build/kanchi-0.1.6.xar` through the eXist Dashboard's package manager, or
+Deploy `build/madurai-tei-0.1.6.xar` through the eXist Dashboard's package manager, or
 with `xmldbc`. The application then answers at
-`http://localhost:8080/exist/restxq/kanchi/api`.
+`http://localhost:8080/exist/restxq/madurai-tei/api`.
 
 ### Or, with Docker
 
@@ -59,9 +59,9 @@ The same pipeline, without installing Java/Saxon/xmllint/Python locally. The
 
 ```bash
 make bootstrap   # fetch build tooling into .lib/ (containerised)
-make schema      # regenerate schema/kanchi.rng + kanchi.sch from the ODD
+make schema      # regenerate schema/madurai-tei.rng + madurai-tei.sch from the ODD
 make validate    # validate the corpus (runs bootstrap + schema first)
-make xar         # package build/kanchi-0.1.6.xar
+make xar         # package build/madurai-tei-0.1.6.xar
 make test        # run the transliteration test suite
 
 make up          # build the .xar, then start eXist-db (localhost:8080) and Flask (localhost:5000)
@@ -69,7 +69,7 @@ make down        # stop everything
 ```
 
 `docker-compose.yml` bind-mounts `build/` onto eXist-db's autodeploy
-directory, so once `build/kanchi-0.1.6.xar` exists, starting (or
+directory, so once `build/madurai-tei-0.1.6.xar` exists, starting (or
 `make restart-exist`-ing) the `exist` container installs it automatically —
 no manual step through the Dashboard. `make help` lists every target.
 
@@ -83,16 +83,16 @@ usually something you need to touch by hand.
 ## The API
 
 ```
-GET /kanchi/api                          service description
-GET /kanchi/api/texts                    all texts, with witness and verse counts
-GET /kanchi/api/texts/{id}               TEI source (Accept: application/tei+xml)
-GET /kanchi/api/texts/{id}               metadata    (Accept: application/json)
-GET /kanchi/api/texts/{id}               reading view, XSLT-rendered HTML (Accept: text/html)
-GET /kanchi/api/texts/{id}/apparatus     apparatus criticus
-GET /kanchi/api/verses/{id}              one verse: reading text + apparatus
-GET /kanchi/api/verses/{id}/aligned      the same verse in the other language
-GET /kanchi/api/search?q=…&lang=…        full-text search
-GET /kanchi/api/entities                 named entities with authority alignment
+GET /madurai-tei/api                          service description
+GET /madurai-tei/api/texts                    all texts, with witness and verse counts
+GET /madurai-tei/api/texts/{id}               TEI source (Accept: application/tei+xml)
+GET /madurai-tei/api/texts/{id}               metadata    (Accept: application/json)
+GET /madurai-tei/api/texts/{id}               reading view, XSLT-rendered HTML (Accept: text/html)
+GET /madurai-tei/api/texts/{id}/apparatus     apparatus criticus
+GET /madurai-tei/api/verses/{id}              one verse: reading text + apparatus
+GET /madurai-tei/api/verses/{id}/aligned      the same verse in the other language
+GET /madurai-tei/api/search?q=…&lang=…        full-text search
+GET /madurai-tei/api/entities                 named entities with authority alignment
 ```
 
 The same resource is served as TEI, JSON, or HTML by content negotiation; the

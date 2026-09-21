@@ -2,13 +2,13 @@
 
 ```
                        ┌────────────────────────────┐
-    TEI sources ──────▶│  schema/kanchi.odd         │
+    TEI sources ──────▶│  schema/madurai-tei.odd    │
     data/texts/        │  (single source of truth)  │
                        └────────────┬───────────────┘
                                     │ TEI Stylesheets + Saxon
                         ┌───────────┴───────────┐
                         ▼                       ▼
-                  kanchi.rng              kanchi.sch
+               madurai-tei.rng          madurai-tei.sch
                 (grammar: nesting,     (cross-references:
                  required attrs,        @wit resolution,
                  closed value lists)    lemma required)
@@ -19,7 +19,7 @@
                                     │
                                     ▼
    ┌────────────────────────────────────────────────────────┐
-   │  eXist-db 6.4.1        /db/apps/kanchi                  │
+   │  eXist-db 6.4.1        /db/apps/madurai-tei              │
    │                                                         │
    │   data/  ──▶ Lucene index (verse-level) + range indexes │
    │   modules/config.xqm   paths, base URI                  │

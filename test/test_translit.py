@@ -65,7 +65,7 @@ def test_tamil_to_iso15919(tamil, iso):
 
 @pytest.mark.parametrize(
     "text,script",
-    [("காஞ்சி", "taml"), ("काञ्ची", "deva"), ("Kanchi", "latn")],
+    [("மதுரை", "taml"), ("शिव", "deva"), ("Madurai", "latn")],
 )
 def test_detect_script(text, script):
     assert detect_script(text) == script
@@ -106,4 +106,4 @@ def test_devanagari_nuqta_is_a_composition_exclusion():
 
 def test_unknown_characters_pass_through():
     """Latin text and punctuation must survive unchanged."""
-    assert devanagari_to_iast("Kanchi, 1889.") == "Kanchi, 1889."
+    assert devanagari_to_iast("Madurai, 1889.") == "Madurai, 1889."

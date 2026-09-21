@@ -4,7 +4,7 @@
 
 ```bash
 bash scripts/bootstrap.sh     # once: fetch pinned tooling into .lib/
-bash scripts/build-schema.sh  # if you touched schema/kanchi.odd
+bash scripts/build-schema.sh  # if you touched schema/madurai-tei.odd
 bash scripts/validate.sh      # must exit 0
 python -m pytest test/ -q     # must pass
 ```
@@ -13,8 +13,8 @@ CI runs the same commands, so a green local run means a green pipeline.
 
 ## Rules that are easy to get wrong
 
-**Never edit `schema/kanchi.rng` or `schema/kanchi.sch` by hand.** They are
-generated from `schema/kanchi.odd`. CI fails if regenerating them produces a
+**Never edit `schema/madurai-tei.rng` or `schema/madurai-tei.sch` by hand.** They are
+generated from `schema/madurai-tei.odd`. CI fails if regenerating them produces a
 diff, which is the check that stops the committed schema drifting from its
 source.
 

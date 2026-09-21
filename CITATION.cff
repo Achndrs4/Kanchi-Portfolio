@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Kanchi TEI: a demonstration edition pipeline for South Indian temple legends"
+title: "Madurai TEI: a demonstration edition pipeline for South Indian temple legends"
 message: >-
   If you refer to this software, please cite it using the metadata below.
   Most of the apparatus machinery in this repository is still demonstration
@@ -10,7 +10,7 @@ type: software
 authors:
   - given-names: Ani
     family-names: Chandrashekhar
-repository-code: "https://github.com/Achndrs4/Kanchi-Portfolio"
+repository-code: "https://github.com/Achndrs4/Madurai-TEI-Portfolio"
 abstract: >-
   A working demonstration of a digital scholarly edition pipeline: TEI P5
   sources with a parallel-segmentation critical apparatus, a schema generated

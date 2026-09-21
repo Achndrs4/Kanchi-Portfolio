@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package xmlns="http://expath.org/ns/pkg"
-         name="http://kanchi.example.org/apps/kanchi"
-         abbrev="kanchi"
+         name="http://madurai-tei.example.org/apps/madurai-tei"
+         abbrev="madurai-tei"
          version="0.1.6"
          spec="1.0">
-  <title>Kanchi: temple-legend edition platform (demonstration)</title>
+  <title>Madurai TEI: temple-legend edition platform (demonstration)</title>
   <dependency processor="http://exist-db.org" semver-min="6.0.0"/>
 </package>

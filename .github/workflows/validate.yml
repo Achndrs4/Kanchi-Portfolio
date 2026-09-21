@@ -51,7 +51,7 @@ jobs:
         # regenerating it produces a diff, the ODD and the schema disagree and
         # the committed artefact is misleading.
         run: |
-          if ! git diff --quiet -- schema/kanchi.rng schema/kanchi.sch; then
+          if ! git diff --quiet -- schema/madurai-tei.rng schema/madurai-tei.sch; then
             echo "::error::schema/ is out of date; run scripts/build-schema.sh and commit"
             git --no-pager diff --stat -- schema/
             exit 1
@@ -73,8 +73,8 @@ jobs:
             https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code/iso_abstract_expand.xsl
           cp /tmp/iso_*.xsl .lib/
           java -cp ".lib/saxon.jar:.lib/xmlresolver.jar:.lib/xmlresolver-data.jar" \
-            net.sf.saxon.Transform -s:schema/kanchi.sch \
-            -xsl:.lib/iso_svrl_for_xslt2.xsl -o:.lib/kanchi-sch.xsl
+            net.sf.saxon.Transform -s:schema/madurai-tei.sch \
+            -xsl:.lib/iso_svrl_for_xslt2.xsl -o:.lib/madurai-tei-sch.xsl
 
       - name: Validate corpus
         run: bash scripts/validate.sh
@@ -133,11 +133,11 @@ jobs:
         run: |
           CP=".lib/saxon.jar:.lib/xmlresolver.jar:.lib/xmlresolver-data.jar"
           java -cp "$CP" net.sf.saxon.Transform -s:data/texts/halasya-mahatmya.xml \
-            -xsl:xslt/tei-to-rdf.xsl -o:/tmp/kanchi.ttl \
+            -xsl:xslt/tei-to-rdf.xsl -o:/tmp/madurai-tei.ttl \
             authority-doc="$PWD/data/authority/authority.xml"
           python -c "
           from rdflib import Graph
-          g = Graph(); g.parse('/tmp/kanchi.ttl', format='turtle')
+          g = Graph(); g.parse('/tmp/madurai-tei.ttl', format='turtle')
           assert len(g) > 0, 'empty graph'
           print(f'{len(g)} triples parsed')
           "
@@ -179,17 +179,17 @@ jobs:
       - name: Wait for the application to come up
         run: |
           for i in $(seq 1 40); do
-            if curl -sf -o /dev/null "http://localhost:8080/exist/restxq/kanchi/api"; then
+            if curl -sf -o /dev/null "http://localhost:8080/exist/restxq/madurai-tei/api"; then
               echo "up after $((i * 5))s"
               exit 0
             fi
             sleep 5
           done
-          echo "::error::eXist never answered /exist/restxq/kanchi/api within 200s"
+          echo "::error::eXist never answered /exist/restxq/madurai-tei/api within 200s"
           # Distinguish a slow/failed container start from a container that
-          # started fine but where the kanchi package never autodeployed.
+          # started fine but where the madurai-tei package never autodeployed.
           if curl -sf -o /dev/null "http://localhost:8080/exist/"; then
-            echo "::error::eXist itself is up, so the kanchi package failed to autodeploy or its RESTXQ module failed to register"
+            echo "::error::eXist itself is up, so the madurai-tei package failed to autodeploy or its RESTXQ module failed to register"
           else
             echo "::error::eXist's own REST endpoint never came up either -- this is a container start problem, not an autodeploy problem"
           fi
@@ -198,7 +198,7 @@ jobs:
 
       - name: Exercise the documented endpoints
         run: |
-          base="http://localhost:8080/exist/restxq/kanchi/api"
+          base="http://localhost:8080/exist/restxq/madurai-tei/api"
 
           check() {
             local desc="$1" expected="$2"; shift 2

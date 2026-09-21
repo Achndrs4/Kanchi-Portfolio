@@ -1,16 +1,16 @@
 xquery version "3.1";
 
 (:~
- : Central configuration for the Kanchi application.
+ : Central configuration for the Madurai TEI application.
  :
  : Collection paths and the public base URI are defined once here. Every other
- : module imports them. Hard-coding "/db/apps/kanchi" across a dozen files is the
- : usual reason an eXist application cannot be deployed twice on one server, for
- : example to run a staging instance beside production.
+ : module imports them. Hard-coding "/db/apps/madurai-tei" across a dozen files
+ : is the usual reason an eXist application cannot be deployed twice on one
+ : server, for example to run a staging instance beside production.
  :
  : @author Ani Chandrashekhar
  :)
-module namespace config = "http://kanchi.example.org/ns/config";
+module namespace config = "http://madurai-tei.example.org/ns/config";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace repo = "http://exist-db.org/xquery/repo";
@@ -20,7 +20,7 @@ declare namespace expath = "http://expath.org/ns/pkg";
 declare variable $config:app-root :=
     let $raw := system:get-module-load-path()
     (: The load path may be prefixed with an eXist-internal URI scheme such as
-       "xmldb:exist://embedded-eXist-server/db/apps/kanchi/modules". Take the
+       "xmldb:exist://embedded-eXist-server/db/apps/madurai-tei/modules". Take the
        substring from "/db/" onwards, then drop the trailing "/modules". :)
     let $abs :=
         if (contains($raw, "/db/"))
@@ -36,7 +36,7 @@ declare variable $config:texts := $config:data-root || "/texts";
 declare variable $config:authority := $config:data-root || "/authority";
 
 (:~ Public base URI for minted project identifiers. Used by the RDF serialisation. :)
-declare variable $config:base-uri := "https://kanchi.example.org/id/";
+declare variable $config:base-uri := "https://madurai-tei.example.org/id/";
 
 (:~ Default number of results per page for list endpoints. :)
 declare variable $config:page-size := 20;

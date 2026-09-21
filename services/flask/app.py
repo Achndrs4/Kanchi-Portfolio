@@ -1,5 +1,5 @@
 """
-Kanchi auxiliary service.
+Madurai TEI auxiliary service.
 
 Scope, and why it is narrow
 ---------------------------
@@ -45,7 +45,7 @@ app = Flask(__name__)
 
 @app.get("/health")
 def health() -> Any:
-    return jsonify({"status": "ok", "service": "kanchi-auxiliary", "version": "0.1.0"})
+    return jsonify({"status": "ok", "service": "madurai-tei-auxiliary", "version": "0.1.0"})
 
 
 @app.get("/api/transliterate")

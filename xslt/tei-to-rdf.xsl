@@ -40,7 +40,7 @@
   <xsl:output method="text" encoding="UTF-8"/>
   <xsl:strip-space elements="*"/>
 
-  <xsl:param name="base" as="xs:string" select="'https://kanchi.example.org/id/'"/>
+  <xsl:param name="base" as="xs:string" select="'https://madurai-tei.example.org/id/'"/>
   <xsl:param name="authority-doc" as="xs:string" select="'../data/authority/authority.xml'"/>
 
   <xsl:variable name="nl" select="'&#10;'"/>
@@ -60,7 +60,7 @@
     <xsl:text>@prefix owl:  &lt;http://www.w3.org/2002/07/owl#&gt; .&#10;</xsl:text>
     <xsl:text>@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .&#10;</xsl:text>
     <xsl:text>@prefix geo:  &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt; .&#10;</xsl:text>
-    <xsl:text>@prefix kanchi: &lt;</xsl:text>
+    <xsl:text>@prefix madurai: &lt;</xsl:text>
     <xsl:value-of select="$base"/>
     <xsl:text>&gt; .&#10;&#10;</xsl:text>
 
@@ -78,7 +78,7 @@
     <xsl:value-of select="$id"/>
     <xsl:text> ===&#10;</xsl:text>
 
-    <xsl:text>kanchi:</xsl:text>
+    <xsl:text>madurai:</xsl:text>
     <xsl:value-of select="$id"/>
     <xsl:text> a crm:E33_Linguistic_Object ;&#10;</xsl:text>
     <xsl:text>    rdfs:label </xsl:text>
@@ -94,7 +94,7 @@
     <!-- Physical carriers -->
     <xsl:for-each select=".//tei:listWit/tei:witness">
       <xsl:variable name="wid" select="concat($id, '-wit-', @xml:id)"/>
-      <xsl:text>kanchi:</xsl:text>
+      <xsl:text>madurai:</xsl:text>
       <xsl:value-of select="$wid"/>
       <xsl:text> a crm:E18_Physical_Thing ;&#10;</xsl:text>
       <xsl:text>    rdfs:label </xsl:text>
@@ -105,7 +105,7 @@
         <xsl:value-of select="tei:lit(normalize-space(tei:msDesc//tei:scriptNote))"/>
         <xsl:text> ;&#10;</xsl:text>
       </xsl:if>
-      <xsl:text>    crm:P128_carries kanchi:</xsl:text>
+      <xsl:text>    crm:P128_carries madurai:</xsl:text>
       <xsl:value-of select="$id"/>
       <xsl:text> .&#10;</xsl:text>
     </xsl:for-each>
@@ -113,23 +113,23 @@
 
     <!-- Verses as parts of the work -->
     <xsl:for-each select=".//tei:lg[@type='verse']">
-      <xsl:text>kanchi:</xsl:text>
+      <xsl:text>madurai:</xsl:text>
       <xsl:value-of select="@xml:id"/>
       <xsl:text> a crm:E33_Linguistic_Object ;&#10;</xsl:text>
-      <xsl:text>    crm:P148i_is_component_of kanchi:</xsl:text>
+      <xsl:text>    crm:P148i_is_component_of madurai:</xsl:text>
       <xsl:value-of select="$id"/>
       <xsl:text> ;&#10;</xsl:text>
 
       <!-- entity references at verse granularity -->
       <xsl:for-each select=".//(tei:placeName | tei:persName)[@ref]">
-        <xsl:text>    crm:P67_refers_to kanchi:</xsl:text>
+        <xsl:text>    crm:P67_refers_to madurai:</xsl:text>
         <xsl:value-of select="substring-after(@ref, ':')"/>
         <xsl:text> ;&#10;</xsl:text>
       </xsl:for-each>
 
       <!-- cross-language alignment -->
       <xsl:for-each select="tokenize(normalize-space(@corresp), '\s+')[. ne '']">
-        <xsl:text>    crm:P130_shows_features_of kanchi:</xsl:text>
+        <xsl:text>    crm:P130_shows_features_of madurai:</xsl:text>
         <xsl:value-of select="substring(., 2)"/>
         <xsl:text> ;&#10;</xsl:text>
       </xsl:for-each>
@@ -150,7 +150,7 @@
     <xsl:text># === Authority entities ===&#10;</xsl:text>
 
     <xsl:for-each select="$auth//tei:place">
-      <xsl:text>kanchi:</xsl:text>
+      <xsl:text>madurai:</xsl:text>
       <xsl:value-of select="@xml:id"/>
       <xsl:text> a </xsl:text>
       <xsl:value-of select="if (@type = 'temple')
@@ -174,13 +174,13 @@
         <xsl:text> ;&#10;</xsl:text>
       </xsl:for-each>
       <xsl:call-template name="external-ids"/>
-      <xsl:text>    rdfs:isDefinedBy kanchi:</xsl:text>
+      <xsl:text>    rdfs:isDefinedBy madurai:</xsl:text>
       <xsl:value-of select="@xml:id"/>
       <xsl:text> .&#10;&#10;</xsl:text>
     </xsl:for-each>
 
     <xsl:for-each select="$auth//tei:person">
-      <xsl:text>kanchi:</xsl:text>
+      <xsl:text>madurai:</xsl:text>
       <xsl:value-of select="@xml:id"/>
       <!-- A deity is not an E21_Person. E28_Conceptual_Object is the honest
            class for a divine figure appearing in narrative. -->
@@ -200,20 +200,20 @@
         <xsl:text> ;&#10;</xsl:text>
       </xsl:for-each>
       <xsl:call-template name="external-ids"/>
-      <xsl:text>    rdfs:isDefinedBy kanchi:</xsl:text>
+      <xsl:text>    rdfs:isDefinedBy madurai:</xsl:text>
       <xsl:value-of select="@xml:id"/>
       <xsl:text> .&#10;&#10;</xsl:text>
     </xsl:for-each>
 
     <!-- Relations declared in listRelation -->
     <xsl:for-each select="$auth//tei:listRelation/tei:relation">
-      <xsl:text>kanchi:</xsl:text>
+      <xsl:text>madurai:</xsl:text>
       <xsl:value-of select="substring(@active, 2)"/>
       <xsl:text> </xsl:text>
       <xsl:value-of select="if (@name = 'located-in')
                             then 'crm:P53_has_former_or_current_location'
                             else 'crm:P129i_is_subject_of'"/>
-      <xsl:text> kanchi:</xsl:text>
+      <xsl:text> madurai:</xsl:text>
       <xsl:value-of select="substring(@passive, 2)"/>
       <xsl:text> .&#10;</xsl:text>
     </xsl:for-each>

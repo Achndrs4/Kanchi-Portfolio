@@ -1,7 +1,7 @@
 xquery version "3.1";
 
 (:~
- : RESTXQ interface to the Kanchi corpus.
+ : RESTXQ interface to the Madurai TEI corpus.
  :
  : Every endpoint is content-negotiable where that is meaningful: the same
  : resource is available as TEI XML, as JSON, and (for entities) as RDF/Turtle.
@@ -14,11 +14,11 @@ xquery version "3.1";
  :
  : @author Ani Chandrashekhar
  :)
-module namespace api = "http://kanchi.example.org/ns/api";
+module namespace api = "http://madurai-tei.example.org/ns/api";
 
-import module namespace config = "http://kanchi.example.org/ns/config"
+import module namespace config = "http://madurai-tei.example.org/ns/config"
     at "config.xqm";
-import module namespace tei-q = "http://kanchi.example.org/ns/tei"
+import module namespace tei-q = "http://madurai-tei.example.org/ns/tei"
     at "tei.xqm";
 
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
@@ -88,29 +88,29 @@ declare %private function api:not-found($what as xs:string) as item()+ {
 (:~ Machine-readable list of endpoints, so the API documents itself. :)
 declare
     %rest:GET
-    %rest:path("/kanchi/api")
+    %rest:path("/madurai-tei/api")
     %rest:produces("application/json")
 function api:service-description() as item()+ {
     api:json(map {
-        "service": "Kanchi TEI API",
+        "service": "Madurai TEI API",
         "version": "0.1.0",
         "endpoints": array {
-            map { "path": "/kanchi/api/texts", "method": "GET",
+            map { "path": "/madurai-tei/api/texts", "method": "GET",
                   "description": "List all texts in the corpus" },
-            map { "path": "/kanchi/api/texts/{id}", "method": "GET",
+            map { "path": "/madurai-tei/api/texts/{id}", "method": "GET",
                   "description": "One TEI document; Accept: application/json for metadata, "
                       || "Accept: text/html for the rendered reading view" },
-            map { "path": "/kanchi/api/texts/{id}/apparatus", "method": "GET",
+            map { "path": "/madurai-tei/api/texts/{id}/apparatus", "method": "GET",
                   "description": "Apparatus criticus of a text" },
-            map { "path": "/kanchi/api/verses/{id}", "method": "GET",
+            map { "path": "/madurai-tei/api/verses/{id}", "method": "GET",
                   "description": "One verse with its reading text and apparatus" },
-            map { "path": "/kanchi/api/verses/{id}/aligned", "method": "GET",
+            map { "path": "/madurai-tei/api/verses/{id}/aligned", "method": "GET",
                   "description": "Verses aligned across languages" },
-            map { "path": "/kanchi/api/search?q={term}&amp;lang={code}", "method": "GET",
+            map { "path": "/madurai-tei/api/search?q={term}&amp;lang={code}", "method": "GET",
                   "description": "Full-text search over the corpus" },
-            map { "path": "/kanchi/api/entities", "method": "GET",
+            map { "path": "/madurai-tei/api/entities", "method": "GET",
                   "description": "Named entities with authority alignment" },
-            map { "path": "/kanchi/api/docs/{path}", "method": "GET",
+            map { "path": "/madurai-tei/api/docs/{path}", "method": "GET",
                   "description": "Project documentation (docs/*.md, docs/adr/*.md), served as "
                       || "text/plain" }
         }
@@ -123,7 +123,7 @@ function api:service-description() as item()+ {
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/texts")
+    %rest:path("/madurai-tei/api/texts")
     %rest:produces("application/json")
 function api:texts() as item()+ {
     api:json(map {
@@ -135,7 +135,7 @@ function api:texts() as item()+ {
 (:~ The TEI source itself. This is the citable representation. :)
 declare
     %rest:GET
-    %rest:path("/kanchi/api/texts/{$id}")
+    %rest:path("/madurai-tei/api/texts/{$id}")
     %rest:produces("application/xml", "application/tei+xml")
     %output:method("xml")
 function api:text-xml($id as xs:string) as item()+ {
@@ -149,7 +149,7 @@ function api:text-xml($id as xs:string) as item()+ {
 (:~ Same resource, metadata only, for clients that cannot process TEI. :)
 declare
     %rest:GET
-    %rest:path("/kanchi/api/texts/{$id}")
+    %rest:path("/madurai-tei/api/texts/{$id}")
     %rest:produces("application/json")
 function api:text-json($id as xs:string) as item()+ {
     let $doc := tei-q:text($id)
@@ -190,11 +190,11 @@ function api:text-json($id as xs:string) as item()+ {
  : css-href/js-href are overridden to "../resources/..." rather than left at
  : the stylesheet's own defaults, because those defaults are relative to a
  : document at this exact path; the browser would otherwise resolve them
- : against ".../kanchi/api/texts/" instead of ".../kanchi/api/".
+ : against ".../madurai-tei/api/texts/" instead of ".../madurai-tei/api/".
  :)
 declare
     %rest:GET
-    %rest:path("/kanchi/api/texts/{$id}")
+    %rest:path("/madurai-tei/api/texts/{$id}")
     %rest:produces("text/html")
 function api:text-html($id as xs:string) as item()+ {
     let $doc := tei-q:text($id)
@@ -204,14 +204,14 @@ function api:text-html($id as xs:string) as item()+ {
         else api:html(transform:transform($doc,
             doc($config:app-root || "/xslt/tei-to-html.xsl"),
             <parameters>
-                <param name="css-href" value="../resources/css/kanchi.css"/>
+                <param name="css-href" value="../resources/css/madurai-tei.css"/>
                 <param name="js-href" value="../resources/js/apparatus.js"/>
             </parameters>))
 };
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/texts/{$id}/apparatus")
+    %rest:path("/madurai-tei/api/texts/{$id}/apparatus")
     %rest:produces("application/json")
 function api:text-apparatus($id as xs:string) as item()+ {
     let $doc := tei-q:text($id)
@@ -230,7 +230,7 @@ function api:text-apparatus($id as xs:string) as item()+ {
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/verses/{$id}")
+    %rest:path("/madurai-tei/api/verses/{$id}")
     %rest:produces("application/json")
 function api:verse($id as xs:string) as item()+ {
     let $lg := tei-q:verse($id)
@@ -263,7 +263,7 @@ function api:verse($id as xs:string) as item()+ {
  :)
 declare
     %rest:GET
-    %rest:path("/kanchi/api/verses/{$id}/aligned")
+    %rest:path("/madurai-tei/api/verses/{$id}/aligned")
     %rest:produces("application/json")
 function api:verse-aligned($id as xs:string) as item()+ {
     let $source := tei-q:verse($id)
@@ -294,7 +294,7 @@ function api:verse-aligned($id as xs:string) as item()+ {
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/search")
+    %rest:path("/madurai-tei/api/search")
     %rest:query-param("q", "{$q}")
     %rest:query-param("lang", "{$lang}")
     %rest:produces("application/json")
@@ -325,7 +325,7 @@ function api:search($q as xs:string*, $lang as xs:string*) as item()+ {
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/entities")
+    %rest:path("/madurai-tei/api/entities")
     %rest:produces("application/json")
 function api:entities() as item()+ {
     api:json(map {
@@ -357,15 +357,15 @@ declare %private function api:resource($doc-uri as xs:string, $media-type as xs:
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/resources/css/kanchi.css")
+    %rest:path("/madurai-tei/api/resources/css/madurai-tei.css")
     %output:method("binary")
 function api:resource-css() as item()+ {
-    api:resource($config:app-root || "/resources/css/kanchi.css", "text/css; charset=utf-8")
+    api:resource($config:app-root || "/resources/css/madurai-tei.css", "text/css; charset=utf-8")
 };
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/resources/js/apparatus.js")
+    %rest:path("/madurai-tei/api/resources/js/apparatus.js")
     %output:method("binary")
 function api:resource-js() as item()+ {
     api:resource($config:app-root || "/resources/js/apparatus.js", "application/javascript; charset=utf-8")
@@ -395,7 +395,7 @@ declare function api:serve-doc($path as xs:string) as item()+ {
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/docs/{$file}")
+    %rest:path("/madurai-tei/api/docs/{$file}")
     %output:method("binary")
 function api:docs($file as xs:string) as item()+ {
     api:serve-doc($file)
@@ -403,7 +403,7 @@ function api:docs($file as xs:string) as item()+ {
 
 declare
     %rest:GET
-    %rest:path("/kanchi/api/docs/{$dir}/{$file}")
+    %rest:path("/madurai-tei/api/docs/{$dir}/{$file}")
     %output:method("binary")
 function api:docs-nested($dir as xs:string, $file as xs:string) as item()+ {
     api:serve-doc($dir || "/" || $file)

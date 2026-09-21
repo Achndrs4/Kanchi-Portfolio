@@ -109,7 +109,7 @@ corpus. Schematron cannot: it sees one document at a time.
 Mark people, deities and places with `@ref` into the authority file:
 
 ```xml
-<placeName ref="authority:place-kanchipuram">காஞ்சி</placeName>
+<placeName ref="authority:place-madurai">மதுரை</placeName>
 <persName ref="authority:deity-shiva" type="deity">शिवः</persName>
 ```
 

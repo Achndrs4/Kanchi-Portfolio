@@ -10,8 +10,8 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LIB="${ROOT}/.lib"
-RNG="${ROOT}/schema/kanchi.rng"
-SCH_XSL="${LIB}/kanchi-sch.xsl"
+RNG="${ROOT}/schema/madurai-tei.rng"
+SCH_XSL="${LIB}/madurai-tei-sch.xsl"
 
 SAXON_CP="${LIB}/saxon.jar:${LIB}/xmlresolver.jar:${LIB}/xmlresolver-data.jar"
 JING="${LIB}/jing.jar"
@@ -23,7 +23,7 @@ say "1/4  Well-formedness"
 find "${ROOT}/data" -name '*.xml' -print0 | xargs -0 xmllint --noout
 echo "     ok"
 
-say "2/4  RELAX NG (generated from schema/kanchi.odd)"
+say "2/4  RELAX NG (generated from schema/madurai-tei.odd)"
 if [ ! -f "${RNG}" ]; then
   echo "     schema missing; run scripts/build-schema.sh first" >&2
   exit 1

@@ -10,5 +10,6 @@
   <type>application</type>
   <target>kanchi</target>
   <prepare>pre-install.xq</prepare>
+  <finish>post-install.xq</finish>
   <permissions user="admin" password="" group="dba" mode="rw-r--r--"/>
 </meta>

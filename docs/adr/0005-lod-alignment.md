@@ -29,18 +29,30 @@ palm-leaf manuscript and an 1889 print cannot both *be* the text.
 narrative is not a historical person, and typing it as one invites nonsense
 inferences about birth and death dates.
 
-**`owl:sameAs` is reserved for genuine identity.** The concrete case that forced
-this rule: Kanchipuram has clean external identity — Wikidata Q212332, GND
-4259107-7, GeoNames 1268159 — and Shiva likewise (Q11378, GND 118755218). But
-**Kamakshi as a goddess has no authority record**; the available Wikidata item
-Q2738610 denotes the *Kamakshi Amman Temple*, a building.
+**`owl:sameAs` is reserved for genuine identity.** The corpus's current concrete
+case actually shows the failure mode from the *other* direction. Madurai has
+clean external identity (Wikidata Q228405, GND 4275927-4, GeoNames 1264521),
+Shiva has clean external identity (Q11378, GND 118755218), and — unlike the
+Kamakshi case that originally motivated this ADR — **Meenakshi also has her
+own clean Wikidata record distinct from her temple** (Q1520192, separate from
+the Meenakshi Amman Temple's Q1424358). There is no alignment gap to record
+for her.
 
-Asserting `owl:sameAs` between them would licence a reasoner to conclude that the
-goddess has geographic coordinates, an architectural style and an opening time.
-The authority file therefore records a project-local URI as authoritative,
-relates the deity to the temple with a `worshipped-at` relation, and states the
-gap in a machine-readable note. Entities with no equivalent authority get
-`skos:relatedMatch`, which records the link without licensing identity inference.
+The gap in this corpus instead concerns **Sundareshvara**, Shiva's name as
+worshipped locally at Madurai. He has no separate authority record anywhere —
+not because one is missing, but because he is not a separate entity: he *is*
+Shiva under a place-specific epithet. The tempting but wrong move is the
+mirror image of the original Kamakshi error: instead of wrongly *collapsing*
+two distinct things (a goddess and a building) by asserting `sameAs` between
+them, it would be wrongly *differentiating* one thing into two — minting a
+new `deity-sundareshvara` entity and asserting `sameAs` from it to some
+temple-specific Wikidata item, when no such distinct entity exists to align.
+The corpus instead treats Sundareshvara as an epithet of the existing
+`deity-shiva` entity, recorded as a note on that entity rather than as a
+second entity needing its own alignment.
 
-The general rule: **an unrecorded alignment gap is a data-quality problem; a
-wrongly asserted one is a correctness problem.** Prefer the former.
+Both errors share one rule: **assert identity only where it's genuine** — not
+between things that are actually different (Kamakshi/temple), and not by
+inventing a second thing where there's actually one (Shiva/Sundareshvara).
+An unrecorded alignment gap is a data-quality problem; a wrongly asserted or
+wrongly invented one is a correctness problem. Prefer the former.

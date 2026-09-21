@@ -12,11 +12,11 @@
             <p>CC BY 4.0.</p>
           </licence>
         </availability>
-        <date when="2026-08-31"/>
+        <date when="2026-09-20"/>
       </publicationStmt>
       <sourceDesc>
         <p>External identifiers were resolved against Wikidata and verified on
-        2026-08-31. Coordinates are taken from Wikidata P625.</p>
+        2026-09-20. Coordinates are taken from Wikidata P625.</p>
       </sourceDesc>
     </fileDesc>
     <encodingDesc>
@@ -32,16 +32,16 @@
     <body>
       <div type="places">
         <listPlace>
-          <place xml:id="place-kanchipuram" type="settlement">
-            <placeName xml:lang="eng">Kanchipuram</placeName>
-            <placeName xml:lang="tam">காஞ்சிபுரம்</placeName>
-            <placeName xml:lang="san-Latn">Kāñcī</placeName>
+          <place xml:id="place-madurai" type="settlement">
+            <placeName xml:lang="eng">Madurai</placeName>
+            <placeName xml:lang="tam">மதுரை</placeName>
+            <placeName xml:lang="san-Latn">Madhurā</placeName>
             <location>
-              <geo decls="#WGS84">12.830833 79.707778</geo>
+              <geo decls="#WGS84">9.925201 78.119775</geo>
             </location>
-            <idno type="wikidata">http://www.wikidata.org/entity/Q212332</idno>
-            <idno type="gnd">https://d-nb.info/gnd/4259107-7</idno>
-            <idno type="geonames">https://sws.geonames.org/1268159/</idno>
+            <idno type="wikidata">http://www.wikidata.org/entity/Q228405</idno>
+            <idno type="gnd">https://d-nb.info/gnd/4275927-4</idno>
+            <idno type="geonames">https://sws.geonames.org/1264521/</idno>
             <note xml:lang="eng">The temple city whose legends this corpus
             transmits.</note>
           </place>
@@ -49,10 +49,10 @@
       </div>
       <div type="monuments">
         <listPlace>
-          <place xml:id="monument-kamakshi-temple" type="temple">
-            <placeName xml:lang="eng">Kamakshi Amman Temple</placeName>
-            <placeName xml:lang="tam">காமாட்சி அம்மன் கோயில்</placeName>
-            <idno type="wikidata">http://www.wikidata.org/entity/Q2738610</idno>
+          <place xml:id="monument-meenakshi-temple" type="temple">
+            <placeName xml:lang="eng">Meenakshi Amman Temple</placeName>
+            <placeName xml:lang="tam">மீனாட்சி அம்மன் கோயில்</placeName>
+            <idno type="wikidata">http://www.wikidata.org/entity/Q1424358</idno>
           </place>
         </listPlace>
       </div>
@@ -64,18 +64,16 @@
             <persName xml:lang="tam">சிவன்</persName>
             <idno type="wikidata">http://www.wikidata.org/entity/Q11378</idno>
             <idno type="gnd">https://d-nb.info/gnd/118755218</idno>
+            <note xml:lang="eng">At Madurai, Shiva is worshipped under the local
+            epithet Sundareshvara/Sundareswarar. This is not a separate deity and is
+            deliberately not given its own authority entity or <att>owl:sameAs</att>
+            link — see docs/adr/0005.</note>
           </person>
-          <person xml:id="deity-kamakshi" role="deity">
-            <persName xml:lang="eng">Kamakshi</persName>
-            <persName xml:lang="san">कामाक्षी</persName>
-            <persName xml:lang="tam">காமாட்சி</persName>
-            <note type="alignment-gap" xml:lang="eng">No authority record for the
-            goddess as such was found in Wikidata or the GND on 2026-08-31; the
-            available Wikidata item Q2738610 denotes the temple, not the deity. The
-            project-local URI is therefore authoritative here, and the temple is
-            recorded as a related, not an equivalent, resource. This distinction
-            matters: asserting <att>owl:sameAs</att> between a deity and a building
-            would corrupt downstream inference.</note>
+          <person xml:id="deity-meenakshi" role="deity">
+            <persName xml:lang="eng">Meenakshi</persName>
+            <persName xml:lang="san">मीनाक्षी</persName>
+            <persName xml:lang="tam">மீனாட்சி</persName>
+            <idno type="wikidata">http://www.wikidata.org/entity/Q1520192</idno>
           </person>
         </listPerson>
       </div>
@@ -91,14 +89,14 @@
       </div>
       <div type="section">
         <listRelation type="cultic">
-          <relation name="located-in" active="#monument-kamakshi-temple"
-                    passive="#place-kanchipuram"/>
+          <relation name="located-in" active="#monument-meenakshi-temple"
+                    passive="#place-madurai"/>
           <!-- Deliberately "worshipped-at" rather than owl:sameAs: the goddess and
                the building are distinct resources. See docs/adr/0005. -->
-          <relation name="worshipped-at" active="#deity-kamakshi"
-                    passive="#monument-kamakshi-temple"/>
+          <relation name="worshipped-at" active="#deity-meenakshi"
+                    passive="#monument-meenakshi-temple"/>
           <relation name="worshipped-at" active="#deity-shiva"
-                    passive="#place-kanchipuram"/>
+                    passive="#place-madurai"/>
         </listRelation>
       </div>
     </body>

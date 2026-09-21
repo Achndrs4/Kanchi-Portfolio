@@ -381,12 +381,30 @@ function api:resource-js() as item()+ {
  : shape, rejecting ".." outright, since it is otherwise an attacker-controlled
  : arbitrary-file-read primitive into the app's own collection.
  :)
-declare
-    %rest:GET
-    %rest:path("/kanchi/api/docs/{$path=.+}")
-    %output:method("binary")
-function api:docs($path as xs:string) as item()+ {
+(:~ RESTXQ path templates only support plain "{$name}" single-segment
+ : variables, not a JAX-RS-style "{$name=regex}" constraint -- a template
+ : using that syntax is an invalid URI per the RESTXQ static semantics and
+ : fails to register at all, taking every other endpoint in this module
+ : down with it. So the two depths this endpoint supports (a top-level file,
+ : or one subdirectory) are declared as two plain templates instead. :)
+declare function api:serve-doc($path as xs:string) as item()+ {
     if (contains($path, "..") or not(matches($path, "^[A-Za-z0-9_\-]+(/[A-Za-z0-9_\-]+)*\.md$")))
     then api:not-found("docs/" || $path)
     else api:resource($config:app-root || "/docs/" || $path, "text/plain; charset=utf-8")
+};
+
+declare
+    %rest:GET
+    %rest:path("/kanchi/api/docs/{$file}")
+    %output:method("binary")
+function api:docs($file as xs:string) as item()+ {
+    api:serve-doc($file)
+};
+
+declare
+    %rest:GET
+    %rest:path("/kanchi/api/docs/{$dir}/{$file}")
+    %output:method("binary")
+function api:docs-nested($dir as xs:string, $file as xs:string) as item()+ {
+    api:serve-doc($dir || "/" || $file)
 };

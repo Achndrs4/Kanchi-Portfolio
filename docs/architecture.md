@@ -24,7 +24,7 @@
    │   data/  ──▶ Lucene index (verse-level) + range indexes │
    │   modules/config.xqm   paths, base URI                  │
    │   modules/tei.xqm      queries: apparatus, alignment    │
-   │   modules/api.xqm      RESTXQ: 10 endpoints             │
+   │   modules/api.xqm      RESTXQ: 11 endpoints             │
    └───────────────┬─────────────────────────────────────────┘
                    │                        │
                    ▼                        ▼

@@ -132,7 +132,7 @@ jobs:
         # output is fed straight back into a parser.
         run: |
           CP=".lib/saxon.jar:.lib/xmlresolver.jar:.lib/xmlresolver-data.jar"
-          java -cp "$CP" net.sf.saxon.Transform -s:data/texts/km-saiva.xml \
+          java -cp "$CP" net.sf.saxon.Transform -s:data/texts/halasya-mahatmya.xml \
             -xsl:xslt/tei-to-rdf.xsl -o:/tmp/kanchi.ttl \
             authority-doc="$PWD/data/authority/authority.xml"
           python -c "
@@ -214,14 +214,14 @@ jobs:
 
           check "service description" 200 "$base"
           check "text list" 200 "$base/texts"
-          check "one text as TEI" 200 "$base/texts/KP" -H "Accept: application/tei+xml"
-          check "one text as JSON" 200 "$base/texts/KP" -H "Accept: application/json"
-          check "reading view as HTML" 200 "$base/texts/KP" -H "Accept: text/html"
-          check "apparatus criticus" 200 "$base/texts/KP/apparatus"
-          check "one verse" 200 "$base/verses/KP-28"
-          check "verse alignment" 200 "$base/verses/KP-28/aligned"
+          check "one text as TEI" 200 "$base/texts/TVP" -H "Accept: application/tei+xml"
+          check "one text as JSON" 200 "$base/texts/TVP" -H "Accept: application/json"
+          check "reading view as HTML" 200 "$base/texts/TVP" -H "Accept: text/html"
+          check "apparatus criticus" 200 "$base/texts/TVP/apparatus"
+          check "one verse" 200 "$base/verses/TVP-1"
+          check "verse alignment" 200 "$base/verses/TVP-1/aligned"
           check "entities" 200 "$base/entities"
-          check "full-text search" 200 -G "$base/search" --data-urlencode "q=காஞ்சி" --data-urlencode "lang=tam"
+          check "full-text search" 200 -G "$base/search" --data-urlencode "q=மதுரை" --data-urlencode "lang=tam"
 
           # Project docs served through the app, so <ref> links in sourceDesc
           # resolve to something live.
@@ -235,8 +235,8 @@ jobs:
           check "docs: rejects .. traversal" 404 --path-as-is "$base/docs/../../../../etc/passwd"
           check "docs: rejects non-.md path" 404 "$base/docs/architecture"
 
-          curl -s -G "$base/search" --data-urlencode "q=காஞ்சி" --data-urlencode "lang=tam" | grep -q "KP-28" \
-            || { echo "::error::search for காஞ்சி did not return KP-28"; exit 1; }
+          curl -s -G "$base/search" --data-urlencode "q=மதுரை" --data-urlencode "lang=tam" | grep -q "TVP-1" \
+            || { echo "::error::search for மதுரை did not return TVP-1"; exit 1; }
 
       - name: Logs (always, for debugging)
         if: always()

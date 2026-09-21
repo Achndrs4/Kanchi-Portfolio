@@ -6,25 +6,28 @@
     reviewer should be able to challenge:
 
     * Texts are modelled as crm:E33_Linguistic_Object rather than as documents.
-      The Kāñcīmāhātmya is a work transmitted by many physical carriers; the
+      The Halasya Mahatmya is a work transmitted by many physical carriers; the
       carriers are separate E18 objects that "carry" the work. Collapsing the two
       is the most common modelling error in text-corpus RDF and makes witness
       statements incoherent.
 
     * Witnesses become crm:E18_Physical_Thing linked by crm:P128_carries. A
-      palm-leaf manuscript and a printed edition are both physical carriers, so
-      they take the same class and are distinguished by their type, not by
-      separate hierarchies.
+      manuscript and a printed edition are both physical carriers, so they take
+      the same class and are distinguished by their type, not by separate
+      hierarchies.
 
     * Named-entity references become crm:P67_refers_to from the verse to the
       authority entity. The verse, not the whole text, is the referring subject,
       because that is the granularity at which the corpus is citable.
 
     * External alignment uses owl:sameAs only where the external record denotes
-      the same thing. Where it does not (see the Kamakshi case in the authority
-      file) a weaker predicate is emitted instead, and the reason is carried
-      through as an rdfs:comment. Asserting sameAs between a deity and a temple
-      would let a reasoner conclude the goddess has a street address.
+      the same thing, and is never used to assert identity where none exists
+      (see the Sundareshvara-as-epithet-of-Shiva case in the authority file and
+      docs/adr/0005). A weaker predicate is emitted instead where that applies,
+      and the reason is carried through as an rdfs:comment. Asserting sameAs
+      between a deity and a temple, or inventing a second deity entity for what
+      is really a place-specific epithet, would both let a reasoner draw
+      nonsense conclusions.
 
     @author Ani Chandrashekhar
 -->

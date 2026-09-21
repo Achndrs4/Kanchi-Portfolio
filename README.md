@@ -101,30 +101,32 @@ sends `Accept: text/html`) renders `xslt/tei-to-html.xsl` server-side, so the
 reading view — including the apparatus criticus — displays inline instead of
 downloading raw XML.
 
-Sample output from the search endpoint, over the real 50-verse Kāñcippurāṇam
-excerpt now in `data/texts/kanchippuranam.xml` (source and rights: see that
-file's `sourceDesc`):
+Sample output from the search endpoint, over `data/texts/tiruvilaiyadal-puranam.xml`:
 
 ```json
 {
-  "query": "காஞ்சி", "language-filter": "all", "count": 1,
-  "results": [ { "verse-id": "KP-28", "text-id": "KP", "language": "tam",
-                 "reading-text": "பணங்கொள் பாம்பணி கம்பனார் பனிவரை பயந்த ..." } ]
+  "query": "மதுரை", "language-filter": "tam", "count": 44,
+  "results": [ { "verse-id": "TVP-1", "text-id": "TVP", "language": "tam",
+                 "reading-text": "மதுரை நகரில் அமர்ந்த சொக்கநாதர் ..." } ]
 }
 ```
 
-`data/texts/km-saiva.xml` now carries one real verse (`KM-S-1`, added
-2026-09-20): the opening invocation to Gaṇeśa, transcribed by a non-expert
-encoder from an 1889 printed edition of the Śaiva Kāñcīmāhātmya digitised by
-Heidelberg University Library (DOI `10.11588/diglit.72555`; see that file's
-`sourceDesc` and `notesStmt` for the citation, rights note, and specific
-transcription caveats). The rest of the file's apparatus machinery is still
-demonstration scaffolding. The two files are still not cross-linked via
-`@corresp` — `KM-S-1` is a maṅgala invocation, not sthalapuranam narrative, so
-no verse-level correspondence to `kanchippuranam.xml` is asserted yet; the
-alignment endpoint (`/kanchi/api/verses/{id}/aligned`) still works, it just
-returns an empty `aligned` array until narrative chapters are transcribed and
-a real correspondence is verified.
+The corpus is a two-file pair: `data/texts/tiruvilaiyadal-puranam.xml`
+(`xml:id="TVP"`, Tamil, 44 chapters) and `data/texts/halasya-mahatmya.xml`
+(`xml:id="HM"`, Sanskrit, 44 chapters), replacing the project's earlier
+Kanchipuram sample corpus. Each file's `<div type="chapter">` is real: the
+padalam/adhyaya numbering and chapter titles were recovered from secondary
+sources (Wikipedia and shaivam.org for the Tamil titles; an archive.org OCR
+table of contents for the Sanskrit titles) and cross-checked, and every
+chapter carries a `@corresp` link to its matched counterpart in the other
+file (44 pairs, 88 pointers, all resolving). What is *not* real: the verse
+text inside each chapter is synthetic placeholder material, a short generic
+couplet reused across chapters to exercise the encoding model, not a
+transcription of anything. Both files' `notesStmt` spell out exactly which
+padalams/adhyayas were confidently matched and which were left out rather
+than guessed at. See `docs/encoding-guidelines.md`, section "Replacing the
+sample corpus", for how real verse text should eventually replace this
+scaffolding.
 
 ---
 
@@ -153,12 +155,15 @@ in the BCP-47 identifier (`san-Deva`, not `san` plus an attribute); and
 `<relation>` must sit inside `listRelation`. Those are exactly the errors a
 permissive schema lets through into production.
 
-**One entity has no authority record, and that is modelled explicitly.**
-Kanchipuram and Shiva align cleanly to Wikidata and the GND. Kamakshi as a
-goddess does not: the available Wikidata item denotes her *temple*. The corpus
-records a project-local URI, relates deity to building with `worshipped-at`, and
-states the gap in a machine-readable note, rather than asserting `owl:sameAs`
-between a goddess and a building. ADR 5 gives the argument.
+**One entity is deliberately *not* given its own authority record.**
+Madurai, Shiva, and Meenakshi all align cleanly to Wikidata and the GND —
+Meenakshi has her own record, distinct from her temple. Sundareshvara does
+not, because he isn't a separate entity: he's Shiva's name as worshipped
+locally at Madurai. The corpus resists the temptation to mint a
+`deity-sundareshvara` entity and align *it* to some temple-specific Wikidata
+item, and instead records the epithet as a note on the existing `deity-shiva`
+entity. ADR 5 gives the argument, including the mirror-image error (Kamakshi)
+that originally motivated this rule.
 
 ---
 
@@ -190,8 +195,16 @@ informative than one that knows its own edges.
   tokeniser; the index configuration documents this rather than hiding it.
 * **The apparatus supports parallel segmentation only.** Double-end-point
   attachment and standoff `<listApp>` are not implemented.
-* **IIIF image URLs are placeholders.** The manifest structure is correct and its
-  coordinates match the TEI `<zone>`, but no image server is attached.
+* **No IIIF manifest for the current corpus.** The former Kanchipuram sample
+  had a placeholder manifest (`data/iiif/manifest-km-saiva.json`) with correct
+  structure and `<zone>`-matched coordinates but no attached image server; it
+  was removed along with that corpus rather than left pointing at deleted
+  files. No facsimile source was located for the Tiruvilaiyadal Puranam /
+  Halasya Mahatmya pair this session, so no replacement manifest exists yet.
+* **The new corpus's chapter titles are secondary-source glosses, and its verse
+  text is synthetic.** See the `notesStmt/note[@type="provenance-warning"]` in
+  `tiruvilaiyadal-puranam.xml` and `halasya-mahatmya.xml` for exactly what was
+  and wasn't verified.
 * **No authentication.** Deployment permissions are set for public read; an
   editorial workflow needs eXist's user and group model configured properly.
 * **Grantha is described but not transliterated.** The manuscript description

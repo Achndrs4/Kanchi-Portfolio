@@ -87,8 +87,8 @@ Sanskrit and Tamil verses that transmit the same episode are linked with
 `@corresp`, pointing both ways:
 
 ```xml
-<lg xml:id="KM-S-1" corresp="#KP-1">   <!-- Sanskrit -->
-<lg xml:id="KP-1"  corresp="#KM-S-1">  <!-- Tamil -->
+<lg xml:id="HM-5"  corresp="#TVP-1">   <!-- Sanskrit -->
+<lg xml:id="TVP-1" corresp="#HM-5">   <!-- Tamil -->
 ```
 
 Encoding both directions is redundant but deliberate: it makes each file

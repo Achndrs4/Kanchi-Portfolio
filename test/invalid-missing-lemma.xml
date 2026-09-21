@@ -3,12 +3,14 @@
             schematypens="http://relaxng.org/ns/structure/1.0"?>
 <?xml-model href="../../schema/kanchi.sch" type="application/xml"
             schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="KM-S" xml:lang="san">
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="HM" xml:lang="san">
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title type="main" xml:lang="san-Latn">Śaiva Kāñcīmāhātmya</title>
-        <title type="sub" xml:lang="eng">A structural demonstration edition</title>
+        <title type="main" xml:lang="san-Latn">Halāsyamāhātmya</title>
+        <title type="main" xml:lang="san-Deva">हालास्यमाहात्म्यम्</title>
+        <title type="sub" xml:lang="eng">Chapter-level correspondence skeleton: 44 adhyayas
+        aligned to the Tamil Tiruvilaiyadal Puranam, demonstration edition</title>
         <editor role="encoder">
           <persName>
             <forename>Ani</forename>
@@ -16,12 +18,14 @@
           </persName>
         </editor>
         <respStmt>
-          <resp>TEI encoding, schema design and pipeline</resp>
+          <resp>TEI encoding, chapter-correspondence research and pipeline</resp>
           <name>Ani Chandrashekhar</name>
         </respStmt>
       </titleStmt>
       <editionStmt>
-        <edition n="0.1">Demonstration edition, structure only.</edition>
+        <edition n="0.1">Demonstration edition: chapter-level structure and
+        cross-language alignment only, replacing the project's former Kanchipuram
+        sample corpus.</edition>
       </editionStmt>
       <publicationStmt>
         <publisher>Unpublished demonstration repository</publisher>
@@ -30,53 +34,58 @@
             <p>Encoding and schema released under CC BY 4.0.</p>
           </licence>
         </availability>
-        <date when="2026-08-31"/>
+        <date when="2026-09-20"/>
       </publicationStmt>
       <notesStmt>
         <note type="provenance-warning" xml:lang="eng">
-          <p>IMPORTANT. The verse text carried by this file is <emph>synthetic sample
-          material</emph>, written solely to exercise the encoding model. It is
-          <emph>not</emph> a transcription of the Śaiva Kāñcīmāhātmya and must not be
-          cited as one. Structural features (apparatus, witness sigla, alignment,
-          entity references) are modelled exactly as they would be in a production
-          edition, so that authentic transcriptions can be substituted without any
-          change to the schema, queries or transformations. See
+          <p>IMPORTANT. This file replaces the project's former Kanchipuram sample
+          corpus with a demonstration corpus for the Halasya Mahatmya / Tiruvilaiyadal
+          Puranam pair. Two things are real here and one is not:</p>
+          <p><emph>Real:</emph> the adhyaya numbering and each chapter's Sanskrit title
+          (<mentioned>head</mentioned>) were read from the OCR'd विषयानुक्रमणिका
+          (table of contents) of the S.V. Radhakrishna Sastri edition digitised on
+          archive.org — see <ptr target="#HM-archive-bibl"/>. The OCR recovered legible
+          titles for 62 of the work's 71 adhyayas; the 44 encoded here are the subset the
+          research pass could confidently match to a Tamil padalam. The
+          <mentioned>@corresp</mentioned> links to
+          <ref target="tiruvilaiyadal-puranam.xml">tiruvilaiyadal-puranam.xml</ref> record
+          that matching.</p>
+          <p><emph>Not real:</emph> the exact archive.org item identifier/URL was not
+          retained during the research pass and must be re-found and attached to
+          <ptr target="#HM-archive-bibl"/> before this citation is treated as complete.
+          The verse text inside each <mentioned>lg</mentioned> is
+          <emph>synthetic placeholder material</emph>, a short generic invocatory couplet
+          reused across chapters to exercise the encoding model — it is not a
+          transcription of any adhyaya's actual content and must not be cited as one. See
           <ref target="../../docs/encoding-guidelines.md">encoding guidelines</ref>,
           section "Replacing the sample corpus".</p>
         </note>
+        <note type="alignment" xml:lang="eng">
+          <p>Adhyayas 1-4 (invocation/kshetra-glorification frame material) and the
+          अनुबन्धः appendix after adhyaya 71 (unrelated hymns) are deliberately excluded
+          from this corpus as non-narrative. Adhyayas 70-71 fall after the point where the
+          Tamil 64-story cycle ends and have no confirmed Tamil counterpart, so are also
+          excluded. Adhyayas with OCR-illegible titles (3, 4, 11, 19, 20, 23, 26, 34, 37,
+          59, 61) are absent rather than guessed at; a second pass against archive.org's
+          page-image viewer, rather than its plain-text OCR layer, would be needed to
+          recover them.</p>
+        </note>
       </notesStmt>
       <sourceDesc>
+        <bibl xml:id="HM-archive-bibl" type="digital-facsimile">
+          <title xml:lang="san-Latn">Halāsyamāhātmyam</title>
+          <editor role="editor">S.V. Radhakrishna Sastri</editor>
+          <publisher>archive.org (digitised scan)</publisher>
+          <note xml:lang="eng">Exact item identifier/URL not retained during the research
+          pass that produced this file — see the provenance-warning note. Re-locate and
+          record before citing.</note>
+        </bibl>
         <listWit>
-          <witness xml:id="E1">
-            <abbr>E1</abbr>
-            <desc xml:lang="eng">Printed edition, placeholder for the 1889 Śaiva
-            Kāñcīmāhātmya print digitised from a South Indian library collection.</desc>
+          <witness xml:id="SW1"><abbr>SW1</abbr>
+            <desc xml:lang="eng">Placeholder witness 1 (demonstration apparatus only).</desc>
           </witness>
-          <witness xml:id="M1">
-            <abbr>M1</abbr>
-            <msDesc>
-              <msIdentifier>
-                <settlement>Pondicherry</settlement>
-                <institution>Placeholder repository</institution>
-                <idno>MS-PLACEHOLDER-001</idno>
-              </msIdentifier>
-              <physDesc>
-                <objectDesc form="palm-leaf">
-                  <supportDesc material="palm-leaf">
-                    <support><p>Palm-leaf bundle, placeholder description.</p></support>
-                    <extent><measure unit="leaf" quantity="42">42 leaves</measure></extent>
-                  </supportDesc>
-                </objectDesc>
-                <scriptDesc>
-                  <scriptNote scope="major">Grantha script, used for Sanskrit in the
-                  Tamil country.</scriptNote>
-                </scriptDesc>
-              </physDesc>
-            </msDesc>
-          </witness>
-          <witness xml:id="M2">
-            <abbr>M2</abbr>
-            <desc xml:lang="eng">Second manuscript witness, placeholder.</desc>
+          <witness xml:id="SW2"><abbr>SW2</abbr>
+            <desc xml:lang="eng">Placeholder witness 2 (demonstration apparatus only).</desc>
           </witness>
         </listWit>
       </sourceDesc>
@@ -91,7 +100,7 @@
         <prefixDef ident="authority"
                    matchPattern="([a-z0-9\-]+)"
                    replacementPattern="../authority/authority.xml#$1">
-          <p>References of the form <mentioned>authority:place-kanchipuram</mentioned> resolve
+          <p>References of the form <mentioned>authority:place-madurai</mentioned> resolve
           to entries in the shared authority file.</p>
         </prefixDef>
       </listPrefixDef>
@@ -103,12 +112,9 @@
       </editorialDecl>
       <variantEncoding method="parallel-segmentation" location="internal"/>
       <classDecl>
-        <taxonomy xml:id="kanchi-motifs">
-          <category xml:id="motif.origin">
-            <catDesc xml:lang="eng">Origin of the shrine</catDesc>
-          </category>
-          <category xml:id="motif.vow">
-            <catDesc xml:lang="eng">Vow or penance</catDesc>
+        <taxonomy xml:id="hm-motifs">
+          <category xml:id="motif.divine-play">
+            <catDesc xml:lang="eng">A sacred sport (līlā) of Śiva</catDesc>
           </category>
         </taxonomy>
       </classDecl>
@@ -119,56 +125,33 @@
         <language ident="san-Latn">Sanskrit in IAST transliteration</language>
       </langUsage>
       <textClass>
-        <catRef scheme="#kanchi-motifs" target="#motif.origin"/>
+        <catRef scheme="#hm-motifs" target="#motif.divine-play"/>
       </textClass>
     </profileDesc>
     <revisionDesc>
-      <change when="2026-08-31" who="#AC">Initial structural encoding.</change>
+      <change when="2026-09-20" who="#AC">Replaced the former Kanchipuram sample corpus
+      with this chapter-correspondence skeleton for the Halasya Mahatmya /
+      Tiruvilaiyadal Puranam pair.</change>
     </revisionDesc>
   </teiHeader>
-  <facsimile xml:id="facs-KM-S">
-    <surface xml:id="KM-S-p1" ulx="0" uly="0" lrx="2000" lry="3000">
-      <graphic url="https://iiif.example.org/kanchi/km-saiva-p1/full/max/0/default.jpg"
-               width="2000px" height="3000px"/>
-      <zone xml:id="KM-S-p1-z1" ulx="180" uly="420" lrx="1820" lry="760"
-            rendition="#verse-block"/>
-    </surface>
-  </facsimile>
   <text>
     <body>
-      <div type="chapter" n="1" xml:id="KM-S-ch1" corresp="#KP-ch1">
-        <head xml:lang="san">काञ्चीमाहात्म्यम्</head>
-        <lg type="verse" n="1" xml:id="KM-S-1" corresp="#KP-1" facs="#KM-S-p1-z1">
+      <div type="chapter" n="5" xml:id="HM-ch5">
+        <head xml:lang="san">इन्द्रानुग्रहः - सोमसुन्दरस्तुतिः</head>
+        <note type="transcription-source" xml:lang="eng">Title read from the OCR'd table of
+        contents; see the file's provenance-warning note. Verse content below is
+        synthetic placeholder, not a transcription; this chapter additionally carries a
+        placeholder two-witness apparatus so the schema's apparatus rules stay exercised.</note>
+        <lg type="verse" n="1" xml:id="HM-5" corresp="#TVP-1">
           <l n="1a">
+            मदुरानगरे रमते
             <app>
-              <lem wit="#E1 #M1">काञ्च्यां</lem>
-              <rdg wit="#M2">काञ्चीषु</rdg>
+              <rdg wit="#SW2">सुन्दरेश्वरो देवः</rdg>
             </app>
-            <placeName ref="authority:place-kanchipuram">काञ्ची</placeName>
-            नगरे शुभे
           </l>
           <l n="1b">
-            <persName ref="authority:deity-shiva" type="deity">शिवः</persName>
-            <app>
-              <rdg wit="#E1">तिष्ठति</rdg>
-              <rdg wit="#M1 #M2" type="orthographic">तिष्ठते</rdg>
-            </app>
-            सर्वदा
-          </l>
-        </lg>
-        <lg type="verse" n="2" xml:id="KM-S-2" corresp="#KP-2">
-          <l n="2a">
-            <persName ref="authority:deity-kamakshi" type="deity">कामाक्षी</persName>
-            देवी विख्याता
-          </l>
-          <l n="2b">
-            <app>
-              <lem wit="#E1 #M2">तपसा</lem>
-              <rdg wit="#M1">तपसि</rdg>
-              <witDetail wit="#M1" type="damage">Reading uncertain; leaf damaged at
-              this point.</witDetail>
-            </app>
-            सिद्धिम् आप्नुयात्
+            <persName ref="authority:deity-meenakshi" type="deity">मीनाक्षी</persName>
+            वरदा नित्यं भक्तानाम् अभयप्रदा
           </l>
         </lg>
       </div>

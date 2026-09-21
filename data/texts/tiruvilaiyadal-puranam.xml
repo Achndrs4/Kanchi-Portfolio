@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../schema/kanchi.rng" type="application/xml"
+            schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="../../schema/kanchi.sch" type="application/xml"
+            schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="TVP" xml:lang="tam">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main" xml:lang="tam">திருவிளையாடற் புராணம்</title>
+        <title type="main" xml:lang="tam-Latn">Tiruviḷaiyāṭaṟ Purāṇam</title>
+        <title type="sub" xml:lang="eng">Chapter-level correspondence skeleton: 44 padalams
+        aligned to the Sanskrit Halasya Mahatmya, demonstration edition</title>
+        <author>
+          <persName xml:lang="tam-Latn">Parañcōti Muṉivar</persName>
+          <persName xml:lang="tam">பரஞ்சோதி முனிவர்</persName>
+        </author>
+        <editor role="encoder">
+          <persName>
+            <forename>Ani</forename>
+            <surname>Chandrashekhar</surname>
+          </persName>
+        </editor>
+        <respStmt>
+          <resp>TEI encoding, chapter-correspondence research and pipeline</resp>
+          <name>Ani Chandrashekhar</name>
+        </respStmt>
+      </titleStmt>
+      <editionStmt>
+        <edition n="0.1">Demonstration edition: chapter-level structure and
+        cross-language alignment only, replacing the project's former Kanchipuram
+        sample corpus.</edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>Unpublished demonstration repository</publisher>
+        <availability status="free">
+          <licence target="https://creativecommons.org/licenses/by/4.0/">
+            <p>Encoding and schema released under CC BY 4.0.</p>
+          </licence>
+        </availability>
+        <date when="2026-09-20"/>
+      </publicationStmt>
+      <notesStmt>
+        <note type="provenance-warning" xml:lang="eng">
+          <p>IMPORTANT. This file replaces the project's former Kanchipuram sample
+          corpus (<mentioned>kanchippuranam.xml</mentioned>, <mentioned>km-saiva.xml</mentioned>)
+          with a demonstration corpus for the Tiruvilaiyadal Puranam / Halasya Mahatmya
+          pair. Two things are real here and one is not:</p>
+          <p><emph>Real:</emph> the chapter (படலம்) numbering, the English gist-title for
+          each chapter, and the cross-language <mentioned>@corresp</mentioned> alignment
+          to <ref target="halasya-mahatmya.xml">halasya-mahatmya.xml</ref> were produced by
+          a research pass over secondary sources (English Wikipedia's Tiruvilaiyadal
+          Puranam article for padalams 1-38; shaivam.org's English-translation index pages,
+          reached via search-result snippets rather than a direct browse, for padalams
+          39-64) cross-checked against two independent sources for the 18/30/16 kandam
+          split. Only the 44 padalam-adhyaya pairs the research reached high or
+          medium-high confidence on are encoded; the remaining ~20 padalams are not
+          included at all rather than guessed at — see the alignment note below for the
+          excluded ranges.</p>
+          <p><emph>Not real:</emph> the <mentioned>&lt;head&gt;</mentioned> titles are
+          English glosses from those secondary sources, not the authentic Tamil படலம்
+          rubrics, which were not recovered this session. The verse text inside each
+          <mentioned>lg</mentioned> is <emph>synthetic placeholder material</emph>, a
+          short generic invocatory couplet reused across chapters to exercise the
+          encoding model (apparatus, entity references, alignment) — it is not a
+          transcription or translation of any padalam's actual content and must not be
+          cited as one. See
+          <ref target="../../docs/encoding-guidelines.md">encoding guidelines</ref>,
+          section "Replacing the sample corpus", for how real verse text should replace
+          this scaffolding.</p>
+        </note>
+        <note type="alignment" xml:lang="eng">
+          <p>44 of the traditional 64 padalams are encoded with a
+          <mentioned>@corresp</mentioned> link to their matched Halasya Mahatmya adhyaya
+          (see each <mentioned>lg/@corresp</mentioned>). Three encoded chapters (padalam 7,
+          18, 55) each stand in for a two-padalam episode the research could not split
+          further (7-8, 18-19, 55-56 respectively) and are noted individually. Padalams
+          not encoded here — 17, 19-20, 23, 25-29, 31-32, 34, 37-38, 54, 57, and 65-64's
+          complement outside the matched set — either had no confident Sanskrit match or
+          no recoverable title at all; they are absent rather than asserted on a guess.</p>
+        </note>
+      </notesStmt>
+      <sourceDesc>
+        <bibl xml:id="TVP-wiki-bibl" type="web">
+          <title xml:lang="eng">Tiruvilaiyadal Puranam</title>
+          <publisher>Wikipedia (English)</publisher>
+          <note xml:lang="eng">Used for padalam titles and the Maduraikandam/Kudalkandam/
+          Tiruvalavaykandam (1-18/19-48/49-64) structure. A precise revision URL/date was
+          not retained during the research pass; re-verify against the live article
+          before treating any single title as citable.</note>
+        </bibl>
+        <bibl xml:id="TVP-shaivam-bibl" type="web">
+          <title xml:lang="eng">Sixty-four sacred sports of Shiva at Madurai (English
+          translation index)</title>
+          <publisher>shaivam.org</publisher>
+          <note xml:lang="eng">Reached via search-engine result snippets, not a direct
+          page fetch (the site blocks automated fetching). Titles for padalams 39-64 in
+          this file should be spot-checked against shaivam.org's own pages directly
+          before being treated as verified.</note>
+        </bibl>
+        <listWit>
+          <witness xml:id="TW1"><abbr>TW1</abbr>
+            <desc xml:lang="eng">Placeholder witness 1 (demonstration apparatus only).</desc>
+          </witness>
+          <witness xml:id="TW2"><abbr>TW2</abbr>
+            <desc xml:lang="eng">Placeholder witness 2 (demonstration apparatus only).</desc>
+          </witness>
+        </listWit>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Demonstration of a TEI-based editorial pipeline for South Indian temple
+        legends, built to illustrate eXist-db, RESTXQ, XSLT and Linked Open Data
+        integration.</p>
+      </projectDesc>
+      <listPrefixDef>
+        <prefixDef ident="authority"
+                   matchPattern="([a-z0-9\-]+)"
+                   replacementPattern="../authority/authority.xml#$1">
+          <p>References of the form <mentioned>authority:place-madurai</mentioned> resolve
+          to entries in the shared authority file.</p>
+        </prefixDef>
+      </listPrefixDef>
+      <editorialDecl>
+        <normalization>
+          <p>All Indic text is stored in Unicode NFC. Tamil script is the storage script
+          for this file; ISO 15919 transliteration is generated, not hand-keyed.</p>
+        </normalization>
+      </editorialDecl>
+      <variantEncoding method="parallel-segmentation" location="internal"/>
+      <classDecl>
+        <taxonomy xml:id="tvp-motifs">
+          <category xml:id="motif.divine-play">
+            <catDesc xml:lang="eng">Tiruviḷaiyāṭal — a sacred sport/play of Shiva</catDesc>
+          </category>
+        </taxonomy>
+      </classDecl>
+    </encodingDesc>
+    <profileDesc>
+      <langUsage>
+        <language ident="tam-Taml">Tamil in Tamil script</language>
+        <language ident="tam-Latn">Tamil in ISO 15919 transliteration</language>
+      </langUsage>
+      <textClass>
+        <catRef scheme="#tvp-motifs" target="#motif.divine-play"/>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-09-20" who="#AC">Replaced the former Kanchipuram sample corpus
+      with this chapter-correspondence skeleton for the Tiruvilaiyadal Puranam /
+      Halasya Mahatmya pair.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="chapter" n="1" xml:id="TVP-ch1">
+        <head xml:lang="eng">Removal of Indra's curse</head>
+        <note type="transcription-source" xml:lang="eng">Title is an English gloss from
+        the sources in the file's sourceDesc, not the authentic Tamil படலம் title (not
+        recovered). Verse content below is synthetic placeholder, not a transcription;
+        this chapter additionally carries a placeholder two-witness apparatus so the
+        schema's apparatus rules stay exercised. See the file's provenance-warning note.</note>
+        <lg type="verse" n="1" xml:id="TVP-1" corresp="#HM-5">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <app>
+              <lem wit="#TW1">சொக்கநாதர்</lem>
+              <rdg wit="#TW2">சொக்கநாதன்</rdg>
+            </app>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="2" xml:id="TVP-ch2">
+        <head xml:lang="eng">Removal of the white elephant's curse</head>
+        <lg type="verse" n="1" xml:id="TVP-2" corresp="#HM-6">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="3" xml:id="TVP-ch3">
+        <head xml:lang="eng">Founding of Madurai</head>
+        <lg type="verse" n="1" xml:id="TVP-3" corresp="#HM-7">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="4" xml:id="TVP-ch4">
+        <head xml:lang="eng">Birth/incarnation of Meenakshi</head>
+        <lg type="verse" n="1" xml:id="TVP-4" corresp="#HM-8">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="5" xml:id="TVP-ch5">
+        <head xml:lang="eng">Marriage of Meenakshi and Sundareshvara</head>
+        <lg type="verse" n="1" xml:id="TVP-5" corresp="#HM-9">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="6" xml:id="TVP-ch6">
+        <head xml:lang="eng">Shiva's dance in the Silver Hall</head>
+        <lg type="verse" n="1" xml:id="TVP-6" corresp="#HM-10">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="7" xml:id="TVP-ch7">
+        <head xml:lang="eng">Kundotharan; bringing of the Vaigai river</head>
+        <note type="alignment-detail" xml:lang="eng">Table row spans Tamil padalams 7-8 and the Sanskrit match is tentative between adhyayas 11-12; padalam 7 used as the anchor number.</note>
+        <lg type="verse" n="1" xml:id="TVP-7" corresp="#HM-12">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="9" xml:id="TVP-ch9">
+        <head xml:lang="eng">The seven seas gathered in one place</head>
+        <lg type="verse" n="1" xml:id="TVP-9" corresp="#HM-13">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="10" xml:id="TVP-ch10">
+        <head xml:lang="eng">Resurrecting king Malayadhvaja</head>
+        <lg type="verse" n="1" xml:id="TVP-10" corresp="#HM-14">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="11" xml:id="TVP-ch11">
+        <head xml:lang="eng">Incarnation of Ukrama-Pandyan (Skanda)</head>
+        <lg type="verse" n="1" xml:id="TVP-11" corresp="#HM-15">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="12" xml:id="TVP-ch12">
+        <head xml:lang="eng">Weapons given to the prince</head>
+        <lg type="verse" n="1" xml:id="TVP-12" corresp="#HM-16">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="13" xml:id="TVP-ch13">
+        <head xml:lang="eng">Varuna repelled with the spear</head>
+        <lg type="verse" n="1" xml:id="TVP-13" corresp="#HM-17">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="14" xml:id="TVP-ch14">
+        <head xml:lang="eng">Striking Indra's crown</head>
+        <lg type="verse" n="1" xml:id="TVP-14" corresp="#HM-18">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="15" xml:id="TVP-ch15">
+        <head xml:lang="eng">Striking Meru, obtaining wealth</head>
+        <lg type="verse" n="1" xml:id="TVP-15" corresp="#HM-21">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="16" xml:id="TVP-ch16">
+        <head xml:lang="eng">Explaining the inner meaning of the Vedas</head>
+        <lg type="verse" n="1" xml:id="TVP-16" corresp="#HM-22">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="18" xml:id="TVP-ch18">
+        <head xml:lang="eng">Clouds absorb the sea (Varuna)</head>
+        <note type="alignment-detail" xml:lang="eng">Table row spans Tamil padalams 18-19; padalam 18 used as the anchor number.</note>
+        <lg type="verse" n="1" xml:id="TVP-18" corresp="#HM-24">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="21" xml:id="TVP-ch21">
+        <head xml:lang="eng">Sugarcane given to the stone elephant</head>
+        <lg type="verse" n="1" xml:id="TVP-21" corresp="#HM-27">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="22" xml:id="TVP-ch22">
+        <head xml:lang="eng">Killing the Jain-made elephant</head>
+        <lg type="verse" n="1" xml:id="TVP-22" corresp="#HM-28">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="24" xml:id="TVP-ch24">
+        <head xml:lang="eng">Nataraja alters his stance in the Silver Hall</head>
+        <lg type="verse" n="1" xml:id="TVP-24" corresp="#HM-30">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="30" xml:id="TVP-ch30">
+        <head xml:lang="eng">Shiva arrives with an army</head>
+        <lg type="verse" n="1" xml:id="TVP-30" corresp="#HM-36">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="33" xml:id="TVP-ch33">
+        <head xml:lang="eng">Teaching the eight great siddhis to the yakshinis</head>
+        <lg type="verse" n="1" xml:id="TVP-33" corresp="#HM-39">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="35" xml:id="TVP-ch35">
+        <head xml:lang="eng">Water-booth set up for the Pandyan army</head>
+        <lg type="verse" n="1" xml:id="TVP-35" corresp="#HM-41">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="36" xml:id="TVP-ch36">
+        <head xml:lang="eng">Performing alchemy (rasavada)</head>
+        <lg type="verse" n="1" xml:id="TVP-36" corresp="#HM-42">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="40" xml:id="TVP-ch40">
+        <head xml:lang="eng">Appearing as the merchant's maternal uncle</head>
+        <lg type="verse" n="1" xml:id="TVP-40" corresp="#HM-45">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="41" xml:id="TVP-ch41">
+        <head xml:lang="eng">Curing Varaguna Pandyan of brahmahatya</head>
+        <lg type="verse" n="1" xml:id="TVP-41" corresp="#HM-46">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="42" xml:id="TVP-ch42">
+        <head xml:lang="eng">Selling firewood, winning the song contest</head>
+        <lg type="verse" n="1" xml:id="TVP-42" corresp="#HM-47">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="43" xml:id="TVP-ch43">
+        <head xml:lang="eng">Letter to the Chera king (Pattiren)</head>
+        <lg type="verse" n="1" xml:id="TVP-43" corresp="#HM-48">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="44" xml:id="TVP-ch44">
+        <head xml:lang="eng">Golden board given to Pattiren</head>
+        <lg type="verse" n="1" xml:id="TVP-44" corresp="#HM-49">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="45" xml:id="TVP-ch45">
+        <head xml:lang="eng">Singing contest between two women</head>
+        <lg type="verse" n="1" xml:id="TVP-45" corresp="#HM-50">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="46" xml:id="TVP-ch46">
+        <head xml:lang="eng">Nourishing the motherless piglets</head>
+        <lg type="verse" n="1" xml:id="TVP-46" corresp="#HM-51">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="47" xml:id="TVP-ch47">
+        <head xml:lang="eng">The piglets made ministers</head>
+        <lg type="verse" n="1" xml:id="TVP-47" corresp="#HM-52">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="48" xml:id="TVP-ch48">
+        <head xml:lang="eng">Instructing the little black bird</head>
+        <lg type="verse" n="1" xml:id="TVP-48" corresp="#HM-53">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="50" xml:id="TVP-ch50">
+        <head xml:lang="eng">Showing the town boundaries after the flood</head>
+        <lg type="verse" n="1" xml:id="TVP-50" corresp="#HM-55">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="51" xml:id="TVP-ch51">
+        <head xml:lang="eng">Defeating the Chola king's army</head>
+        <lg type="verse" n="1" xml:id="TVP-51" corresp="#HM-56">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="52" xml:id="TVP-ch52">
+        <head xml:lang="eng">The Sangam plank/bench dispute</head>
+        <lg type="verse" n="1" xml:id="TVP-52" corresp="#HM-57">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="53" xml:id="TVP-ch53">
+        <head xml:lang="eng">Dharmi's gold purse (Nakkeerar episode)</head>
+        <lg type="verse" n="1" xml:id="TVP-53" corresp="#HM-58">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="55" xml:id="TVP-ch55">
+        <head xml:lang="eng">The grammar dispute (Agastya, Nakkeerar, the dumb child)</head>
+        <note type="alignment-detail" xml:lang="eng">Table row spans Tamil padalams 55-56; padalam 55 used as the anchor number.</note>
+        <lg type="verse" n="1" xml:id="TVP-55" corresp="#HM-60">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="58" xml:id="TVP-ch58">
+        <head xml:lang="eng">The fisherman and the curse on Parvati</head>
+        <lg type="verse" n="1" xml:id="TVP-58" corresp="#HM-63">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="59" xml:id="TVP-ch59">
+        <head xml:lang="eng">Instructing the man of Vathavur (Manikkavasagar)</head>
+        <lg type="verse" n="1" xml:id="TVP-59" corresp="#HM-64">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="60" xml:id="TVP-ch60">
+        <head xml:lang="eng">Jackals turned into horses</head>
+        <lg type="verse" n="1" xml:id="TVP-60" corresp="#HM-65">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="61" xml:id="TVP-ch61">
+        <head xml:lang="eng">Horses revert to jackals; the Vaigai floods</head>
+        <lg type="verse" n="1" xml:id="TVP-61" corresp="#HM-66">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="62" xml:id="TVP-ch62">
+        <head xml:lang="eng">Carrying mud as a laborer, struck with a cane (Man Sumantha Padalam)</head>
+        <lg type="verse" n="1" xml:id="TVP-62" corresp="#HM-67">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="63" xml:id="TVP-ch63">
+        <head xml:lang="eng">Sambandar cures the hunchback Pandyan king</head>
+        <lg type="verse" n="1" xml:id="TVP-63" corresp="#HM-68">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+      <div type="chapter" n="64" xml:id="TVP-ch64">
+        <head xml:lang="eng">Impaling of the Jains</head>
+        <lg type="verse" n="1" xml:id="TVP-64" corresp="#HM-69">
+          <l n="1a">
+            <placeName ref="authority:place-madurai">மதுரை</placeName> நகரில் அமர்ந்த
+            <persName ref="authority:deity-shiva" type="deity">சொக்கநாதர்</persName>
+          </l>
+          <l n="1b">
+            <persName ref="authority:deity-meenakshi" type="deity">மீனாட்சி</persName>
+            அம்மை அருள்புரிவாள் என்றும்
+          </l>
+        </lg>
+      </div>
+    </body>
+  </text>
+</TEI>
